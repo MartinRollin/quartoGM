@@ -18,6 +18,7 @@ namespace Quarto
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("What about now?");
             Console.ReadLine();
+            Console.WriteLine("vive les chameaux chalumeaux");
         }
     }
 }
