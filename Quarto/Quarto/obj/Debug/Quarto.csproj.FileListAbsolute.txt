@@ -1,1 +1,7 @@
 H:\1A\programmation\projets\Quatro\Quarto\Quarto\bin\Debug\Quarto.exe.config
+H:\1A\programmation\projets\quartoGM\Quarto\Quarto\bin\Debug\Quarto.exe.config
+H:\1A\programmation\projets\quartoGM\Quarto\Quarto\bin\Debug\Quarto.exe
+H:\1A\programmation\projets\quartoGM\Quarto\Quarto\bin\Debug\Quarto.pdb
+H:\1A\programmation\projets\quartoGM\Quarto\Quarto\obj\Debug\Quarto.csprojResolveAssemblyReference.cache
+H:\1A\programmation\projets\quartoGM\Quarto\Quarto\obj\Debug\Quarto.exe
+H:\1A\programmation\projets\quartoGM\Quarto\Quarto\obj\Debug\Quarto.pdb
