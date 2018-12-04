@@ -19,6 +19,16 @@ namespace Quarto
             Console.WriteLine("What about now?");
             Console.ReadLine();
             Console.WriteLine("vive les chameaux chalumeaux");
+
+            char[,][] tab = new char [2,1] [];
+            tab[0, 0] = new char [] { 'l', 'a' };
+            tab[1, 0] = new char[] { 'r', 'e' };
+            foreach (char [] e in tab) 
+                foreach (char j in e)
+                {
+                    Console.Write(j);
+                }
+
         }
     }
 }
