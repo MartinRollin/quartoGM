@@ -5,3 +5,7 @@ C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets communs\Gwe\Gwe\bin\D
 C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets communs\Gwe\Gwe\bin\Debug\Gwe.pdb
 C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets communs\Gwe\Gwe\obj\Debug\Gwe.exe
 C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets communs\Gwe\Gwe\obj\Debug\Gwe.pdb
+C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Gwe\Gwe\obj\Debug\Gwe.csprojAssemblyReference.cache
+C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Gwe\Gwe\obj\Debug\Gwe.csproj.CoreCompileInputs.cache
+C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Gwe\Gwe\obj\Debug\Gwe.exe
+C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Gwe\Gwe\obj\Debug\Gwe.pdb
