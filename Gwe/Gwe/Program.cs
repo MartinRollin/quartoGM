@@ -52,6 +52,55 @@ namespace Gwe
                 Console.Write(i + 1);
             }
     }
+
+    //On verifie que la position où veut jouer le joueur est disponible
+    public static bool VerifierPlaceVide(int ligne, int colonne, int[][] tab)
+    {
+        if (tab[ligne][colonne] == 0)
+            return (true);
+        else
+            return (false);
+    }
+
+    //on vérifie si la pièce est diponible
+    public static bool VerifierpieceDisponible(int piece, int[] tab)
+    {
+        if (tab[piece - 1] == 0)
+            return (false);
+        else
+            return (true);
+    }
+
+    // Afin de permettre à l'ordinateur de vérifier le Quarto, il doit d'abord checker si il y a 4 pièces alignées
+    
+    // Commençons par les colonnes
+    public static bool VerifierColonneVide(int colonne,int[][] tab) //on parcours la colonne en comptant le nombre de pièce, si il vaut 4, alors la colonne est pleine
+    {
+        int NbPiece = 0;
+        for (int i = 0; i < 4; i++)
+            if (tab[i][colonne] != 0)
+                NbPiece++;
+        if (NbPiece == 4)
+            return (true);
+        else
+            return (false);
+    }
+
+    //Nous faisons de même pour les lignes
+    public static bool VerifierColonneVide(int ligne, int[][] tab)
+    {
+        int NbPiece = 0;
+        for (int j = 0; j < 4; j++)
+            if (tab[ligne][j] != 0)
+                NbPiece++;
+        if (NbPiece == 4)
+            return (true);
+        else
+            return (false);
+    }
+
+    //pour les diagonales (on rentrera celle que l'on veut (1 ou 2))
+    pub
     class Program
     {
         static void Main(string[] args)
