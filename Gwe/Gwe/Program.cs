@@ -100,7 +100,32 @@ namespace Gwe
     }
 
     //pour les diagonales (on rentrera celle que l'on veut (1 ou 2))
-    pub
+    public static bool VerifierDiagonale(int laquelle, int[][] tab)
+    {
+        int NbPiece = 0;
+        if (laquelle == 1)
+        {
+            for (int i = 0; i < 4; i++)
+                if (tab[i][i] != 0)
+                    NbPiece++;
+            if (NbPiece == 4)
+                return (true);
+            else
+                return (false);
+        }
+        else
+        {
+            for (int i = 3; i <= 0 ; i--)
+                if (tab[i][i] != 0)
+                    NbPiece++;
+            if (NbPiece == 4)
+                return (true);
+            else
+                return (false);
+        }
+    }
+
+    //
     class Program
     {
         static void Main(string[] args)
