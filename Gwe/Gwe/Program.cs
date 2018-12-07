@@ -44,13 +44,13 @@ namespace Gwe
             for (int i = 0; i < 16; i++) //on parcours le tableau nous indiquant les pièces disponibles (de taille 16)
                 if (dispo[i] != 0) // on n'afiche que les pièces disponibles
                 {
-                    for (int k = 0; k < graph[0].Length; k++)
+                    for (int k = 0; k < 10 ; k++)
                     {
-                        for (int l = 0; l < graph[0].Length; l++)
+                        for (int l = 0; l < 10; l++)
                             Console.Write(graph[i][k, l]);
                         Console.WriteLine();
                     }
-                    for (int j = 0; j < (graph[0].Length / 2); j++) //on veut placer le numéro associé à la pièce 
+                    for (int j = 0; j < 4; j++) //on veut placer le numéro associé à la pièce 
                         Console.Write(" ");
                     Console.Write(i + 1);
                 }
@@ -83,7 +83,7 @@ namespace Gwe
             for (int i = 0; i < 4; i++)
                 if (tab[i][colonne] != 0)
                     NbPiece++;
-            if (NbPiece == 4)
+            if (NbPiece != 4)
                 return (true);
             else
                 return (false);
@@ -96,7 +96,7 @@ namespace Gwe
             for (int j = 0; j < 4; j++)
                 if (tab[ligne][j] != 0)
                     NbPiece++;
-            if (NbPiece == 4)
+            if (NbPiece != 4)
                 return (true);
             else
                 return (false);
@@ -111,17 +111,17 @@ namespace Gwe
                 for (int i = 0; i < 4; i++)
                     if (tab[i][i] != 0)
                         NbPiece++;
-                if (NbPiece == 4)
+                if (NbPiece != 4)
                     return (true);
                 else
                     return (false);
             }
             else
             {
-                for (int i = 3; i <= 0; i--)
-                    if (tab[i][i] != 0)
+                for (int i = 0; i <4; i++)
+                    if (tab[i][3-i] != 0)
                         NbPiece++;
-                if (NbPiece == 4)
+                if (NbPiece != 4)
                     return (true);
                 else
                     return (false);
@@ -129,22 +129,6 @@ namespace Gwe
         }
         static void Main(string[] args)
         {
-            char[][][,] tabl = new char[4][][,];
-
-            char[][][,] tab = new char[4][][,];
-            for (int i = 0; i < 4; i++)
-            {
-                tab[i] = new char[4][,];
-                tabl[i] = new char[4][,];
-            }
-            for (int i = 0; i < 4; i++)
-                for (int j = 0; j < 4; j++)
-                {
-                    tab[i][j] = new char[10, 10];
-                    tabl[i][j] = new char[10, 10];
-                }
-
-
             char[,] tab1 =
             {
                 {'0','1','2','3','4','5','6','7','8','9' },
@@ -159,8 +143,51 @@ namespace Gwe
                 {'0','1','2','3','4','5','6','7','8','9' }
             };
 
-            tab[0][0] = tab1;
-            AfficherPlateau(tab);
+
+            //char[][,] tabl = new char[16][,];
+
+            //for (int i = 0; i < 16; i++)
+            //    tabl[i] = new char[10, 10];
+            int[] dispo = new int[16];
+            dispo[3] = 4;
+
+
+//            char[][][,] tab = new char[4][][,];
+
+//            for (int i = 0; i < 16; i++)
+//            {
+//               tab[i] = new char[4][,];
+//            }
+
+//            for (int i = 0; i < 4; i++)
+//                for (int j = 0; j < 4; j++)
+//                {
+//                   tab[i][j] = tab1;
+//                }
+
+
+//            tab[9][9] = new char[10, 10];
+
+
+            int[][] plateau = new int[4][];
+            for (int i = 0; i < 4; i++)
+            {
+                plateau[i] = new int[4];
+                for (int j = 0; j < 4; j++)
+                    plateau[i][j] = 0;
+            }
+
+            for (int i = 0; i < 4; i++)
+                plateau[i][3-i] = i * 2 + 1;
+            plateau[3][3] = 4;
+
+
+
+            
+//            tabl[3] = tab1;
+//            AfficherPieceDisponible(tabl, dispo);
+
+            Console.WriteLine(VerifierDiagonale(2,plateau));
                       
             Console.ReadLine();
             ;
