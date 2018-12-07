@@ -16,13 +16,13 @@ namespace Gwe
             int j;
             for (int i = 0; i < 4; i++)
             {
-                for (int l = 0; l < tab[0][0].Length; l++) //on parcours les lignes des pieces graphiques 1 par 1
+                for (int l = 0; l < 10; l++) //on parcours les lignes des pieces graphiques 1 par 1
                 {
                     j = 0; //pour afficher correctement la ligne, on doit passer d'une colonne à l'autre.
                     while (j < 4)
                     {
                         k = 0;
-                        while (k < tab[i][j].Length)
+                        while (k < 10)
                         {
                             Console.Write(tab[i][j][k, l]);
                             k++;
@@ -32,12 +32,13 @@ namespace Gwe
                     }
                     Console.WriteLine();
                 }
-                for (int l = 0; l < tab[0][0].Length; l++)
-                    Console.Write("_");
+                for (int l = 0; l < 4; l++)
+                    Console.Write("___________");
+                Console.WriteLine();
             }
         }
 
-        //Afficher graphiquement les pièces disponibles ainsi que le numéro à afficher si on veut en prendre une (lesunes au dessus des autres)
+        //Afficher graphiquement les pièces disponibles ainsi que le numéro à afficher si on veut en prendre une (les unes au dessus des autres)
         public static void AfficherPieceDisponible(char[][,] graph, int[] dispo)
         {
             for (int i = 0; i < 16; i++) //on parcours le tableau nous indiquant les pièces disponibles (de taille 16)
@@ -128,15 +129,39 @@ namespace Gwe
         }
         static void Main(string[] args)
         {
+            char[][][,] tabl = new char[4][][,];
+
+            char[][][,] tab = new char[4][][,];
+            for (int i = 0; i < 4; i++)
+            {
+                tab[i] = new char[4][,];
+                tabl[i] = new char[4][,];
+            }
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 4; j++)
+                {
+                    tab[i][j] = new char[10, 10];
+                    tabl[i][j] = new char[10, 10];
+                }
+
+
             char[,] tab1 =
             {
-                {'1','2','3'},
-                {'4','5','6'},
-                {'7','8','9'}
+                {'0','1','2','3','4','5','6','7','8','9' },
+                {'0','1','2','3','4','5','6','7','8','9' },
+                {'0','1','2','3','4','5','6','7','8','9' },
+                {'0','1','2','3','4','5','6','7','8','9' },
+                {'0','1','2','3','4','5','6','7','8','9' },
+                {'0','1','2','3','4','5','6','7','8','9' },
+                {'0','1','2','3','4','5','6','7','8','9' },
+                {'0','1','2','3','4','5','6','7','8','9' },
+                {'0','1','2','3','4','5','6','7','8','9' },
+                {'0','1','2','3','4','5','6','7','8','9' }
             };
-            char[][][,] tab = new char[1][][,];
-            tab[0] = new char[1][,] ;
-            tab[0][0] = tab1;          
+
+            tab[0][0] = tab1;
+            AfficherPlateau(tab);
+                      
             Console.ReadLine();
             ;
 

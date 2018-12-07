@@ -12,3 +12,9 @@ C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Gwe\G
 H:\1A\programmation\quartoGM\Gwe\Gwe\bin\Debug\Gwe.exe.config
 H:\1A\programmation\quartoGM\Gwe\Gwe\obj\Debug\Gwe.exe
 H:\1A\programmation\quartoGM\Gwe\Gwe\obj\Debug\Gwe.pdb
+H:\1A\programmation\projets\quartoGM\Gwe\Gwe\bin\Debug\Gwe.exe.config
+H:\1A\programmation\projets\quartoGM\Gwe\Gwe\obj\Debug\Gwe.exe
+H:\1A\programmation\projets\quartoGM\Gwe\Gwe\obj\Debug\Gwe.pdb
+H:\1A\programmation\projets\quartoGM\Gwe\Gwe\bin\Debug\Gwe.exe
+H:\1A\programmation\projets\quartoGM\Gwe\Gwe\bin\Debug\Gwe.pdb
+H:\1A\programmation\projets\quartoGM\Gwe\Gwe\obj\Debug\Gwe.csprojResolveAssemblyReference.cache
