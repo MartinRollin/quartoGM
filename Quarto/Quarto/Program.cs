@@ -8,6 +8,7 @@ namespace Quarto
 {
     class Program
     {
+        // fonction qui renvoie la chaine de caractere correspondant à une piece graphique
         public static string[] GenererPiece(string strPiece)
         {
 
@@ -40,6 +41,7 @@ namespace Quarto
             for (int i = 0; i < 8; i++)
             {
                 tableauPieceGraphique[i] = GenererPiece(tab[i]);
+
             }
 
 
@@ -47,8 +49,9 @@ namespace Quarto
             for (int i = 0; i < 8; i++)
             {
                 tableauPieceGraphique[7 + i] = new string[8];
-                for (int j = 0; i < 8; j++)
+                for (int j = 0; j < 8; j++)
                 {
+
                     tableauPieceGraphique[7 + i][j] = "v" + tableauPieceGraphique[i][j].Substring(1, 12);
                 }
 
