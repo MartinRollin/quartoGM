@@ -10,44 +10,52 @@ namespace Gwe
     class Program
     {
         //On affiche le plateau mis à jour
-        public static void AfficherPlateau(char[][][,] tab)
+        public static void AfficherPlateau(string[][][] tab)
         {
             int k;
             int j;
             for (int i = 0; i < 4; i++)
             {
-                for (int l = 0; l < 10; l++) //on parcours les lignes des pieces graphiques 1 par 1
+                for (int l = 0; l < 8; l++) //on parcours les lignes des pieces graphiques 1 par 1
                 {
                     j = 0; //pour afficher correctement la ligne, on doit passer d'une colonne à l'autre.
                     while (j < 4)
                     {
-                        k = 0;
-                        while (k < 10)
+                        if (tab[i][j][l][0] == 'b') // la couleur est indiqué par le premier caractère de chaque string (b=blanc, v=vert)
+                            Console.Write((tab[i][j][l].Substring(1)));
+                        else
                         {
-                            Console.Write(tab[i][j][k, l]);
-                            k++;
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write((tab[i][j][l].Substring(1)));
                         }
-                        Console.Write("|"); // Choix de cette séparation
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.Write("█"); // Choix de cette séparation        
                         j++;
                     }
                     Console.WriteLine();
                 }
+                Console.ForegroundColor = ConsoleColor.Gray;
                 for (int l = 0; l < 4; l++)
-                    Console.Write("___________");
+                    Console.Write("▄▄▄▄▄▄▄▄▄▄ ");
                 Console.WriteLine();
             }
         }
 
         //Afficher graphiquement les pièces disponibles ainsi que le numéro à afficher si on veut en prendre une (les unes au dessus des autres)
-        public static void AfficherPieceDisponible(char[][,] graph, int[] dispo)
+        public static void AfficherPieceDisponible(string[][] graph, int[] dispo)
         {
             for (int i = 0; i < 16; i++) //on parcours le tableau nous indiquant les pièces disponibles (de taille 16)
-                if (dispo[i] != 0) // on n'afiche que les pièces disponibles
+                if (dispo[i] != 0) // on n'affiche que les pièces disponibles, dans les cellules contenant un entier naturel non nul
                 {
-                    for (int k = 0; k < 10 ; k++)
+                    for (int k = 0; k < 8 ; k++)
                     {
-                        for (int l = 0; l < 10; l++)
-                            Console.Write(graph[i][k, l]);
+                        if (graph[i][k][0] == 'b') // la couleur est indiqué par le premier caractère de chaque string (b=blanc, v=vert)
+                            Console.Write((graph[i][k].Substring(1)));
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write((graph[i][k].Substring(1)));
+                        }
                         Console.WriteLine();
                     }
                     for (int j = 0; j < 4; j++) //on veut placer le numéro associé à la pièce 
@@ -129,66 +137,19 @@ namespace Gwe
         }
         static void Main(string[] args)
         {
-            char[,] tab1 =
-            {
-                {'0','1','2','3','4','5','6','7','8','9' },
-                {'0','1','2','3','4','5','6','7','8','9' },
-                {'0','1','2','3','4','5','6','7','8','9' },
-                {'0','1','2','3','4','5','6','7','8','9' },
-                {'0','1','2','3','4','5','6','7','8','9' },
-                {'0','1','2','3','4','5','6','7','8','9' },
-                {'0','1','2','3','4','5','6','7','8','9' },
-                {'0','1','2','3','4','5','6','7','8','9' },
-                {'0','1','2','3','4','5','6','7','8','9' },
-                {'0','1','2','3','4','5','6','7','8','9' }
-            };
+            string[] tab1 = { "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789" };
 
+            int[] Piecedispo = new int[16];
+            for (int i = 0; i < 16; i++)
+                Piecedispo[i] = 0;
+            Piecedispo[3] = 4;
 
-            //char[][,] tabl = new char[16][,];
+            string[][] graph = new string[16][];
+            for (int i = 0; i < 16; i++)
+                graph[i] = new string[8];
 
-            //for (int i = 0; i < 16; i++)
-            //    tabl[i] = new char[10, 10];
-            int[] dispo = new int[16];
-            dispo[3] = 4;
-
-
-//            char[][][,] tab = new char[4][][,];
-
-//            for (int i = 0; i < 16; i++)
-//            {
-//               tab[i] = new char[4][,];
-//            }
-
-//            for (int i = 0; i < 4; i++)
-//                for (int j = 0; j < 4; j++)
-//                {
-//                   tab[i][j] = tab1;
-//                }
-
-
-//            tab[9][9] = new char[10, 10];
-
-
-            int[][] plateau = new int[4][];
-            for (int i = 0; i < 4; i++)
-            {
-                plateau[i] = new int[4];
-                for (int j = 0; j < 4; j++)
-                    plateau[i][j] = 0;
-            }
-
-            for (int i = 0; i < 4; i++)
-                plateau[i][3-i] = i * 2 + 1;
-            plateau[3][3] = 4;
-
-
-
-            
-//            tabl[3] = tab1;
-//            AfficherPieceDisponible(tabl, dispo);
-
-            Console.WriteLine(VerifierDiagonale(2,plateau));
-                      
+            graph[3] = tab1;
+            AfficherPieceDisponible(graph, Piecedispo);          
             Console.ReadLine();
             ;
 
