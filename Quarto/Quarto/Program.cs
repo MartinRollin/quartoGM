@@ -8,25 +8,30 @@ namespace Quarto
 {
     class Program
     {
-        // fonction qui renvoie la chaine de caractere correspondant à une piece graphique
-        public static string[] GenererPiece(string strPiece)
-        {
+        
 
+        public static string[] GenererPiece(string strPiece)
+        // fonction qui renvoie la chaine de caractere correspondant à une piece graphique
+        {
             string[] tabPiece = new string[10];
 
             for (int i = 0; i < 8; i++)
             {
                 tabPiece[i] = strPiece.Substring(i * 13, 13);
             }
-
             return tabPiece;
         }
 
-        public static string[][] CreerTableauPieceGraphique()  //renvoie un tableau qui comprend le graphisme de chaque piece par ligne en chaine de caractere. la piece vide est la piece 17
+
+
+
+        public static string[][] CreerTableauPieceGraphique()              
+            //renvoie un tableau qui comprend le graphisme de chaque piece par ligne en chaine de caractere. la piece vide est la piece 17
         {
             string[] tab = new string[8];
-            string[][] tableauPieceGraphique = new string[16][];
-            // les chaines de caracteres suivantes correspondent chacune à une piece. Le premier caractere de la ligne (ici "b") code la couleur de la piece
+            string[][] tableauPieceGraphique = new string[17][]; // La 17 eme piece est la piece vide
+
+            // les chaines de caracteres suivantes correspondent chacune à une piece. Le premier caractere de chaque ligne de chaque piece (ici "b") code la couleur de la piece (ici bleu)
             tab[0] = "b            b   ▄▀▀▀▀▄   b  █      █  b  █▀▄▄▄▄▀█  b  █      █  b   ▀▄▄▄▄▀   b            b            ";
             tab[1] = "b            b   ▄▀▀▀▀▄   b  █      █  b  █▀▄▄▄▄▀█  b  █      █  b  █      █  b   ▀▄▄▄▄▀   b            ";
             tab[2] = "b            b   ▄████▄   b  ████████  b  █▀████▀█  b  █      █  b   ▀▄▄▄▄▀   b            b            ";
@@ -36,16 +41,13 @@ namespace Quarto
             tab[6] = "b            b    ▄██▄    b  ▄██████▄  b  █▀███▀ █  b  █  █  ▄▀  b   ▀▄█▄▀    b            b            ";
             tab[7] = "b            b    ▄██▄    b  ▄██████▄  b  █▀███▀ █  b  █  █   █  b  █  █  ▄▀  b   ▀▄█▄▀    b            ";
 
-
-            //generation des pieces blanches
+            //generation des pieces blanches *on decoupe chaque piece en 8 lignes*
             for (int i = 0; i < 8; i++)
             {
                 tableauPieceGraphique[i] = GenererPiece(tab[i]);
-
             }
 
-
-            // generation des pieces noires
+            // generation des pieces noires, on prend les pieces precedentes et on remplace le b par un v a chaque debut de ligne. v qui code la couleur verte
             for (int i = 0; i < 8; i++)
             {
                 tableauPieceGraphique[7 + i] = new string[8];
@@ -54,10 +56,33 @@ namespace Quarto
 
                     tableauPieceGraphique[7 + i][j] = "v" + tableauPieceGraphique[i][j].Substring(1, 12);
                 }
-
             }
+
+            // On remplit la derniere piece comme une piece vide
+            for (int i = 0; i < 8; i++)
+                tableauPieceGraphique[16][i] = "b            ";
+
             return tableauPieceGraphique;
         }
+
+
+        public static string [][][] InitialiserTableauPlateau()
+            // cette fonction renvoie le tableau initialiser, c'est à dire ne contenant que des pieces vides
+        {
+            string[][][] tableauPlateauGraphique = new string[4][][];
+            string[] pieceVide = CreerTableauPieceGraphique()[16];
+            for (int i = 0;i<4;i++)
+            {
+                tableauPlateauGraphique[i] = new string[4][];
+                for (int j =0;j<4;j++)
+                {
+                    tableauPlateauGraphique[i][j] = pieceVide;
+                } 
+            }
+            return tableauPlateauGraphique;
+        }
+
+
 
         static void Main(string[] args)
         {
