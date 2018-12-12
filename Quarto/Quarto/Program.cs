@@ -8,7 +8,8 @@ namespace Quarto
 {
     class Program
     {
-        
+
+
 
         public static string[] GenererPiece(string strPiece)
         // fonction qui renvoie la chaine de caractere correspondant à une piece graphique
@@ -25,8 +26,8 @@ namespace Quarto
 
 
 
-        public static string[][] CreerTableauPieceGraphique()              
-            //renvoie un tableau qui comprend le graphisme de chaque piece par ligne en chaine de caractere. la piece vide est la piece 17
+        public static string[][] CreerTableauPieceGraphique()
+        //renvoie un tableau qui comprend le graphisme de chaque piece par ligne en chaine de caractere. la piece vide est la piece 17
         {
             string[] tab = new string[8];
             string[][] tableauPieceGraphique = new string[17][]; // La 17 eme piece est la piece vide
@@ -59,25 +60,29 @@ namespace Quarto
             }
 
             // On remplit la derniere piece comme une piece vide
+            tableauPieceGraphique[16] = new string[8];
             for (int i = 0; i < 8; i++)
+            {
                 tableauPieceGraphique[16][i] = "b            ";
+            }
 
             return tableauPieceGraphique;
         }
 
 
-        public static string [][][] InitialiserTableauPlateau()
-            // cette fonction renvoie le tableau initialiser, c'est à dire ne contenant que des pieces vides
+        public static string[][][] InitialiserTableauPlateau()
+        // cette fonction renvoie le tableau initialise, c'est à dire ne contenant que des pieces vides
         {
             string[][][] tableauPlateauGraphique = new string[4][][];
-            string[] pieceVide = CreerTableauPieceGraphique()[16];
-            for (int i = 0;i<4;i++)
+            string[][] pieceVide = CreerTableauPieceGraphique();
+            for (int i = 0; i < 4; i++)
             {
                 tableauPlateauGraphique[i] = new string[4][];
-                for (int j =0;j<4;j++)
+                for (int j = 0; j < 4; j++)
                 {
-                    tableauPlateauGraphique[i][j] = pieceVide;
-                } 
+                    tableauPlateauGraphique[i][j] = new string[8];
+                    tableauPlateauGraphique[i][j] = pieceVide[16];
+                }
             }
             return tableauPlateauGraphique;
         }
