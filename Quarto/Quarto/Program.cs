@@ -87,11 +87,13 @@ namespace Quarto
             return tableauPlateauGraphique;
         }
 
-        public static void PlacerPiece (int numeroPiece, int lignePiece, int colonnePiece,string[][] tableauPieceCaracteristique, string[][] tableauPieceGraphique,string[][] tableauPlateauGraphique,int[][]tableauPlateauCaracteristique,int[]tableauPiecesDisponibles)
+        public static void PlacerPiece (int numeroPiece, int lignePiece, int colonnePiece,string[][] tableauPieceCaracteristique, string[][] tableauPieceGraphique,string[][] tableauPlateauGraphique,int[][]tableauPlateauCaracteristique,int[]tableauPiecesDisponible)
         {
-            tableauPieceGraphique[lignePiece][colonnePiece] = CreerTableauPieceGraphique()[numeroPiece];    // depend un peu, c'est numeroPiece ou numeroPiece-1
-            tableauPieceCarcteristiques[lignePiece][colonnePiece] = CreerTableauPieceCaracteristique()[numeroPiece];
+            // On insère une piece qui occupe la position numeroPiece dans tableauPieceGraphique à la ligne lignePiece et la colonne colonnePiece dans tous les tableaux considérés
 
+            tableauPlateauGraphique[lignePiece][colonnePiece] = tableauPieceGraphique[numeroPiece];               // depend un peu, c'est numeroPiece ou numeroPiece-1
+            tableauPlateauCarcteristiques[lignePiece][colonnePiece] = tableauPlateauCaracteristique[numeroPiece]; // comme au dessus
+            tableauPiecesDisponible[NumeroPiece] = 0;
         }
 
 
