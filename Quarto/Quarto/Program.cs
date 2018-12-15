@@ -42,7 +42,7 @@ namespace Quarto
             tab[6] = "b            b    ▄██▄    b  ▄██████▄  b  █▀███▀ █  b  █  █  ▄▀  b   ▀▄█▄▀    b            b            ";
             tab[7] = "b            b    ▄██▄    b  ▄██████▄  b  █▀███▀ █  b  █  █   █  b  █  █  ▄▀  b   ▀▄█▄▀    b            ";
 
-            //generation des pieces blanches *on decoupe chaque piece en 8 lignes*
+            //generation des pieces blanches *on decoupe chaque piece en 8 lignes de 13 caracteres*
             for (int i = 0; i < 8; i++)
             {
                 tableauPieceGraphique[i] = GenererPiece(tab[i]);
@@ -51,11 +51,11 @@ namespace Quarto
             // generation des pieces noires, on prend les pieces precedentes et on remplace le b par un v a chaque debut de ligne. v qui code la couleur verte
             for (int i = 0; i < 8; i++)
             {
-                tableauPieceGraphique[7 + i] = new string[8];
+                tableauPieceGraphique[8 + i] = new string[8];
                 for (int j = 0; j < 8; j++)
                 {
 
-                    tableauPieceGraphique[7 + i][j] = "v" + tableauPieceGraphique[i][j].Substring(1, 12);
+                    tableauPieceGraphique[8 + i][j] = "v" + tableauPieceGraphique[i][j].Substring(1, 12);
                 }
             }
 
@@ -70,11 +70,11 @@ namespace Quarto
         }
 
 
-        public static string[][][] InitialiserTableauPlateau()
+        public static string[][][] InitialiserTableauPlateauGraphique()
         // cette fonction renvoie le tableau initialise, c'est à dire ne contenant que des pieces vides
         {
             string[][][] tableauPlateauGraphique = new string[4][][];
-            string[][] pieceVide = CreerTableauPieceGraphique();
+            string[][] pieceVide = CreerTableauPieceGraphique();        // la piece stockée à la 16 eme position de pieceVide est la pièce vide
             for (int i = 0; i < 4; i++)
             {
                 tableauPlateauGraphique[i] = new string[4][];
@@ -87,10 +87,19 @@ namespace Quarto
             return tableauPlateauGraphique;
         }
 
+        public static void PlacerPiece (int numeroPiece, int lignePiece, int colonnePiece,string[][] tableauPieceCaracteristique, string[][] tableauPieceGraphique,string[][] tableauPlateauGraphique,int[][]tableauPlateauCaracteristique,int[]tableauPiecesDisponibles)
+        {
+            tableauPieceGraphique[lignePiece][colonnePiece] = CreerTableauPieceGraphique()[numeroPiece];    // depend un peu, c'est numeroPiece ou numeroPiece-1
+            tableauPieceCarcteristiques[lignePiece][colonnePiece] = CreerTableauPieceCaracteristique()[numeroPiece];
+
+        }
+
 
 
         static void Main(string[] args)
         {
+            // initialisation de tableauPieceCaracteristique " taille: (p)etit/(g)rand + couleur : (v)ert/(b)leu + forme : (c)arre/(r)ond + remplissage : (c)reu/(p)lein "
+            string[] tableauPieceCaracteristique = ["pbrc", "gbrc", "pbrp", "gbrp", "pbcc", "gbcc", "pbcp", "gbcp", "pvrc", "gvrc", "pvrp", "gvrp", "pvcc", "gvcc", "pvcp", "gvcp"];
 
         }
     }
