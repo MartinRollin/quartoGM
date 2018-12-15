@@ -12,7 +12,6 @@ namespace Gwe
         //On affiche le plateau mis à jour
         public static void AfficherPlateau(string[][][] tab)
         {
-            int k;
             int j;
             for (int i = 0; i < 4; i++)
             {
@@ -165,6 +164,19 @@ namespace Gwe
                 else
                     return (false);
             }
+        }
+
+        public static bool Tester4Pieces(int Piece1, int Piece2, int Piece3, int Piece4, string[][] tab)
+        {
+            bool sortie = false;
+            int k = 0;
+            while ((!sortie) && (k < 4))
+                if ((tab[Piece1 - 1][k] == tab[Piece2 - 1][k]) && (tab[Piece1 - 1][k] == tab[Piece3 - 1][k]) && (tab[Piece1 - 1][k] == tab[Piece4 - 1][k]))
+                    sortie = true;
+                else
+                    k++;
+            
+
         }
         static void Main(string[] args)
         {
