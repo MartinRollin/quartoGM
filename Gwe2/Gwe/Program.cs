@@ -166,18 +166,69 @@ namespace Gwe
             }
         }
 
+        //on teste si 4 pièces (représentées pas des entiers distincts compris entre 1 et 16) contienne 1 caractère commun
         public static bool Tester4Pieces(int Piece1, int Piece2, int Piece3, int Piece4, string[][] tab)
         {
             bool sortie = false;
             int k = 0;
+            //les caractères sont représentés par une chaine de 4 caractères. Si les 4 pièces ont un des caractères commun (au même emplacement) on renvoie true
             while ((!sortie) && (k < 4))
                 if ((tab[Piece1 - 1][k] == tab[Piece2 - 1][k]) && (tab[Piece1 - 1][k] == tab[Piece3 - 1][k]) && (tab[Piece1 - 1][k] == tab[Piece4 - 1][k]))
                     sortie = true;
                 else
                     k++;
-            
-
+            return (sortie);
         }
+
+        //On crée une fonction qui permettra à l'ordinateur de vérifier si il y a un quarto sur le plateau
+        public static bool ScannerPlateau(string[][] caractPieces, int[][] plateau)
+        {
+            bool sortie = false;
+            int k = 0;
+            //On commence par vérifier si le quarto est sur une colonne ou une ligne, et on affiche l'endroit du quarto si il existe
+            while ((!sortie) && (k < 4))
+                if (!VerifierColonneVide(k, plateau))
+                    if (Tester4Pieces(plateau[0][k], plateau[1][k], plateau[2][k], plateau[3][k], caractPieces))
+                    {
+                        Console.WriteLine(" Quarto sur la colonne {0}", k);
+                        sortie = true;
+                    }
+                    else
+                        k++;
+                else
+                    k++;
+
+            //on a une conclusion sur les colonnes, si il n'y a pas de quarto, on se penche que les lignes, reprenant la même idée
+            k = 0;
+            while ((!sortie) && (k < 4))
+                if (!VerifierLigneVide(k, plateau))
+                    if (Tester4Pieces(plateau[k][0],plateau[k][1], plateau[k][2], plateau[k][3], caractPieces))
+                    {
+                        Console.WriteLine(" Quarto sur la ligne {0}", k);
+                        sortie = true;
+                    }
+                    else
+                        k++;
+                else
+                    k++;
+
+            //Dans le dernier cas, on regarde les deux digonales
+            if(!VerifierDiagonale(1,plateau))
+                if (Tester4Pieces(plateau[0][0], plateau[1][1], plateau[2][2], plateau[3][3], caractPieces))
+                {
+                    Console.WriteLine("Quarto sur la 1ére diagonale");
+                    sortie = true;
+                }
+            else
+                if (!VerifierDiagonale(2, plateau))
+                    if (Tester4Pieces(plateau[0][3], plateau[1][2], plateau[2][1], plateau[3][0], caractPieces))
+                    {
+                        Console.WriteLine("Quarto sur la 2éme diagonale");
+                        sortie = true;
+                    }
+            return (sortie);
+        }
+
         static void Main(string[] args)
         {
             string[] tab1 = { "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789" };
