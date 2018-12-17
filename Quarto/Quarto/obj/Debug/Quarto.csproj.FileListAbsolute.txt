@@ -17,3 +17,6 @@ H:\1a\programmation\projet info 17-12-2018\quartoGM\Quarto\Quarto\obj\Debug\Quar
 H:\1a\programmation\projet info 17-12-2018\quartoGM\Quarto\Quarto\bin\Debug\Quarto.exe
 H:\1a\programmation\projet info 17-12-2018\quartoGM\Quarto\Quarto\bin\Debug\Quarto.pdb
 H:\1a\programmation\projet info 17-12-2018\quartoGM\Quarto\Quarto\obj\Debug\Quarto.csprojResolveAssemblyReference.cache
+H:\1a\programmation\projet info 17-12-2018 v2\quartoGM\Quarto\Quarto\bin\Debug\Quarto.exe.config
+H:\1a\programmation\projet info 17-12-2018 v2\quartoGM\Quarto\Quarto\obj\Debug\Quarto.exe
+H:\1a\programmation\projet info 17-12-2018 v2\quartoGM\Quarto\Quarto\obj\Debug\Quarto.pdb
