@@ -15,8 +15,8 @@ namespace Quarto
 
 
             //test de PlacerPiece
-            string[][] tableauPieceGraphique = Fouretout.CreerTableauPieceGraphique();
-            string[][][] tableauPlateauGraphique = Fouretout.InitialiserTableauPlateauGraphique();
+            string[][] tableauPieceGraphique = CreerTableaux.CreerTableauPieceGraphique();
+            string[][][] tableauPlateauGraphique = CreerTableaux.InitialiserTableauPlateauGraphique();
             int[] tableauPieceDisponible = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
             int[][] tableauPlateauCaracteristique = new int[4][];
             for (int i = 0; i < 4; i++)
@@ -30,14 +30,14 @@ namespace Quarto
             Console.Write("Voulez vous commencer une partie? (O/N) : ");
             Console.ReadLine();
 
-            Fouretout.AfficherPlateau(tableauPlateauGraphique);
+            Affiche.AfficherPlateau(tableauPlateauGraphique);
             Console.ReadLine();
-            Fouretout.AfficherPieceDisponible(tableauPieceGraphique, tableauPieceDisponible);
+            Affiche.AfficherPieceDisponible(tableauPieceGraphique, tableauPieceDisponible);
             Console.ReadLine();
-            Fouretout.PlacerPiece(2, 1, 1, tableauPieceCaracteristique, tableauPieceGraphique, tableauPlateauGraphique, tableauPlateauCaracteristique, tableauPieceDisponible);
-            Fouretout.AfficherPlateau(tableauPlateauGraphique);
+            General.PlacerPiece(2, 1, 1, tableauPieceCaracteristique, tableauPieceGraphique, tableauPlateauGraphique, tableauPlateauCaracteristique, tableauPieceDisponible);
+            Affiche.AfficherPlateau(tableauPlateauGraphique);
             Console.ReadLine();
-            Fouretout.AfficherPieceDisponible(tableauPieceGraphique, tableauPieceDisponible);
+            Affiche.AfficherPieceDisponible(tableauPieceGraphique, tableauPieceDisponible);
             Console.ReadLine();
         }
     }

@@ -44,7 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Affiche.cs" />
-    <Compile Include="Fouretout.cs" />
+    <Compile Include="General.cs" />
+    <Compile Include="CreerTableaux.cs" />
     <Compile Include="Jeu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
