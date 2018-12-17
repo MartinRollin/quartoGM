@@ -21,3 +21,9 @@ H:\1A\programmation\projets\quartoGM\Gwe\Gwe\obj\Debug\Gwe.csprojResolveAssembly
 H:\1a\programmation\projet info\quartoGM\Gwe\Gwe\bin\Debug\Gwe.exe.config
 H:\1a\programmation\projet info\quartoGM\Gwe\Gwe\obj\Debug\Gwe.exe
 H:\1a\programmation\projet info\quartoGM\Gwe\Gwe\obj\Debug\Gwe.pdb
+H:\1A\programmation\quartoGM\Gwe2\Gwe\bin\Debug\Gwe.exe.config
+H:\1A\programmation\quartoGM\Gwe2\Gwe\obj\Debug\Gwe.exe
+H:\1A\programmation\quartoGM\Gwe2\Gwe\obj\Debug\Gwe.pdb
+H:\1A\programmation\quartoGM\Gwe2\Gwe\bin\Debug\Gwe.exe
+H:\1A\programmation\quartoGM\Gwe2\Gwe\bin\Debug\Gwe.pdb
+H:\1A\programmation\quartoGM\Gwe2\Gwe\obj\Debug\Gwe.csprojResolveAssemblyReference.cache
