@@ -104,14 +104,19 @@ namespace Gwe
                     while (j < 4)
                     {
                         if (tab[i][j][l][0] == 'b') // la couleur est indiqué par le premier caractère de chaque string (b=blanc, v=vert)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.Write(tab[i][j][l].Substring(1));
+                        }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                             Console.Write(tab[i][j][l].Substring(1));
                         }
                         Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.Write("█"); // Choix de cette séparation        
+                        Console.Write("█"); // Choix de cette séparation
+                        if ((l == 3)&&(j==3))
+                            Console.Write("  {0}", i + 1);     
                         j++;
                     }
                     Console.WriteLine();
@@ -121,6 +126,9 @@ namespace Gwe
                     Console.Write("▄▄▄▄▄▄▄▄▄▄▄▄ ");
                 Console.WriteLine();
             }
+            for (int i = 0; i < 4; i++)
+                Console.Write("      {0}      ", i + 1);
+            Console.WriteLine();
         }
 
         //Afficher graphiquement les pièces disponibles ainsi que le numéro à afficher si on veut la prendre une
@@ -169,7 +177,7 @@ namespace Gwe
         //On verifie que la position où veut jouer le joueur est disponible
         public static bool VerifierPlaceVide(int ligne, int colonne, int[][] tab)
         {
-            if (tab[ligne][colonne] == 0)
+            if (tab[ligne-1][colonne-1] == 0)
                 return (true);
             else
                 return (false);
@@ -178,7 +186,7 @@ namespace Gwe
         //on vérifie si la pièce est diponible
         public static bool VerifierpieceDisponible(int piece, int[] tab)
         {
-            if (tab[piece] == 0)
+            if (tab[piece-1] == 0)
                 return (false);
             else
                 return (true);
@@ -191,7 +199,7 @@ namespace Gwe
         {
             int NbPiece = 0;
             for (int i = 0; i < 4; i++)
-                if (tab[i][colonne] != 0)
+                if (tab[i][colonne-1] != 0)
                     NbPiece++;
             if (NbPiece != 4)
                 return (true);
@@ -204,7 +212,7 @@ namespace Gwe
         {
             int NbPiece = 0;
             for (int j = 0; j < 4; j++)
-                if (tab[ligne][j] != 0)
+                if (tab[ligne-1][j] != 0)
                     NbPiece++;
             if (NbPiece != 4)
                 return (true);
@@ -262,7 +270,7 @@ namespace Gwe
                 if (!VerifierColonneVide(k, plateau))
                     if (Tester4Pieces(plateau[0][k], plateau[1][k], plateau[2][k], plateau[3][k], caractPieces))
                     {
-                        Console.WriteLine(" Quarto sur la colonne {0}", k);
+                        Console.WriteLine(" Quarto sur la colonne {0}", k+1);
                         sortie = true;
                     }
                     else
@@ -276,7 +284,7 @@ namespace Gwe
                 if (!VerifierLigneVide(k, plateau))
                     if (Tester4Pieces(plateau[k][0],plateau[k][1], plateau[k][2], plateau[k][3], caractPieces))
                     {
-                        Console.WriteLine(" Quarto sur la ligne {0}", k);
+                        Console.WriteLine(" Quarto sur la ligne {0}", k+1);
                         sortie = true;
                     }
                     else
