@@ -9,6 +9,89 @@ namespace Gwe
 
     class Program
     {
+
+        public static string[] GenererPiece(string strPiece)
+        // fonction qui renvoie la chaine de caractere correspondant à une piece graphique
+        {
+            string[] tabPiece = new string[10];
+
+            for (int i = 0; i < 8; i++)
+            {
+                tabPiece[i] = strPiece.Substring(i * 13, 13);
+            }
+            return tabPiece;
+        }
+
+
+        // =========================================================================================
+
+        public static string[][] CreerTableauPieceGraphique()
+        //renvoie un tableau qui comprend le graphisme de chaque piece par ligne en chaine de caractere. la piece vide est la piece 17
+        {
+            string[] tab = new string[8];
+            string[][] tableauPieceGraphique = new string[17][]; // La premiere piece est la piece vide
+
+            // On remplit la derniere piece comme une piece vide
+            tableauPieceGraphique[0] = new string[8];
+            for (int i = 0; i < 8; i++)
+            {
+                tableauPieceGraphique[0][i] = "b            ";
+            }
+
+            // les chaines de caracteres suivantes correspondent chacune à une piece. Le premier caractere de chaque ligne de chaque piece (ici "b") code la couleur de la piece (ici bleu)
+            tab[0] = "b            b   ▄▀▀▀▀▄   b  █      █  b  █▀▄▄▄▄▀█  b  █      █  b   ▀▄▄▄▄▀   b            b            ";
+            tab[1] = "b            b   ▄▀▀▀▀▄   b  █      █  b  █▀▄▄▄▄▀█  b  █      █  b  █      █  b   ▀▄▄▄▄▀   b            ";
+            tab[2] = "b            b   ▄████▄   b  ████████  b  █▀████▀█  b  █      █  b   ▀▄▄▄▄▀   b            b            ";
+            tab[3] = "b            b   ▄████▄   b  ████████  b  █▀████▀█  b  █      █  b  █      █  b   ▀▄▄▄▄▀   b            ";
+            tab[4] = "b            b    ▄▀▀▄    b  ▄▀    █▄  b  █▀▄ ▄▀ █  b  █  █  ▄▀  b   ▀▄█▄▀    b            b            ";
+            tab[5] = "b            b    ▄▀▀▄    b  ▄▀    █▄  b  █▀▄ ▄▀ █  b  █  █   █  b  █  █  ▄▀  b   ▀▄█▄▀    b            ";
+            tab[6] = "b            b    ▄██▄    b  ▄██████▄  b  █▀███▀ █  b  █  █  ▄▀  b   ▀▄█▄▀    b            b            ";
+            tab[7] = "b            b    ▄██▄    b  ▄██████▄  b  █▀███▀ █  b  █  █   █  b  █  █  ▄▀  b   ▀▄█▄▀    b            ";
+
+            //generation des 8 pieces blanches *on decoupe chaque piece en 8 lignes de 13 caracteres*
+            for (int i = 0; i < 8; i++)
+            {
+                tableauPieceGraphique[i + 1] = GenererPiece(tab[i]);
+            }
+
+            // generation des 8 pieces noires, on prend les pieces precedentes et on remplace le b par un v a chaque debut de ligne. v qui code la couleur verte
+            for (int i = 0; i < 8; i++)
+            {
+                tableauPieceGraphique[9 + i] = new string[8];
+                for (int j = 0; j < 8; j++)
+                {
+
+                    tableauPieceGraphique[9 + i][j] = "v" + tableauPieceGraphique[i + 1][j].Substring(1, 12);
+                }
+            }
+
+
+
+            return tableauPieceGraphique;
+        }
+
+        // =========================================================================================
+
+
+        public static string[][][] InitialiserTableauPlateauGraphique()
+        // cette fonction renvoie le tableau initialise, c'est à dire ne contenant que des pieces vides
+        {
+            string[][][] tableauPlateauGraphique = new string[4][][];
+            string[][] pieceVide = CreerTableauPieceGraphique();        // la piece stockée à la 16 eme position de pieceVide est la pièce vide
+            for (int i = 0; i < 4; i++)
+            {
+                tableauPlateauGraphique[i] = new string[4][];
+                for (int j = 0; j < 4; j++)
+                {
+                    tableauPlateauGraphique[i][j] = new string[8];
+                    tableauPlateauGraphique[i][j] = pieceVide[0];
+                }
+            }
+            return tableauPlateauGraphique;
+        }
+
+
+
         //On affiche le plateau mis à jour
         public static void AfficherPlateau(string[][][] tab)
         {
@@ -35,7 +118,7 @@ namespace Gwe
                 }
                 Console.ForegroundColor = ConsoleColor.Gray;
                 for (int l = 0; l < 4; l++)
-                    Console.Write("▄▄▄▄▄▄▄▄▄▄ ");
+                    Console.Write("▄▄▄▄▄▄▄▄▄▄▄▄ ");
                 Console.WriteLine();
             }
         }
@@ -46,50 +129,39 @@ namespace Gwe
         {
             int j;
 
-//on affiche par 2 lignes de 8 pièces (en mettant du vide si la pièce n'est plus disponible)
-// ligne 1:
-            for (int i = 0; i < 8; i++) 
+            //on affiche par 4 lignes de 4 pièces (en mettant du vide si la pièce n'est plus disponible)
+            // ligne 1:
+            for (int k = 0; k < 4; k++)
             {
-                j = 0;
-                while (j < 8)
+                for (int i = 0; i < 7; i++)
                 {
-                    if (graph[dispo[i] - 1][j][0] == 'b') // la pièce dispo va contenir l'entier correspondant à la pièce à présenter (peut valoir 17, ce qui oriente vers la pièce vide dans notre graph en place 16)
-                        Console.Write(graph[dispo[i - 1] - 1][j].Substring(1));
-                    else
+                    j = 4 * k + 1;
+                    while (j < (4 * (k + 1) + 1))
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.Write(graph[dispo[i] - 1][j].Substring(1));
+                        if (graph[j][dispo[i]][0] == 'b') // la pièce dispo va contenir l'entier correspondant à la pièce à présenter (peut valoir 17, ce qui oriente vers la pièce vide dans notre graph en place 16)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.Write(graph[j][dispo[i]].Substring(1));
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write(graph[j][dispo[i]].Substring(1));
+                        }
+                        Console.Write("  ");
+                        j++;
                     }
-                    Console.Write("  ");
-                    j++;
+                    Console.WriteLine();
                 }
+                Console.ForegroundColor = ConsoleColor.White;
+                for (int i = 4 * k; i < 4 * (k + 1); i++) //on veut placer le numéro associé à la pièce 
+                    if (i<9)
+                        Console.Write("      {0}       ", i + 1);
+                    else
+                        Console.Write("     {0}       ", i + 1);
                 Console.WriteLine();
             }
-                for (int i = 0; i < 8; i++) //on veut placer le numéro associé à la pièce 
-                    Console.Write("     {0}       ", i+1);
-
-
-//ligne 2:
-            for (int i = 8; i < 16; i++) 
-            {
-                j = 8;
-                while (j < 16)
-                {
-                    if (graph[dispo[i - 1] - 1][j][0] == 'b') // la pièce dispo va contenir l'entier correspondant à la pièce à présenter (peut valoir 17, ce qui oriente vers la pièce vide dans notre graph en place 16)
-                        Console.Write(graph[dispo[i] - 1][j].Substring(1));
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.Write(graph[dispo[i] - 1][j].Substring(1));
-                    }
-                    Console.Write("  ");
-                    j++;
-                }
-                Console.WriteLine();
-            }
-            for (int i = 8; i < 16; i++) //on veut placer le numéro associé à la pièce 
-                Console.Write("     {0}       ", i + 1);
-
+        
         }
         
 
@@ -229,29 +301,31 @@ namespace Gwe
             return (sortie);
         }
 
+        public static int ChoisirPieceAleatoire(int[] piecesdispo)
+        {
+            Random rand = new Random();
+            int sortie = rand.Next(1, 17);
+            while (piecesdispo[sortie-1]==0)
+                sortie = rand.Next(1, 17);
+            return (sortie);
+        }
+
+
+
+
+
         static void Main(string[] args)
         {
-            string[] tab1 = { "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789", "d0123456789" };
+            int[] TableauPiecesDisponibles = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+            string[][][] TableauPlateauGraphique = InitialiserTableauPlateauGraphique();
+            string[][] TableauPiecesGraphiques = CreerTableauPieceGraphique();
 
-            int[] Piecedispo = new int[16];
-            for (int i = 0; i < 16; i++)
-                Piecedispo[i] = 17;
-            Piecedispo[3] = 4;
+            AfficherPlateau(TableauPlateauGraphique);
+            
 
-            string[][] graph = new string[17][];
-            for (int i = 0; i < 17; i++)
-            {
-                graph[i] = new string[8];
-                for (int k = 0; k < 8; k++)
-                    graph[i][k] = "           ";
-            }
+            AfficherPieceDisponible(TableauPiecesGraphiques, TableauPiecesDisponibles);
 
-
-            graph[3] = tab1;
-            AfficherPieceDisponible(graph, Piecedispo);          
             Console.ReadLine();
-            ;
-
         }
     }
 }
