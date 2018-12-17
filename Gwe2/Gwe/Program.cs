@@ -133,20 +133,20 @@ namespace Gwe
             // ligne 1:
             for (int k = 0; k < 4; k++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int i = 1; i < 8; i++) // on affiche ligne par ligne les pièces
                 {
-                    j = 4 * k + 1;
-                    while (j < (4 * (k + 1) + 1))
+                    j = 4 * k;
+                    while (j < 4 * (k + 1))
                     {
-                        if (graph[j][dispo[i]][0] == 'b') // la pièce dispo va contenir l'entier correspondant à la pièce à présenter (peut valoir 17, ce qui oriente vers la pièce vide dans notre graph en place 16)
+                        if (graph[dispo[j]][i][0] == 'b') // la pièce dispo va contenir l'entier correspondant à la pièce à présenter (peut valoir 17, ce qui oriente vers la pièce vide dans notre graph en place 16)
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.Write(graph[j][dispo[i]].Substring(1));
+                            Console.Write(graph[dispo[j]][i].Substring(1));
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
-                            Console.Write(graph[j][dispo[i]].Substring(1));
+                            Console.Write(graph[dispo[j]][i].Substring(1));
                         }
                         Console.Write("  ");
                         j++;
@@ -178,7 +178,7 @@ namespace Gwe
         //on vérifie si la pièce est diponible
         public static bool VerifierpieceDisponible(int piece, int[] tab)
         {
-            if (tab[piece - 1] == 0)
+            if (tab[piece] == 0)
                 return (false);
             else
                 return (true);
@@ -321,10 +321,12 @@ namespace Gwe
             string[][] TableauPiecesGraphiques = CreerTableauPieceGraphique();
 
             AfficherPlateau(TableauPlateauGraphique);
-            
 
+            TableauPiecesDisponibles[1] = 0;
+            //for(int i=0; i<9;i++)
+            //   Console.WriteLine(TableauPiecesGraphiques[1][i]);
             AfficherPieceDisponible(TableauPiecesGraphiques, TableauPiecesDisponibles);
-
+            //Console.WriteLine(VerifierpieceDisponible(1, TableauPiecesDisponibles));
             Console.ReadLine();
         }
     }
