@@ -29,9 +29,51 @@ namespace Quarto
 
             Affiche.AfficherRegles();
             Console.Write("Voulez vous commencer une partie? (O/N) : ");
-            Console.ReadLine();
+            char jouer = char.Parse(Console.ReadLine());
+            if (jouer == 'N')
+            {
+                Console.WriteLine("merci d'avoir participé ! ");
+                Console.ReadLine();
+            }
+            else
+            {
+                Random rand = new Random();
+                int joueur = rand.Next(2);
+                if (joueur==0)
+                {
+                    Console.WriteLine("               L'ordinateur commence !");
+                    int NumeroPiece = General.ChoisirPieceAleatoire(PieceDispo);
+                    joueur = 1;
+                    for (int tour = 2;tour<16;tour++)
+                    {
+                        if (joueur == 1)
+                        {
+                            Console.WriteLine("\n              ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
+                            Console.WriteLine("             █   █     █   █   █   █ ");
+                            Console.WriteLine("             █▀▀▀█     █   █   █   █ ");
+                            Console.WriteLine("             ▀   ▀     ▀    ▀▀▀    ▀\n             Appuies sur entrée pour commencer.\n");
+                            Console.ReadLine();
+                            Console.WriteLine("L'ordinateur a choisit cette piece :");
+                            Affiche.AfficherPiece(NumeroPiece, tableauPieceGraphique);
+                            Console.ReadLine();
+                            Affiche.AfficherPlateau(tableauPlateauGraphique);
+                            Console.Write("A quelle ligne veux tu placer la piece? : ");
+                            Ligne = int.Parse(Console.ReadLine());
+                            Console.Write("A quelle Colonne veux tu placer la piece? : ");
+                            Colonne = int.Parse(Console.ReadLine());
+                            General.PlacerPiece(NumeroPiece, Ligne, Colonne, tableauPieceCaracteristique, tableauPieceGraphique, tableauPlateauGraphique, tableauPlateauCaracteristique, PieceDispo);
+                            Affiche.AfficherPlateau(tableauPlateauGraphique);
+                            Affiche.AfficherPieceDisponible( tableauPieceGraphique, PieceDispo);
+                            Console.WriteLine("\n   Quelle piece donner à l'ordinateur ? :");
+                            NumeroPiece = int.Parse(Console.ReadLine());
+                        }
+                    }
+                }
 
-           
+            }
+                
+
+            /*
             for (int i = 0;i<17;i++)
             {
                 Affiche.AfficherPieceDisponible(tableauPieceGraphique, PieceDispo);
@@ -47,7 +89,7 @@ namespace Quarto
                 Console.ReadLine();
             }
             Console.ReadLine();
-
+            */
             Console.WriteLine("\n ▄▄▄▄▄  ▄▄▄  ▄   ▄ ▄▄▄▄     ▄▄▄  ▄▄▄▄  ▄▄▄▄   ▄▄▄  ");
             Console.WriteLine("   █   █   █ █   █ █   █   █   █ █   █ █   █   █   ");
             Console.WriteLine("   █   █   █ █   █ █▀▀▀▄   █   █ █▀▀▀▄ █   █   █   ");

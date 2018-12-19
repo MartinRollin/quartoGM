@@ -38,7 +38,9 @@ namespace Quarto
                             Console.Write(tab[i][j][l].Substring(1));
                         }
                         Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.Write("█"); // Choix de cette séparation        
+                        Console.Write("█"); // Choix de cette séparation
+                        if ((l == 3) && (j == 3))
+                            Console.Write("  {0}", i + 1);
                         j++;
                     }
                     Console.WriteLine();
@@ -48,6 +50,9 @@ namespace Quarto
                     Console.Write("▄▄▄▄▄▄▄▄▄▄▄▄ ");
                 Console.WriteLine();
             }
+            for (int i = 0; i < 4; i++)
+                Console.Write("      {0}      ", i + 1);
+            Console.WriteLine();
         }
 
         // =========================================================================================

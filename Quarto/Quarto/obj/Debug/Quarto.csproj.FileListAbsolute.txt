@@ -30,3 +30,9 @@ C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Quart
 C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Quarto\Quarto\obj\Debug\Quarto.csproj.CoreCompileInputs.cache
 C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Quarto\Quarto\obj\Debug\Quarto.exe
 C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Quarto\Quarto\obj\Debug\Quarto.pdb
+C:\Users\Martin\Documents\ENSC\1A\projet info\quartoGM\Quarto\Quarto\bin\Debug\Quarto.exe.config
+C:\Users\Martin\Documents\ENSC\1A\projet info\quartoGM\Quarto\Quarto\obj\Debug\Quarto.exe
+C:\Users\Martin\Documents\ENSC\1A\projet info\quartoGM\Quarto\Quarto\obj\Debug\Quarto.pdb
+C:\Users\Martin\Documents\ENSC\1A\projet info\quartoGM\Quarto\Quarto\bin\Debug\Quarto.exe
+C:\Users\Martin\Documents\ENSC\1A\projet info\quartoGM\Quarto\Quarto\bin\Debug\Quarto.pdb
+C:\Users\Martin\Documents\ENSC\1A\projet info\quartoGM\Quarto\Quarto\obj\Debug\Quarto.csprojResolveAssemblyReference.cache
