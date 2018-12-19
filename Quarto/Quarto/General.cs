@@ -105,7 +105,7 @@ namespace Quarto
         // =========================================================================================
 
         //on teste si 4 pièces (représentées pas des entiers distincts compris entre 1 et 16) contienne 1 caractère commun
-        public static bool Tester4Pieces(int Piece1, int Piece2, int Piece3, int Piece4, string[][] tab)
+        public static bool Tester4Pieces(int Piece1, int Piece2, int Piece3, int Piece4, string[] tab)
         {
             bool sortie = false;
             int k = 0;
@@ -126,6 +126,7 @@ namespace Quarto
             int sortie = rand.Next(1,17);
             while (piecesdispo[sortie-1] == 0)
                 sortie = rand.Next(1,17);
+            piecesdispo[sortie - 1] = 0;
             return (sortie);
         }
 
@@ -171,7 +172,50 @@ namespace Quarto
         }
 
 
-        
+
+
+        //On met à jour le tableau contenant les quartos possibles
+
+        public static void Scanner(int ligne, int colonne, string[] quarto, int[][] plateau, string[] caracteristiquesPieces)
+        {
+            if (Tester4Pieces(plateau[ligne][0], plateau[ligne][1], plateau[ligne][2], plateau[ligne][3], caracteristiquesPieces))
+                quarto[0] = "ligne " + ligne;
+            else
+                quarto[0] = "vide";
+            if (Tester4Pieces(plateau[0][colonne], plateau[1][colonne], plateau[2][colonne], plateau[3][colonne], caracteristiquesPieces))
+                quarto[1] = "colonne " + colonne;
+            else
+                quarto[1] = "vide";
+            if (colonne == ligne)
+                if (Tester4Pieces(plateau[0][0], plateau[1][1], plateau[2][2], plateau[3][3], caracteristiquesPieces))
+                    quarto[2] = "diagonale 1";
+                else
+                    quarto[2] = "vide";
+            else
+                if ((colonne == 3 - ligne) || (ligne == 3 - colonne))
+                quarto[2] = "diagonale 2";
+            else
+                quarto[2] = "vide";
+
+        }
+
+
+
+
+        //On vérifie si le quarto annoncé par le joueur est possible
+
+        public static bool VerifierQuarto(string EntreeJoueur, string[] QuartoPossible)
+        {
+            bool sortie = false;
+            int k = 0;
+            while ((!sortie) && (k < 4))
+                if (QuartoPossible[k] == EntreeJoueur)
+                    sortie = true;
+                else
+                    k++;
+            return (sortie);
+        }
+
 
     }
 }

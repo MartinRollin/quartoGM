@@ -10,8 +10,12 @@ namespace Quarto
     {
         static void Main (string [] args)
         {
+            
             // initialisation de tableauPieceCaracteristique " taille: (p)etit/(g)rand + couleur : (v)ert/(b)leu + forme : (c)arre/(r)ond + remplissage : (c)reu/(p)lein "
             string[] tableauPieceCaracteristique = { "pbrc", "gbrc", "pbrp", "gbrp", "pbcc", "gbcc", "pbcp", "gbcp", "pvrc", "gvrc", "pvrp", "gvrp", "pvcc", "gvcc", "pvcp", "gvcp" };
+
+            // initialisation tableau qui contiendra les quarto pouvant être énoncés
+            string[] QuartoPossible = new string[3];
 
 
             //test de PlacerPiece
@@ -21,6 +25,9 @@ namespace Quarto
             int[][] tableauPlateauCaracteristique = new int[4][];
             int Colonne = 0;
             int Ligne = 0;
+            string reponse = "O";
+            int tour = 1;
+            bool quarto = false;
 
             for (int i = 0; i < 4; i++)
             {
@@ -44,25 +51,67 @@ namespace Quarto
                     Console.WriteLine("               L'ordinateur commence !");
                     int NumeroPiece = General.ChoisirPieceAleatoire(PieceDispo);
                     joueur = 1;
-                    for (int tour = 2;tour<16;tour++)
+                    while (tour<16 && !quarto)
                     {
                         if (joueur == 1)
                         {
+                            Console.WriteLine();
                             Console.WriteLine("\n              ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
                             Console.WriteLine("             █   █     █   █   █   █ ");
                             Console.WriteLine("             █▀▀▀█     █   █   █   █ ");
-                            Console.WriteLine("             ▀   ▀     ▀    ▀▀▀    ▀\n             Appuies sur entrée pour commencer.\n");
+                            Console.WriteLine("             ▀   ▀     ▀    ▀▀▀   ▀▀▀\n             Appuies sur entrée pour commencer.\n");
+                            Console.WriteLine();
                             Console.ReadLine();
-                            Console.WriteLine("L'ordinateur a choisit cette piece :");
+                            Console.WriteLine("L'ordinateur a choisit cette pièce :");
+                            Console.WriteLine();
                             Affiche.AfficherPiece(NumeroPiece, tableauPieceGraphique);
-                            Console.ReadLine();
+                            Console.WriteLine();
+                            // c'est à ce moment la qu'on peut dire Quarto 
+                            reponse = Console.ReadLine();
+                            if (reponse == "Quarto")
+                            {
+                                do
+                                {
+
+                                }
+                                Console.Write("A quelle ligne/colonne/diagonale y a t-il quarto ? < ecrire par exemple : ligne 2, diagonale 1 > : ");
+                                string endroit = Console.ReadLine();
+                                if (General.VerifierQuarto(endroit, QuartoPossible))
+                                    Console.WriteLine("Bravo, vous avez gagné");
+                                else
+                                {
+                                    Console.Write("Le quarto n'est pas exact, voulez-vous retenter (O/N)");
+                                    reponse = Console.ReadLine();
+                                    if (reponse == "O")
+                                        do
+                                        {
+                                            Console.Write("A quelle ligne/colonne/diagonale y a t-il quarto ? < ecrire par exemple : ligne 2, diagonale 1 > : ");
+                                            endroit = Console.ReadLine();
+                                            if (General.VerifierQuarto(endroit, QuartoPossible))
+                                                Console.WriteLine("Bravo, vous avez gagné");
+                                            else
+                                            {
+                                                Console.Write("Le quarto n'est pas exact, voulez-vous retenter (O/N)");
+                                                reponse = Console.ReadLine();
+                                            }
+                                        } while (reponse == "O");
+                                }
+                             }
+                                
+                            else
                             Affiche.AfficherPlateau(tableauPlateauGraphique);
+                            Console.WriteLine();
                             Console.Write("A quelle ligne veux tu placer la piece? : ");
                             Ligne = int.Parse(Console.ReadLine());
+                            Console.WriteLine();
                             Console.Write("A quelle Colonne veux tu placer la piece? : ");
                             Colonne = int.Parse(Console.ReadLine());
-                            General.PlacerPiece(NumeroPiece, Ligne, Colonne, tableauPieceCaracteristique, tableauPieceGraphique, tableauPlateauGraphique, tableauPlateauCaracteristique, PieceDispo);
+                            Console.WriteLine();
+                            General.Scanner(Ligne, Colonne, QuartoPossible, tableauPlateauCaracteristique, tableauPieceCaracteristique);
+                            General.PlacerPiece(NumeroPiece, Ligne-1, Colonne-1, tableauPieceCaracteristique, tableauPieceGraphique, tableauPlateauGraphique, tableauPlateauCaracteristique, PieceDispo);
                             Affiche.AfficherPlateau(tableauPlateauGraphique);
+                            Console.WriteLine();
+
                             Affiche.AfficherPieceDisponible( tableauPieceGraphique, PieceDispo);
                             Console.WriteLine("\n   Quelle piece donner à l'ordinateur ? :");
                             NumeroPiece = int.Parse(Console.ReadLine());
@@ -78,7 +127,7 @@ namespace Quarto
                             General.JouerPieceAleatoire(NumeroPiece, out Ligne, out Colonne, tableauPlateauCaracteristique, tableauPlateauGraphique, tableauPieceGraphique, tableauPieceCaracteristique, PieceDispo);
                             Affiche.AfficherPlateau(tableauPlateauGraphique);
                             Console.ReadLine();
-                            General.ChoisirPieceAleatoire(PieceDispo);
+                            NumeroPiece = General.ChoisirPieceAleatoire(PieceDispo);
                             joueur = 1;
                         }
                     }
@@ -107,7 +156,7 @@ namespace Quarto
                             Ligne = int.Parse(Console.ReadLine());
                             Console.Write("A quelle Colonne veux tu placer la piece? : ");
                             Colonne = int.Parse(Console.ReadLine());
-                            General.PlacerPiece(NumeroPiece, Ligne, Colonne, tableauPieceCaracteristique, tableauPieceGraphique, tableauPlateauGraphique, tableauPlateauCaracteristique, PieceDispo);
+                            General.PlacerPiece(NumeroPiece, Ligne-1, Colonne-1, tableauPieceCaracteristique, tableauPieceGraphique, tableauPlateauGraphique, tableauPlateauCaracteristique, PieceDispo);
                             Affiche.AfficherPlateau(tableauPlateauGraphique);
                             Affiche.AfficherPieceDisponible(tableauPieceGraphique, PieceDispo);
                             Console.WriteLine("\n   Quelle piece donner à l'ordinateur ? :");
@@ -124,7 +173,7 @@ namespace Quarto
                             General.JouerPieceAleatoire(NumeroPiece, out Ligne, out Colonne, tableauPlateauCaracteristique, tableauPlateauGraphique, tableauPieceGraphique, tableauPieceCaracteristique, PieceDispo);
                             Affiche.AfficherPlateau(tableauPlateauGraphique);
                             Console.ReadLine();
-                            General.ChoisirPieceAleatoire(PieceDispo);
+                            NumeroPiece = General.ChoisirPieceAleatoire(PieceDispo);
                             joueur = 1;
                         }
                     }

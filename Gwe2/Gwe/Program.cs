@@ -247,7 +247,7 @@ namespace Gwe
         }
 
         //on teste si 4 pièces (représentées pas des entiers distincts compris entre 1 et 16) contienne 1 caractère commun
-        public static bool Tester4Pieces(int Piece1, int Piece2, int Piece3, int Piece4, string[][] tab)
+        public static bool Tester4Pieces(int Piece1, int Piece2, int Piece3, int Piece4, string[] tab)
         {
             bool sortie = false;
             int k = 0;
@@ -261,18 +261,27 @@ namespace Gwe
         }
 
 
-        public static void Scanner(int ligne, int colonne, string[] quarto, int[][] plateau, string[][] caracteristiquesPieces)
+        public static void Scanner(int ligne, int colonne, string[] quarto, int[][] plateau, string[] caracteristiquesPieces)
         {
-            quarto = new string[3];
             if (Tester4Pieces(plateau[ligne][0], plateau[ligne][1], plateau[ligne][2], plateau[ligne][3], caracteristiquesPieces))
                 quarto[0] = "ligne " + ligne;
+            else
+                quarto[0] = "vide";
             if (Tester4Pieces(plateau[0][colonne], plateau[1][colonne], plateau[2][colonne], plateau[3][colonne], caracteristiquesPieces))
                 quarto[1] = "colonne " + colonne;
+            else
+                quarto[1] = "vide";
             if (colonne == ligne)
                 if (Tester4Pieces(plateau[0][0], plateau[1][1], plateau[2][2], plateau[3][3], caracteristiquesPieces))
                     quarto[2] = "diagonale 1";
-            if ((colonne == 3 - ligne) || (ligne == 3 - colonne))
-                quarto[2] = "diagonale 2";
+                else
+                    quarto[2] = "vide";
+            else
+                if ((colonne == 3 - ligne) || (ligne == 3 - colonne))
+                    quarto[2] = "diagonale 2";
+                else
+                    quarto[2] = "vide";
+
         }
 
 
@@ -349,7 +358,10 @@ namespace Gwe
             return (sortie);
         }
 
-
+        public static void Modif (ref string[] Quarto)
+        {
+            Quarto = new string[3];
+        }
 
         static void Main(string[] args)
         {
@@ -364,6 +376,12 @@ namespace Gwe
             //   Console.WriteLine(TableauPiecesGraphiques[1][i]);
             AfficherPieceDisponible(TableauPiecesGraphiques, TableauPiecesDisponibles);
             //Console.WriteLine(VerifierpieceDisponible(1, TableauPiecesDisponibles));
+            
+
+            string[] QuartoPossible = { "ligne 1", "colonne 2", "diagonale 2" };
+            Modif(ref QuartoPossible);
+            for (int i = 0; i < 3; i++)
+                Console.WriteLine(QuartoPossible[i]);
             Console.ReadLine();
         }
     }

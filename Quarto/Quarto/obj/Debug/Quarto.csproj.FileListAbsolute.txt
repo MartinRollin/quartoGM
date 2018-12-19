@@ -36,3 +36,9 @@ C:\Users\Martin\Documents\ENSC\1A\projet info\quartoGM\Quarto\Quarto\obj\Debug\Q
 C:\Users\Martin\Documents\ENSC\1A\projet info\quartoGM\Quarto\Quarto\bin\Debug\Quarto.exe
 C:\Users\Martin\Documents\ENSC\1A\projet info\quartoGM\Quarto\Quarto\bin\Debug\Quarto.pdb
 C:\Users\Martin\Documents\ENSC\1A\projet info\quartoGM\Quarto\Quarto\obj\Debug\Quarto.csprojResolveAssemblyReference.cache
+H:\1A\programmation\quartoGM\Quarto\Quarto\bin\Debug\Quarto.exe.config
+H:\1A\programmation\quartoGM\Quarto\Quarto\obj\Debug\Quarto.exe
+H:\1A\programmation\quartoGM\Quarto\Quarto\obj\Debug\Quarto.pdb
+H:\1A\programmation\quartoGM\Quarto\Quarto\obj\Debug\Quarto.csprojResolveAssemblyReference.cache
+H:\1A\programmation\quartoGM\Quarto\Quarto\bin\Debug\Quarto.exe
+H:\1A\programmation\quartoGM\Quarto\Quarto\bin\Debug\Quarto.pdb
