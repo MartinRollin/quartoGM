@@ -66,6 +66,66 @@ namespace Quarto
                             Affiche.AfficherPieceDisponible( tableauPieceGraphique, PieceDispo);
                             Console.WriteLine("\n   Quelle piece donner à l'ordinateur ? :");
                             NumeroPiece = int.Parse(Console.ReadLine());
+                            joueur = 0;
+                        }
+                        else if (joueur==0)
+                        {
+                            Console.WriteLine("\n ▄▄▄▄▄  ▄▄▄  ▄   ▄ ▄▄▄▄     ▄▄▄  ▄▄▄▄  ▄▄▄▄   ▄▄▄  ");
+                            Console.WriteLine("   █   █   █ █   █ █   █   █   █ █   █ █   █   █   ");
+                            Console.WriteLine("   █   █   █ █   █ █▀▀▀▄   █   █ █▀▀▀▄ █   █   █   ");
+                            Console.WriteLine("   ▀    ▀▀▀   ▀▀▀  ▀   ▀    ▀▀▀  ▀   ▀ ▀▀▀▀   ▀▀▀\n\n");
+                            Console.ReadLine();
+                            General.JouerPieceAleatoire(NumeroPiece, out Ligne, out Colonne, tableauPlateauCaracteristique, tableauPlateauGraphique, tableauPieceGraphique, tableauPieceCaracteristique, PieceDispo);
+                            Affiche.AfficherPlateau(tableauPlateauGraphique);
+                            Console.ReadLine();
+                            General.ChoisirPieceAleatoire(PieceDispo);
+                            joueur = 1;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("               Tu commences !");
+                    Affiche.AfficherPieceDisponible(tableauPieceGraphique, PieceDispo);
+                    Console.Write("Quelle piece veux tu donner à l'ordinateur? : ");
+                    int NumeroPiece = int.Parse(Console.ReadLine());
+                    joueur = 0;
+                    for (int tour = 2; tour < 16; tour++)
+                    {
+                        if (joueur == 1)
+                        {
+                            Console.WriteLine("\n              ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
+                            Console.WriteLine("             █   █     █   █   █   █ ");
+                            Console.WriteLine("             █▀▀▀█     █   █   █   █ ");
+                            Console.WriteLine("             ▀   ▀     ▀    ▀▀▀   ▀▀▀\n             Appuies sur entrée pour commencer.\n");
+                            Console.ReadLine();
+                            Console.WriteLine("L'ordinateur a choisit cette piece :");
+                            Affiche.AfficherPiece(NumeroPiece, tableauPieceGraphique);
+                            Console.ReadLine();
+                            Affiche.AfficherPlateau(tableauPlateauGraphique);
+                            Console.Write("A quelle ligne veux tu placer la piece? : ");
+                            Ligne = int.Parse(Console.ReadLine());
+                            Console.Write("A quelle Colonne veux tu placer la piece? : ");
+                            Colonne = int.Parse(Console.ReadLine());
+                            General.PlacerPiece(NumeroPiece, Ligne, Colonne, tableauPieceCaracteristique, tableauPieceGraphique, tableauPlateauGraphique, tableauPlateauCaracteristique, PieceDispo);
+                            Affiche.AfficherPlateau(tableauPlateauGraphique);
+                            Affiche.AfficherPieceDisponible(tableauPieceGraphique, PieceDispo);
+                            Console.WriteLine("\n   Quelle piece donner à l'ordinateur ? :");
+                            NumeroPiece = int.Parse(Console.ReadLine());
+                            joueur = 0;
+                        }
+                        else if (joueur == 0)
+                        {
+                            Console.WriteLine("\n ▄▄▄▄▄  ▄▄▄  ▄   ▄ ▄▄▄▄     ▄▄▄  ▄▄▄▄  ▄▄▄▄   ▄▄▄  ");
+                            Console.WriteLine("   █   █   █ █   █ █   █   █   █ █   █ █   █   █   ");
+                            Console.WriteLine("   █   █   █ █   █ █▀▀▀▄   █   █ █▀▀▀▄ █   █   █   ");
+                            Console.WriteLine("   ▀    ▀▀▀   ▀▀▀  ▀   ▀    ▀▀▀  ▀   ▀ ▀▀▀▀   ▀▀▀\n\n");
+                            Console.ReadLine();
+                            General.JouerPieceAleatoire(NumeroPiece, out Ligne, out Colonne, tableauPlateauCaracteristique, tableauPlateauGraphique, tableauPieceGraphique, tableauPieceCaracteristique, PieceDispo);
+                            Affiche.AfficherPlateau(tableauPlateauGraphique);
+                            Console.ReadLine();
+                            General.ChoisirPieceAleatoire(PieceDispo);
+                            joueur = 1;
                         }
                     }
                 }

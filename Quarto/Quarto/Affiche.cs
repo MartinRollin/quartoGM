@@ -97,5 +97,22 @@ namespace Quarto
             }
 
         }
+
+        public static void AfficherPiece(int NumeroPiece, string[][] tableauPieceGraphique)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                if (tableauPieceGraphique[NumeroPiece][i][0] == 'b') // la pièce dispo va contenir l'entier correspondant à la pièce à présenter (peut valoir 17, ce qui oriente vers la pièce vide dans notre graph en place 16)
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write(graph[dispo[j]][i].Substring(1));
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.Write(graph[dispo[j]][i].Substring(1));
+                }
+            }
+        }
     }
 }
