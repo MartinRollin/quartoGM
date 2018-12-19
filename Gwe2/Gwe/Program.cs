@@ -260,7 +260,23 @@ namespace Gwe
             return (sortie);
         }
 
-        //On crée une fonction qui permettra à l'ordinateur de vérifier si il y a un quarto sur le plateau
+
+        public static void Scanner(int ligne, int colonne, string[] quarto, int[][] plateau, string[][] caracteristiquesPieces)
+        {
+            quarto = new string[3];
+            if (Tester4Pieces(plateau[ligne][0], plateau[ligne][1], plateau[ligne][2], plateau[ligne][3], caracteristiquesPieces))
+                quarto[0] = "ligne " + ligne;
+            if (Tester4Pieces(plateau[0][colonne], plateau[1][colonne], plateau[2][colonne], plateau[3][colonne], caracteristiquesPieces))
+                quarto[1] = "colonne " + colonne;
+            if (colonne == ligne)
+                if (Tester4Pieces(plateau[0][0], plateau[1][1], plateau[2][2], plateau[3][3], caracteristiquesPieces))
+                    quarto[2] = "diagonale 1";
+            if ((colonne == 3 - ligne) || (ligne == 3 - colonne))
+                quarto[2] = "diagonale 2";
+        }
+
+
+        /* //On crée une fonction qui permettra à l'ordinateur de vérifier si il y a un quarto sur le plateau
         public static bool ScannerPlateau(string[][] caractPieces, int[][] plateau)
         {
             bool sortie = false;
@@ -307,7 +323,9 @@ namespace Gwe
                         sortie = true;
                     }
             return (sortie);
-        }
+        }*/
+
+
 
         public static int ChoisirPieceAleatoire(int[] piecesdispo)
         {
@@ -319,6 +337,17 @@ namespace Gwe
         }
 
 
+        public static bool VerifierQuarto(string EntreeJoueur, string[] QuartoPossible)
+        {
+            bool sortie = false;
+            int k = 0;
+            while ((!sortie) && (k < 4))
+                if (QuartoPossible[k] == EntreeJoueur)
+                    sortie = true;
+                else
+                    k++;
+            return (sortie);
+        }
 
 
 

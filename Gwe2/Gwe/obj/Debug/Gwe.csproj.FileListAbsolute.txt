@@ -27,3 +27,7 @@ H:\1A\programmation\quartoGM\Gwe2\Gwe\obj\Debug\Gwe.pdb
 H:\1A\programmation\quartoGM\Gwe2\Gwe\bin\Debug\Gwe.exe
 H:\1A\programmation\quartoGM\Gwe2\Gwe\bin\Debug\Gwe.pdb
 H:\1A\programmation\quartoGM\Gwe2\Gwe\obj\Debug\Gwe.csprojResolveAssemblyReference.cache
+C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Gwe2\Gwe\obj\Debug\Gwe.csprojAssemblyReference.cache
+C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Gwe2\Gwe\obj\Debug\Gwe.csproj.CoreCompileInputs.cache
+C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Gwe2\Gwe\obj\Debug\Gwe.exe
+C:\Users\gwena\OneDrive\Documents\1A\Programmation\projets groupe\quartoGM\Gwe2\Gwe\obj\Debug\Gwe.pdb
