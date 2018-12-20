@@ -15,7 +15,7 @@ namespace Quarto
             string[] tableauPieceCaracteristique = { "pbrc", "gbrc", "pbrp", "gbrp", "pbcc", "gbcc", "pbcp", "gbcp", "pvrc", "gvrc", "pvrp", "gvrp", "pvcc", "gvcc", "pvcp", "gvcp" };
 
             // initialisation tableau qui contiendra les quarto pouvant être énoncés
-            string[] QuartoPossible = new string[3];
+            string[] QuartoPossible = { "vide", "vide", "vide" };
 
 
             //test de PlacerPiece
@@ -59,7 +59,7 @@ namespace Quarto
                             Console.WriteLine("\n              ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
                             Console.WriteLine("             █   █     █   █   █   █ ");
                             Console.WriteLine("             █▀▀▀█     █   █   █   █ ");
-                            Console.WriteLine("             ▀   ▀     ▀    ▀▀▀   ▀▀▀\n             Appuies sur entrée pour commencer.\n");
+                            Console.WriteLine("             ▀   ▀     ▀    ▀▀▀   ▀▀▀\n\n");
                             Console.WriteLine();
                             Console.ReadLine();
                             Console.WriteLine("L'ordinateur a choisit cette pièce :");
@@ -72,30 +72,20 @@ namespace Quarto
                             {
                                 do
                                 {
+                                    Console.Write("A quelle ligne/colonne/diagonale y a t-il quarto ? < ecrire par exemple : ligne 2, diagonale 1 > : ");
+                                    string endroit = Console.ReadLine();
+                                    quarto = General.VerifierQuarto(endroit, QuartoPossible);
+                                    if (quarto == true)
+                                        Console.WriteLine("Bravo, vous avez gagné");
+                                    else
+                                    {
+                                        Console.Write("Le quarto n'est pas exact, il a été créé il y a plusieurs tours et n'est donc pas valide.\n Voulez-vous retenter ? (O/N) : ");
+                                        reponse = Console.ReadLine();
 
+                                    }
                                 }
-                                Console.Write("A quelle ligne/colonne/diagonale y a t-il quarto ? < ecrire par exemple : ligne 2, diagonale 1 > : ");
-                                string endroit = Console.ReadLine();
-                                if (General.VerifierQuarto(endroit, QuartoPossible))
-                                    Console.WriteLine("Bravo, vous avez gagné");
-                                else
-                                {
-                                    Console.Write("Le quarto n'est pas exact, voulez-vous retenter (O/N)");
-                                    reponse = Console.ReadLine();
-                                    if (reponse == "O")
-                                        do
-                                        {
-                                            Console.Write("A quelle ligne/colonne/diagonale y a t-il quarto ? < ecrire par exemple : ligne 2, diagonale 1 > : ");
-                                            endroit = Console.ReadLine();
-                                            if (General.VerifierQuarto(endroit, QuartoPossible))
-                                                Console.WriteLine("Bravo, vous avez gagné");
-                                            else
-                                            {
-                                                Console.Write("Le quarto n'est pas exact, voulez-vous retenter (O/N)");
-                                                reponse = Console.ReadLine();
-                                            }
-                                        } while (reponse == "O");
-                                }
+                                while (quarto == false && reponse == "O");
+                                
                              }
                                 
                             else
@@ -107,10 +97,32 @@ namespace Quarto
                             Console.Write("A quelle Colonne veux tu placer la piece? : ");
                             Colonne = int.Parse(Console.ReadLine());
                             Console.WriteLine();
-                            General.Scanner(Ligne, Colonne, QuartoPossible, tableauPlateauCaracteristique, tableauPieceCaracteristique);
                             General.PlacerPiece(NumeroPiece, Ligne-1, Colonne-1, tableauPieceCaracteristique, tableauPieceGraphique, tableauPlateauGraphique, tableauPlateauCaracteristique, PieceDispo);
+                            General.Scanner(Ligne, Colonne, QuartoPossible, tableauPlateauCaracteristique, tableauPieceCaracteristique);
                             Affiche.AfficherPlateau(tableauPlateauGraphique);
                             Console.WriteLine();
+
+                            // c'est à ce moment la qu'on peut dire Quarto 
+                            reponse = Console.ReadLine();
+                            if (reponse == "Quarto")
+                            {
+                                do
+                                {
+                                    Console.Write("A quelle ligne/colonne/diagonale y a t-il quarto ? < ecrire par exemple : ligne 2, diagonale 1 > : ");
+                                    string endroit = Console.ReadLine();
+                                    quarto = General.VerifierQuarto(endroit, QuartoPossible);
+                                    if (quarto == true)
+                                        Console.WriteLine("Bravo, vous avez gagné");
+                                    else
+                                    {
+                                        Console.Write("Le quarto n'est pas exact, il a été créé il y a plusieurs tours et n'est donc pas valide.\n Voulez-vous retenter ? (O/N) : ");
+                                        reponse = Console.ReadLine();
+
+                                    }
+                                }
+                                while (quarto == false && reponse == "O");
+
+                            }
 
                             Affiche.AfficherPieceDisponible( tableauPieceGraphique, PieceDispo);
                             Console.WriteLine("\n   Quelle piece donner à l'ordinateur ? :");
@@ -124,9 +136,25 @@ namespace Quarto
                             Console.WriteLine("   █   █   █ █   █ █▀▀▀▄   █   █ █▀▀▀▄ █   █   █   ");
                             Console.WriteLine("   ▀    ▀▀▀   ▀▀▀  ▀   ▀    ▀▀▀  ▀   ▀ ▀▀▀▀   ▀▀▀\n\n");
                             Console.ReadLine();
+
+                            // On verifie le quarto de l'ordinateur
+                            int verifal = rand.Next(1, 6);
+                            // niveau de difficulté de l'ordi ici
+
+                            if (verifal>1 && (General.)
+                            {
+
+                            }
+                            
+                            
+
+
                             General.JouerPieceAleatoire(NumeroPiece, out Ligne, out Colonne, tableauPlateauCaracteristique, tableauPlateauGraphique, tableauPieceGraphique, tableauPieceCaracteristique, PieceDispo);
                             Affiche.AfficherPlateau(tableauPlateauGraphique);
                             Console.ReadLine();
+
+                            // On verifie une deuxieme fois s'il y a quarto
+
                             NumeroPiece = General.ChoisirPieceAleatoire(PieceDispo);
                             joueur = 1;
                         }
