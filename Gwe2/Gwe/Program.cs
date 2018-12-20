@@ -96,10 +96,17 @@ namespace Gwe
         public static void AfficherPlateau(string[][][] tab)
         {
             int j;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(" ");
+            for (int l = 0; l < 4; l++)
+                Console.Write("▄▄▄▄▄▄▄▄▄▄▄▄ ");
+            Console.WriteLine();
             for (int i = 0; i < 4; i++)
             {
                 for (int l = 0; l < 8; l++) //on parcours les lignes des pieces graphiques 1 par 1
                 {
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.Write("█"); // Choix de cette séparation
                     j = 0; //pour afficher correctement la ligne, on doit passer d'une colonne à l'autre.
                     while (j < 4)
                     {
@@ -122,6 +129,7 @@ namespace Gwe
                     Console.WriteLine();
                 }
                 Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write(" ");
                 for (int l = 0; l < 4; l++)
                     Console.Write("▄▄▄▄▄▄▄▄▄▄▄▄ ");
                 Console.WriteLine();
@@ -372,17 +380,18 @@ namespace Gwe
             AfficherPlateau(TableauPlateauGraphique);
 
             TableauPiecesDisponibles[1] = 0;
-            //for(int i=0; i<9;i++)
-            //   Console.WriteLine(TableauPiecesGraphiques[1][i]);
+            for(int i=0; i<9;i++)
+               Console.WriteLine(TableauPiecesGraphiques[1][i]);
             AfficherPieceDisponible(TableauPiecesGraphiques, TableauPiecesDisponibles);
-            //Console.WriteLine(VerifierpieceDisponible(1, TableauPiecesDisponibles));
-            
+            Console.WriteLine(VerifierpieceDisponible(1, TableauPiecesDisponibles));
 
+            Console.ReadLine();
+            /*
             string[] QuartoPossible = { "ligne 1", "colonne 2", "diagonale 2" };
             Modif(ref QuartoPossible);
             for (int i = 0; i < 3; i++)
                 Console.WriteLine(QuartoPossible[i]);
-            Console.ReadLine();
+            Console.ReadLine();*/
         }
     }
 }
