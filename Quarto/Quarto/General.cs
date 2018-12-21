@@ -182,11 +182,11 @@ namespace Quarto
 
 
             if (Tester4Pieces(plateau[ligne][0], plateau[ligne][1], plateau[ligne][2], plateau[ligne][3], caracteristiquesPieces) && !VerifierLigneVide(ligne,plateau))
-                quarto[0] = "ligne " + ligne;
+                quarto[0] = "ligne " + (ligne+1);
             else
                 quarto[0] = "vide";
             if (Tester4Pieces(plateau[0][colonne], plateau[1][colonne], plateau[2][colonne], plateau[3][colonne], caracteristiquesPieces) && !VerifierColonneVide(colonne,plateau))
-                quarto[1] = "colonne " + colonne;
+                quarto[1] = "colonne " + (colonne+1);
             else
                 quarto[1] = "vide";
             if (colonne == ligne)
@@ -211,7 +211,7 @@ namespace Quarto
         {
             bool sortie = false;
             int k = 0;
-            while ((!sortie) && (k < 4))
+            while ((!sortie) && (k < 3))
                 if (QuartoPossible[k] == EntreeJoueur)
                     sortie = true;
                 else
