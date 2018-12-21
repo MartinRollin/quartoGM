@@ -110,11 +110,12 @@ namespace Quarto
             bool sortie = false;
             int k = 0;
             //les caractères sont représentés par une chaine de 4 caractères. Si les 4 pièces ont un des caractères commun (au même emplacement) on renvoie true
-            while ((!sortie) && (k < 4))
-                if ((tab[Piece1 - 1][k] == tab[Piece2 - 1][k]) && (tab[Piece1 - 1][k] == tab[Piece3 - 1][k]) && (tab[Piece1 - 1][k] == tab[Piece4 - 1][k]))
-                    sortie = true;
-                else
-                    k++;
+            if (Piece1!=0 && Piece2!=0 && Piece3!=0 && Piece4!=0)
+                while ((!sortie) && (k < 4))
+                   if ((tab[Piece1 - 1][k] == tab[Piece2 - 1][k]) && (tab[Piece1 - 1][k] == tab[Piece3 - 1][k]) && (tab[Piece1 - 1][k] == tab[Piece4 - 1][k]))
+                       sortie = true;
+                   else
+                      k++;
             return (sortie);
         }
 
@@ -157,7 +158,7 @@ namespace Quarto
                 {
                     if (VerifierPlaceVide(i, j, TableauPlateauCaracteristique) == true)
                     {
-                        casedispo[index] = new int [] { i , j };
+                        casedispo[index] = new int [] { i+1 , j+1 };
                         index++; 
                     }
                 }
@@ -168,7 +169,7 @@ namespace Quarto
             int a = R.Next(nbCasesVides);
             Ligne = casedispo[a][0];
             Colonne = casedispo[a][1];
-            PlacerPiece(NumeroPiece, Ligne, Colonne, tableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, tableauPiecesDisponible);
+            PlacerPiece(NumeroPiece, Ligne-1, Colonne-1, tableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, tableauPiecesDisponible);
         }
 
 
@@ -178,21 +179,23 @@ namespace Quarto
 
         public static void Scanner(int ligne, int colonne, string[] quarto, int[][] plateau, string[] caracteristiquesPieces)
         {
-            if (Tester4Pieces(plateau[ligne][0], plateau[ligne][1], plateau[ligne][2], plateau[ligne][3], caracteristiquesPieces))
+
+
+            if (Tester4Pieces(plateau[ligne][0], plateau[ligne][1], plateau[ligne][2], plateau[ligne][3], caracteristiquesPieces) && !VerifierLigneVide(ligne,plateau))
                 quarto[0] = "ligne " + ligne;
             else
                 quarto[0] = "vide";
-            if (Tester4Pieces(plateau[0][colonne], plateau[1][colonne], plateau[2][colonne], plateau[3][colonne], caracteristiquesPieces))
+            if (Tester4Pieces(plateau[0][colonne], plateau[1][colonne], plateau[2][colonne], plateau[3][colonne], caracteristiquesPieces) && !VerifierColonneVide(colonne,plateau))
                 quarto[1] = "colonne " + colonne;
             else
                 quarto[1] = "vide";
             if (colonne == ligne)
-                if (Tester4Pieces(plateau[0][0], plateau[1][1], plateau[2][2], plateau[3][3], caracteristiquesPieces))
+                if (Tester4Pieces(plateau[0][0], plateau[1][1], plateau[2][2], plateau[3][3], caracteristiquesPieces) && VerifierDiagonale(1,plateau))
                     quarto[2] = "diagonale 1";
                 else
                     quarto[2] = "vide";
             else
-                if ((colonne == 3 - ligne) || (ligne == 3 - colonne))
+                if (((colonne == 3 - ligne) || (ligne == 3 - colonne)) && Tester4Pieces(plateau[0][3], plateau[1][2], plateau[2][1], plateau[3][0], caracteristiquesPieces) && VerifierDiagonale(2,plateau))
                 quarto[2] = "diagonale 2";
             else
                 quarto[2] = "vide";
