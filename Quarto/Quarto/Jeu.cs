@@ -449,11 +449,7 @@ namespace Quarto
                     }
                     Console.WriteLine("\n▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
                     Console.WriteLine("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n");
-                    Console.Beep(100, 1);
-                    Console.Beep(245, 1);
-                    Console.Beep(300, 1);
-                    Console.Beep(40, 1);
-                    Console.Beep(500, 2);
+                    
                     Console.ReadLine();
                 }
             }

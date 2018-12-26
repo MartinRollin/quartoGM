@@ -195,7 +195,7 @@ namespace Quarto
                 else
                     quarto[2] = "vide";
             else
-                if (((colonne == 3 - ligne) || (ligne == 3 - colonne)) && Tester4Pieces(plateau[0][3], plateau[1][2], plateau[2][1], plateau[3][0], caracteristiquesPieces) && VerifierDiagonale(2,plateau))
+                if ((colonne == 3 - ligne) && Tester4Pieces(plateau[0][3], plateau[1][2], plateau[2][1], plateau[3][0], caracteristiquesPieces) && VerifierDiagonale(2,plateau))
                 quarto[2] = "diagonale 2";
             else
                 quarto[2] = "vide";
