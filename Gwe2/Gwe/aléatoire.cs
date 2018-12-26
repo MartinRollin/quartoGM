@@ -402,14 +402,33 @@ namespace Gwe
             Plateau[0][0] = 1;
             Plateau[0][1] = 2;
             Plateau[0][3] = 3;
-
+            Plateau[1][0] = 4;
+            Plateau[2][0] = 5;
+            Plateau[0][3] = 6;
+            Plateau[1][3] = 7;
+            Plateau[3][3] = 8;
+            Plateau[1][1] = 9;
+            Plateau[2][1] = 10;
+            Plateau[3][0] = 11;
             int[][] retour = intelligent.VerifierUnePlace(Plateau);
+
+            Console.WriteLine("Plateau :");
             for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                    Console.Write(" " + Plateau[i][j]);
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Places dispo :");
+                    for (int i = 0; i < 2; i++)
             {
                 for (int j = 0; j < 4; j++)
                     Console.Write(" " + retour[i][j]);
                 Console.WriteLine();
             }
+            Console.Write( " {0} {1}", retour[2][0], retour[2][1]);
+            Console.ReadLine();
         }
     }
 }
