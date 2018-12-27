@@ -84,6 +84,8 @@ namespace Gwe
             }
             if (compteur == 3)
                 retour[2][1] = donnee;
+            else
+                retour[2][0] = -1;
 
             return (retour);
         }
@@ -106,7 +108,7 @@ namespace Gwe
                 {
                     int k = 0;
                     for (int j = 0; j < 4; j++)
-                        if ((plateau[i][j] != -1)&&(k<3))
+                        if ((plateau[i][j] != 0)&&(k<3))
                         {
                             PieceATester[k] = plateau[i][j];
                             k++;
@@ -130,7 +132,7 @@ namespace Gwe
                 {
                     int k = 0;
                     for (int j = 0; j < 4; j++)
-                        if ((plateau[j][i] != -1)&&(k<3))
+                        if ((plateau[j][i] != 0)&&(k<3))
                         {
                             PieceATester[k] = plateau[j][i];
                             k++;
@@ -143,6 +145,47 @@ namespace Gwe
                     }
                 }
             }
+
+            //Au tour des diagonales
+            //diagonale 1
+            if ((PlaceVide[2][0] == -1) && (!sortie))
+            {
+                int k = 0;
+                for (int j=0;j<4;j++)
+                    if ((plateau[j][j]!=0)&&(k<3))
+                    {
+                        PieceATester[k] = plateau[j][j];
+                        k++;
+                    }
+                if (aléatoire.Tester4Pieces(PieceATester[0],PieceATester[1],PieceATester[2],Piece,caracteristiques))
+                {
+                    plateau[PlaceVide[2][0]][PlaceVide[2][0]] = Piece;
+                    sortie = true;
+                    Console.WriteLine("Quarto sur la diagonale 1");
+                }
+            }
+
+            //diagonale 2
+            if ((PlaceVide[2][1] == -1) && (!sortie))
+            {
+                int k = 0;
+                for (int j = 0; j < 4; j++)
+                    if ((plateau[j][3-j] != 0) && (k < 3))
+                    {
+                        PieceATester[k] = plateau[j][3-j];
+                        k++;
+                    }
+                if (aléatoire.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, caracteristiques))
+                {
+                    plateau[PlaceVide[2][1]][PlaceVide[2][1]] = Piece;
+                    sortie = true;
+                    Console.WriteLine("Quarto sur la diagonale 2");
+                }
+            }
+
+            //on conclue en cas d'absence de quarto
+            if (!sortie)
+                aléatoire.PlacerPieceAleatoire(Piece, plateau);
         }
     }
 }
