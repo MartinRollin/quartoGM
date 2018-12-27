@@ -395,21 +395,20 @@ namespace Gwe
             for (int i = 0; i < 3; i++)
                 Console.WriteLine(QuartoPossible[i]);
             Console.ReadLine();*/
-
+            string[] tableauPieceCaracteristique = { "pbrc", "gbrc", "pbrp", "gbrp", "pbcc", "gbcc", "pbcp", "gbcp", "pvrc", "gvrc", "pvrp", "gvrp", "pvcc", "gvcc", "pvcp", "gvcp" };
             int[][] Plateau = new int[4][];
             for (int i = 0; i < 4; i++)
                 Plateau[i] = new int[4];
             Plateau[0][0] = 1;
-            Plateau[0][1] = 2;
-            Plateau[0][3] = 3;
+            //Plateau[0][1] = 2;
+            //Plateau[0][3] = 3;
             Plateau[1][0] = 4;
             Plateau[2][0] = 5;
-            Plateau[0][3] = 6;
-            Plateau[1][3] = 7;
-            Plateau[3][3] = 8;
-            Plateau[1][1] = 9;
-            Plateau[2][1] = 10;
-            Plateau[3][0] = 11;
+            //Plateau[1][3] = 7;
+            //Plateau[3][3] = 8;
+            //Plateau[1][1] = 9;
+            //Plateau[2][1] = 10;
+            //Plateau[3][0] = 11;
             int[][] retour = intelligent.VerifierUnePlace(Plateau);
 
             Console.WriteLine("Plateau :");
@@ -427,7 +426,10 @@ namespace Gwe
                     Console.Write(" " + retour[i][j]);
                 Console.WriteLine();
             }
-            Console.Write( " {0} {1}", retour[2][0], retour[2][1]);
+            Console.Write( " {0} {1} \n", retour[2][0], retour[2][1]);
+
+            Console.WriteLine("Quarto:");
+            intelligent.PlacerQuarto(6, retour, Plateau, tableauPieceCaracteristique);
             Console.ReadLine();
         }
     }

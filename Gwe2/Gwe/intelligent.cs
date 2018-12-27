@@ -88,6 +88,61 @@ namespace Gwe
             return (retour);
         }
 
-        //Maintenant on regarde si il y a un quarto possible, sinon 
+        //Maintenant on regarde si il y a un quarto possible, sinon on place la pièce de manière aléatoire.
+
+        public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques)
+        {
+            int i = 0;
+            bool sortie = false; //nous permettra de sortir de la boucle while si on a un Quarto
+            int[] PieceATester = new int[3];
+
+            //On commence par les lignes
+            while ((i < 4) && (!sortie))
+            {
+
+                if (PlaceVide[0][i] == -1)
+                    i++;
+                else
+                {
+                    int k = 0;
+                    for (int j = 0; j < 4; j++)
+                        if ((plateau[i][j] != -1)&&(k<3))
+                        {
+                            PieceATester[k] = plateau[i][j];
+                            k++;
+                        }
+                    if (aléatoire.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, caracteristiques))
+                    {
+                        plateau[i][PlaceVide[0][i]] = Piece;
+                        sortie = true;
+                        Console.WriteLine("Quarto sur la ligne {0}", i+1);
+                    }
+                }
+            }
+
+            //On enchaîne sur les colonnes
+            i = 0;
+            while ((i < 4) && (!sortie))
+            {
+                if (PlaceVide[1][i] == -1)
+                    i++;
+                else
+                {
+                    int k = 0;
+                    for (int j = 0; j < 4; j++)
+                        if ((plateau[j][i] != -1)&&(k<3))
+                        {
+                            PieceATester[k] = plateau[j][i];
+                            k++;
+                        }
+                    if (aléatoire.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, caracteristiques))
+                    {
+                        plateau[i][PlaceVide[1][i]] = Piece;
+                        sortie = true;
+                        Console.WriteLine("Quarto sur la ligne {0}", i+1);
+                    }
+                }
+            }
+        }
     }
 }
