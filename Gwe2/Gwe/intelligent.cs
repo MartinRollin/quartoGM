@@ -87,5 +87,7 @@ namespace Gwe
 
             return (retour);
         }
+
+        //Maintenant on regarde si il y a un quarto possible, sinon 
     }
 }
