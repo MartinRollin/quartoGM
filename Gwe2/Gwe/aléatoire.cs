@@ -10,6 +10,55 @@ namespace Gwe
     class aléatoire
     {
 
+        //Martin:
+        public static void JouerPieceAleatoire(int NumeroPiece, out int Ligne, out int Colonne, int[][] TableauPlateauCaracteristique, string[][][] TableauPlateauGraphique, string[][] TableauPieceGraphique, string[] tableauPieceCaracteristique, int[] tableauPiecesDisponible)
+        {
+            // Fonction appelee lorsque l'ordinateur veut placer une piece
+            // on compte le nombre de cases vides
+
+            int nbCasesVides = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (VerifierPlaceVide(i, j, TableauPlateauCaracteristique) == true)
+                        nbCasesVides++;
+                }
+            }
+
+            // casedispo est un tabeau qui stocke des tableaux d'entiers de la forme [ligne,colonne] tels que ligne et colonne sont les indices de ligne et colonne des cases vides du plateau
+            int[][] casedispo = new int[nbCasesVides][];
+            int index = 0;
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (VerifierPlaceVide(i, j, TableauPlateauCaracteristique) == true)
+                    {
+                        casedispo[index] = new int[] { i + 1, j + 1 };
+                        index++;
+                    }
+                }
+            }
+
+            // On choisit une case vide aleatoire, on actualise la derniere Ligne et la derniere Colonne jouees et on remplit le tableau caracteristique et le 
+            Random R = new Random();
+            int a = R.Next(nbCasesVides);
+            Ligne = casedispo[a][0];
+            Colonne = casedispo[a][1];
+            PlacerPiece(NumeroPiece, Ligne - 1, Colonne - 1, tableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, tableauPiecesDisponible);
+        }
+
+        public static void PlacerPiece(int numeroPiece, int lignePiece, int colonnePiece, string[] tableauPieceCaracteristique, string[][] tableauPieceGraphique, string[][][] tableauPlateauGraphique, int[][] tableauPlateauCaracteristique, int[] tableauPiecesDisponible)
+        {
+            // On insère une piece qui occupe la position numeroPiece dans tableauPieceGraphique à la ligne lignePiece et la colonne colonnePiece dans tous les tableaux considérés
+
+            tableauPlateauGraphique[lignePiece][colonnePiece] = tableauPieceGraphique[numeroPiece];
+            tableauPlateauCaracteristique[lignePiece][colonnePiece] = numeroPiece;
+            tableauPiecesDisponible[numeroPiece - 1] = 0;
+        }
+
         public static string[] GenererPiece(string strPiece)
         // fonction qui renvoie la chaine de caractere correspondant à une piece graphique
         {
@@ -395,6 +444,8 @@ namespace Gwe
             for (int i = 0; i < 3; i++)
                 Console.WriteLine(QuartoPossible[i]);
             Console.ReadLine();*/
+            int ligne = -1;
+            int colonne = -1;
             string[] tableauPieceCaracteristique = { "pbrc", "gbrc", "pbrp", "gbrp", "pbcc", "gbcc", "pbcp", "gbcp", "pvrc", "gvrc", "pvrp", "gvrp", "pvcc", "gvcc", "pvcp", "gvcp" };
             int[][] Plateau = new int[4][];
             for (int i = 0; i < 4; i++)
