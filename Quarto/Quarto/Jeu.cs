@@ -28,7 +28,7 @@ namespace Quarto
             string jouer;
             do
             {
-                Console.Write(" Voulez vous un rappel des regles du jeu? (O/N) :");
+                Console.Write(" Voulez vous un rappel des regles du jeu? (O/N) : ");
                 string regles = Console.ReadLine();
                 if (regles == "O")
                     Affiche.AfficherRegles();
