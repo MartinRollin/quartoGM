@@ -43,8 +43,8 @@ namespace Quarto
                 }
                 else
                 {
-                    // initialisation de tableauPieceCaracteristique " taille: (p)etit/(g)rand + couleur : (v)ert/(b)leu + forme : (c)arre/(r)ond + remplissage : (c)reu/(p)lein "
-                    string[] tableauPieceCaracteristique = { "pbrc", "gbrc", "pbrp", "gbrp", "pbcc", "gbcc", "pbcp", "gbcp", "pvrc", "gvrc", "pvrp", "gvrp", "pvcc", "gvcc", "pvcp", "gvcp" };
+                    // initialisation de tableauPieceCaracteristique " taille: (p)etit/(g)rand + couleur : (v)ert/(b)leu + forme : (c)arre/(r)ond + remplissage : (C)reu/(P)lein "
+                    string[] tableauPieceCaracteristique = { "pbrC", "gbrC", "pbrP", "gbrP", "pbcC", "gbcC", "pbcP", "gbcP", "pvrC", "gvrC", "pvrP", "gvrP", "pvcC", "gvcC", "pvcP", "gvcP" };
 
                     // initialisation tableau qui contiendra les quarto pouvant être énoncés
                     string[] QuartoPossible = { "vide", "vide", "vide" };

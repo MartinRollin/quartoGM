@@ -203,16 +203,48 @@ namespace Quarto
         public static int ChoisirQuarto(int[][] PlaceVide, int[][] plateau, string[] caracteristiques, int[] PieceDispo)
         {
             // on parcourt la liste des pieces disponibles, on verifie si chacunes de ces pieces pourrait faire un quarto en parcourant toutes les places disponibles
-            bool Gagne = true;
-            int index = 0;
-            while (Gagne = true && index<16)
+            
+            int[][] QuartoPossible = VerifierUnePlace(plateau);
+            int somme = 0;
+            for (int i = 0;i<3;i++)
             {
-                if (PieceDispo[index]!=0) // Si la piece est disponible
-                {
-
-                }
-                index++;
+                foreach (int e in QuartoPossible[i])
+                    somme+=e;
             }
+            if (somme == -10) // cela veut dire que chaque colonne/ligne/diagonale possède strictement moins que 3 éléments et donc que peu importe la pièce choisie impossible qu'il y ait quarto au tour du joueur
+                return General.ChoisirPieceAleatoire(PieceDispo);
+            else
+            {
+                bool Gagne = true;
+                int index = 0;
+                while (Gagne == true && index < 16)
+                {
+                    if (PieceDispo[index] != 0) // Si la piece est disponible
+                    {
+
+                    }
+                    index++;
+                }
+            }
+            
+        }
+
+        public static string ElementCommun (int[][] plateau, string[] caracteristiques,int[][] QuartoPossible)
+        {
+            string Element = "";
+            /*
+            for (int type=0;type<2;type++)
+            {
+                for (int numero = 0; numero < 4; numero++)
+                {
+                    if (QuartoPossible[type][numero]!=-1)
+                    {
+
+                    }
+                }
+            }
+            */
+            for (int numero = 0; numero < 4; numero++) // if(element[
         }
     }
 }
