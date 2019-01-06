@@ -232,7 +232,7 @@ namespace Quarto
         public static string ElementCommun (int[][] plateau, string[] caracteristiques,int[][] QuartoPossible)
         {
             string Element = "";
-            int[] combin = new int[10];
+            int[] combin = new int[40];
             
             for (int ligne=0;ligne<4;ligne++)
             {
@@ -243,10 +243,43 @@ namespace Quarto
             }
             for (int colonne = 0; colonne < 4; colonne++)
             {
-                for (int colonne = 0; colonne < 4; colonne++)
+                for (int ligne = 0; ligne < 4; ligne++)
                 {
-                    combin[4 * ligne + colonne] = plateau[ligne][colonne];
+                    combin[15+4 * colonne + ligne] = plateau[ligne][colonne];
                 }
+            }
+            combin[32] = plateau[0][0];
+            combin[33] = plateau[1][1];
+            combin[34] = plateau[2][2];
+            combin[35] = plateau[3][3];
+            combin[36] = plateau[0][3];
+            combin[37] = plateau[1][2];
+            combin[38] = plateau[2][1];
+            combin[39] = plateau[3][0];
+
+            for (int i = 0;i<10;i++)
+            {
+                int nbvide = 0;
+                int numvide = 0;
+                for (int j = 0;j < 4;j++)
+                {
+                    if (combin[i * 4 + j] == 0)
+                    {
+                        nbvide++;
+                        numvide = j;
+                    }    
+                }
+                if (nbvide == 3)
+                    for (int j = 0;j<4;j++)
+                    {
+                        if (j!=numvide)
+                            if (caracteristiques[combin[i * 4 ]][j]== caracteristiques[combin[i * 4+1]][j] && caracteristiques[combin[i * 4+1]][j] == caracteristiques[combin[i * 4+2]][j] && caracteristiques[combin[i * 4+2]][j] == caracteristiques[combin[i * 4+3]][j])
+                            {
+                                bool present = false;
+                                foreach (char e in Element)
+                                    if (e==)
+                            }
+                    }
             }
 
             for (int numero = 0; numero < 4; numero++) // if(element[
