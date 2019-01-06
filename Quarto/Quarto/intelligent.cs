@@ -89,7 +89,7 @@ namespace Quarto
 
             return (retour);
         }
-
+        
         //Maintenant on regarde si il y a un quarto possible, sinon on place la pièce de manière aléatoire.
 
         public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques, out int ligne, out int colonne, string[][][] PlateauGraphique, string[][] PieceGraphique, int[] PieceDispo)
@@ -148,7 +148,7 @@ namespace Quarto
                         colonne = i;
                         General.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
                         sortie = true;
-                        Console.WriteLine("Quarto sur la ligne {0}", i+1);
+                        Console.WriteLine("Quarto sur la colonne {0}", i+1);
                     }
                 }
             }
@@ -232,18 +232,23 @@ namespace Quarto
         public static string ElementCommun (int[][] plateau, string[] caracteristiques,int[][] QuartoPossible)
         {
             string Element = "";
-            /*
-            for (int type=0;type<2;type++)
+            int[] combin = new int[10];
+            
+            for (int ligne=0;ligne<4;ligne++)
             {
-                for (int numero = 0; numero < 4; numero++)
+                for(int colonne = 0;colonne<4;colonne++)
                 {
-                    if (QuartoPossible[type][numero]!=-1)
-                    {
-
-                    }
+                    combin[4 * ligne + colonne] = plateau[ligne][colonne];
+                }               
+            }
+            for (int colonne = 0; colonne < 4; colonne++)
+            {
+                for (int colonne = 0; colonne < 4; colonne++)
+                {
+                    combin[4 * ligne + colonne] = plateau[ligne][colonne];
                 }
             }
-            */
+
             for (int numero = 0; numero < 4; numero++) // if(element[
         }
     }

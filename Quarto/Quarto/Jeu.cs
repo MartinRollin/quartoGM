@@ -14,14 +14,14 @@ namespace Quarto
 
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("\n      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄      ");
-            Console.WriteLine("     █                                                        █     ");
-            Console.WriteLine("     █           ▄▄▄  ▄   ▄  ▄▄▄  ▄▄▄▄  ▄▄▄▄▄  ▄▄▄            █     ");
-            Console.WriteLine("     █          █   █ █   █ █   █ █   █   █   █   █           █     ");
-            Console.WriteLine("     █          █ ▀▄█ █   █ █▀▀▀█ █▀▀▀▄   █   █   █           █     ");
-            Console.WriteLine("     █           ▀▀ ▀▄ ▀▀▀  ▀   ▀ ▀   ▀   ▀    ▀▀▀            █     ");
-            Console.WriteLine("     █                                                        █     ");
-            Console.WriteLine("      ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀      \n");
+            Console.WriteLine("\n\t\t ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                 ");
+            Console.WriteLine("\t\t█                                                                █                ");
+            Console.WriteLine("\t\t█               ▄▄▄  ▄   ▄  ▄▄▄  ▄▄▄▄  ▄▄▄▄▄  ▄▄▄                █                ");
+            Console.WriteLine("\t\t█              █   █ █   █ █   █ █   █   █   █   █               █                ");
+            Console.WriteLine("\t\t█              █ ▀▄█ █   █ █▀▀▀█ █▀▀▀▄   █   █   █               █                ");
+            Console.WriteLine("\t\t█               ▀▀ ▀▄ ▀▀▀  ▀   ▀ ▀   ▀   ▀    ▀▀▀                █                ");
+            Console.WriteLine("\t\t█                                                                █                ");
+            Console.WriteLine("\t\t ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                 \n");
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.ReadLine();
@@ -78,12 +78,12 @@ namespace Quarto
 
                     if (joueur == 0)  // L'ordinateur commence a jouer
                     {
-                        Console.WriteLine("\n▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-                        Console.WriteLine("   ▄   ▄   ▄▄▄  ▄▄▄▄  ▄▄▄▄  ▄▄▄     ▄▄▄  ▄▄▄   ▄   ▄ ▄▄▄▄");
-                        Console.WriteLine("   █   ▀  █   █ █   █ █   █  █       █  █   █  █   █ █▄  ");
-                        Console.WriteLine("   █      █   █ █▀▀▀▄ █   █  █    █  █  █   █  █   █ █   ");
-                        Console.WriteLine("   ▀▀▀     ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀    ▀▀    ▀▀▀    ▀▀▀  ▀▀▀▀");
-                        Console.WriteLine("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
+                        Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+                        Console.WriteLine("\t\t   ▄   ▄   ▄▄▄  ▄▄▄▄  ▄▄▄▄  ▄▄▄     ▄▄▄  ▄▄▄   ▄   ▄ ▄▄▄▄");
+                        Console.WriteLine("\t\t   █   ▀  █   █ █   █ █   █  █       █  █   █  █   █ █▄  ");
+                        Console.WriteLine("\t\t   █      █   █ █▀▀▀▄ █   █  █    █  █  █   █  █   █ █   ");
+                        Console.WriteLine("\t\t   ▀▀▀     ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀    ▀▀    ▀▀▀    ▀▀▀  ▀▀▀▀");
+                        Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                         Console.ReadLine();
                         Console.WriteLine("\n Voici les pièces disponibles :\n");
                         Affiche.AfficherPieceDisponible(tableauPieceGraphique, PieceDispo);
@@ -94,12 +94,12 @@ namespace Quarto
 
                     else  // le joueur commence à jouer
                     {
-                        Console.WriteLine("\n▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-                        Console.WriteLine("                 ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
-                        Console.WriteLine("                █   █     █   █   █   █ ");
-                        Console.WriteLine("                █▀▀▀█     █   █   █   █ ");
-                        Console.WriteLine("                ▀   ▀     ▀    ▀▀▀   ▀▀▀");
-                        Console.WriteLine("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
+                        Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+                        Console.WriteLine("\t\t                 ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
+                        Console.WriteLine("\t\t                █   █     █   █   █   █ ");
+                        Console.WriteLine("\t\t                █▀▀▀█     █   █   █   █ ");
+                        Console.WriteLine("\t\t                ▀   ▀     ▀    ▀▀▀   ▀▀▀");
+                        Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                         Console.WriteLine();
                         Console.ReadLine();
 
@@ -117,12 +117,12 @@ namespace Quarto
                         if (joueur == 1)
                         {
                             Console.ForegroundColor = ConsoleColor.Gray;
-                            Console.WriteLine("\n▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-                            Console.WriteLine("                 ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
-                            Console.WriteLine("                █   █     █   █   █   █ ");
-                            Console.WriteLine("                █▀▀▀█     █   █   █   █ ");
-                            Console.WriteLine("                ▀   ▀     ▀    ▀▀▀   ▀▀▀");
-                            Console.WriteLine("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
+                            Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+                            Console.WriteLine("\t\t                 ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
+                            Console.WriteLine("\t\t                █   █     █   █   █   █ ");
+                            Console.WriteLine("\t\t                █▀▀▀█     █   █   █   █ ");
+                            Console.WriteLine("\t\t                ▀   ▀     ▀    ▀▀▀   ▀▀▀");
+                            Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.WriteLine();
                             Console.ReadLine();
                             Console.WriteLine(" L'ordinateur a choisi cette pièce :");
@@ -233,12 +233,12 @@ namespace Quarto
                         else if (joueur == 0)
                         {
                             Console.ForegroundColor = ConsoleColor.Gray;
-                            Console.WriteLine("\n▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-                            Console.WriteLine("   ▄   ▄   ▄▄▄  ▄▄▄▄  ▄▄▄▄  ▄▄▄     ▄▄▄  ▄▄▄   ▄   ▄ ▄▄▄▄");
-                            Console.WriteLine("   █   ▀  █   █ █   █ █   █  █       █  █   █  █   █ █▄  ");
-                            Console.WriteLine("   █      █   █ █▀▀▀▄ █   █  █    █  █  █   █  █   █ █   ");
-                            Console.WriteLine("   ▀▀▀     ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀    ▀▀    ▀▀▀    ▀▀▀  ▀▀▀▀ ");
-                            Console.WriteLine("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
+                            Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+                            Console.WriteLine("\t\t   ▄   ▄   ▄▄▄  ▄▄▄▄  ▄▄▄▄  ▄▄▄     ▄▄▄  ▄▄▄   ▄   ▄ ▄▄▄▄");
+                            Console.WriteLine("\t\t   █   ▀  █   █ █   █ █   █  █       █  █   █  █   █ █▄  ");
+                            Console.WriteLine("\t\t   █      █   █ █▀▀▀▄ █   █  █    █  █  █   █  █   █ █   ");
+                            Console.WriteLine("\t\t   ▀▀▀     ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀    ▀▀    ▀▀▀    ▀▀▀  ▀▀▀▀");
+                            Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.ReadLine();
 
                             // On verifie le quarto de l'ordinateur
@@ -304,12 +304,12 @@ namespace Quarto
                         if (joueur == 0)   // Si l'ordinateur est le dernier à jouer
                         {
                             Console.ForegroundColor = ConsoleColor.Gray;
-                            Console.WriteLine("\n▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-                            Console.WriteLine("   ▄   ▄   ▄▄▄  ▄▄▄▄  ▄▄▄▄  ▄▄▄     ▄▄▄  ▄▄▄   ▄   ▄ ▄▄▄▄");
-                            Console.WriteLine("   █   ▀  █   █ █   █ █   █  █       █  █   █  █   █ █▄  ");
-                            Console.WriteLine("   █      █   █ █▀▀▀▄ █   █  █    █  █  █   █  █   █ █   ");
-                            Console.WriteLine("   ▀▀▀     ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀    ▀▀    ▀▀▀    ▀▀▀  ▀▀▀▀ ");
-                            Console.WriteLine("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
+                            Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+                            Console.WriteLine("\t\t   ▄   ▄   ▄▄▄  ▄▄▄▄  ▄▄▄▄  ▄▄▄     ▄▄▄  ▄▄▄   ▄   ▄ ▄▄▄▄");
+                            Console.WriteLine("\t\t   █   ▀  █   █ █   █ █   █  █       █  █   █  █   █ █▄  ");
+                            Console.WriteLine("\t\t   █      █   █ █▀▀▀▄ █   █  █    █  █  █   █  █   █ █   ");
+                            Console.WriteLine("\t\t   ▀▀▀     ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀    ▀▀    ▀▀▀    ▀▀▀  ▀▀▀▀");
+                            Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.ReadLine();
 
                             // On verifie le quarto de l'ordinateur
@@ -361,12 +361,12 @@ namespace Quarto
                         else      // C'est au joueur de faire le dernier tour
                         {
                             Console.ForegroundColor = ConsoleColor.Gray;
-                            Console.WriteLine("\n▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-                            Console.WriteLine("                 ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
-                            Console.WriteLine("                █   █     █   █   █   █ ");
-                            Console.WriteLine("                █▀▀▀█     █   █   █   █ ");
-                            Console.WriteLine("                ▀   ▀     ▀    ▀▀▀   ▀▀▀");
-                            Console.WriteLine("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
+                            Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+                            Console.WriteLine("\t\t                 ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
+                            Console.WriteLine("\t\t                █   █     █   █   █   █ ");
+                            Console.WriteLine("\t\t                █▀▀▀█     █   █   █   █ ");
+                            Console.WriteLine("\t\t                ▀   ▀     ▀    ▀▀▀   ▀▀▀");
+                            Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.WriteLine();
 
                             // c'est à ce moment là qu'on peut dire Quarto 
@@ -446,8 +446,8 @@ namespace Quarto
                             Console.WriteLine("\n    Egalité !   ");
                         }
                     }
-                    Console.WriteLine("\n▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-                    Console.WriteLine("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n");
+                    Console.WriteLine("\n█████████████████████████████████████████████████████████████████████████████████████████████████████\n");
+                    
 
                     Console.ReadLine();
                 }

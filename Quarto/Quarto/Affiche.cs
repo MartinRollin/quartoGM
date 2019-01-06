@@ -8,48 +8,49 @@ namespace Quarto
 {
     class Affiche
     {
-        public static void AfficherRegles()
+        public static void AfficherRegles() // regles du quarto adaptées a notre algorithme
         {
-            Console.WriteLine("\n============================================================");
-            Console.WriteLine("============================================================\n");
-            Console.WriteLine("\tPRESENTATION ET PREPARATION\n");
+            Console.WriteLine("\n  ▄▄▄▄█████████████████████████████████████████████████████████████████████████████████████████▄▄▄▄");
+            Console.WriteLine("█████████████████████████████████████████████████████████████████████████████████████████████████████");
+            Console.WriteLine("\n\tPRESENTATION ET PREPARATION\n");
             Console.WriteLine(" - Un plateau de 16 cases");
             Console.WriteLine(" - 16 pièces différentes ayant chacune 4 caractères :");
             Console.WriteLine(" claire ou foncée, ronde ou carrée, haute ou basse, pleine ou creuse.");
             Console.ReadLine();
-            Console.WriteLine("\n\tBUT DU JEU\n");
+            Console.WriteLine("\tBUT DU JEU\n");
             Console.WriteLine(" Créer sur le plateau un alignement de 4 pièces ayant au moins un caractère commun.");
             Console.WriteLine(" Cet alignement peut - être horizontal, vertical ou diagonal.");
             Console.ReadLine();
-            Console.WriteLine("\n\tDEROULEMENT D’UNE PARTIE\n");
+            Console.WriteLine("\tDEROULEMENT D’UNE PARTIE\n");
             Console.WriteLine(" - Le premier joueur est tiré au sort.");
             Console.WriteLine(" - Il choisit une des 16 pièces et la donne à son adversaire.");
             Console.WriteLine(" - Celui - ci doit la placer sur une des cases du plateau et choisir ensuite une des 15 pièces");
             Console.WriteLine(" restantes pour la donner à son adversaire.");
             Console.WriteLine(" - A son tour, celui - ci la place sur une case libre et ainsi de suite...");
             Console.ReadLine();
-            Console.WriteLine("\n\tGAIN DE LA PARTIE\n");
+            Console.WriteLine("\tGAIN DE LA PARTIE\n");
             Console.WriteLine(" La partie est gagnée par le premier joueur qui annonce “QUARTO”");
-            Console.WriteLine(" 1 Un joueur fait “QUARTO” et gagne la partie lorsque, en plaçant la pièce donnée:");
-            Console.WriteLine(" ->Il crée une ligne de 4 claires ou 4 foncées ou 4 rondes ou 4 carrées ou 4 hautes ou 4");
+            Console.WriteLine(" 1 : Un joueur fait “QUARTO” et gagne la partie lorsque, en plaçant la pièce donnée:");
+            Console.WriteLine(" -> Il crée une ligne de 4 claires ou 4 foncées ou 4 rondes ou 4 carrées ou 4 hautes ou 4");
             Console.WriteLine(" basses ou 4 pleines ou 4 creuses.");
             Console.WriteLine(" Plusieurs caractères peuvent se cumuler.");
-            Console.WriteLine(" ->Il n’est pas obligé d’avoir lui même déposé les trois autres pièces.");
-            Console.WriteLine(" -> Il doit faire reconnaître sa victoire en annonçant “QUARTO”.");
-            Console.WriteLine(" 2 Si ce joueur n’a pas vu l’alignement et donne une pièce à l’adversaire:");
-            Console.WriteLine(" ->Ce dernier peut “à ce moment” annoncer “QUARTO !”, et montrer l’alignement: c’est lui");
-            Console.WriteLine(" qui gagne la partie.");
-            Console.WriteLine(" 3 Si aucun des joueurs ne voit l’alignement durant le tour de jeu où il se crée, cet");
+            Console.WriteLine(" -> Il n’est pas obligé d’avoir lui même déposé les trois autres pièces.");
+            Console.WriteLine(" -> Il doit alors écrire “Quarto“ juste après avoir posé la pièce.\n");
+            Console.WriteLine(" 2 : Si ce joueur n’a pas vu l’alignement et donne une pièce à l’adversaire:");
+            Console.WriteLine(" -> Ce dernier peut au début de son tour écrire “Quarto”, et montrer l’alignement: c’est lui");
+            Console.WriteLine(" qui gagne la partie.\n");
+            Console.WriteLine(" 3 : Si aucun des joueurs ne voit l’alignement durant le tour de jeu où il se crée, cet");
             Console.WriteLine(" alignement perd toute sa valeur et la partie suit son cours.");
             Console.ReadLine();
-            Console.WriteLine("\n\tFIN DE LA PARTIE\n");
-            Console.WriteLine(" -Victoire: un joueur annonce et montre un “QUARTO”.");
-            Console.WriteLine(" -Egalité: toutes les pièces ont été posées sans vainqueur.");
+            Console.WriteLine("\tFIN DE LA PARTIE\n");
+            Console.WriteLine(" - Victoire: un joueur annonce et montre un “QUARTO”.");
+            Console.WriteLine(" - Egalité: toutes les pièces ont été posées sans vainqueur.");
             Console.ReadLine();
-            Console.WriteLine("\n\tDUREE D’UNE PARTIE\n");
-            Console.WriteLine(" -De 10 à 20 minutes.");
-            Console.WriteLine("\n============================================================");
-            Console.WriteLine("============================================================\n");
+            Console.WriteLine("\tDUREE D’UNE PARTIE\n");
+            Console.WriteLine(" - De 10 à 20 minutes.\n");
+            Console.ReadLine();
+            Console.WriteLine("█████████████████████████████████████████████████████████████████████████████████████████████████████");
+            Console.WriteLine("  ▀▀▀▀█████████████████████████████████████████████████████████████████████████████████████████▀▀▀▀\n");
 
 
         }
