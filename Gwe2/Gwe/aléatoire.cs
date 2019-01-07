@@ -335,9 +335,10 @@ namespace Gwe
                     quarto[2] = "vide";
             else
                 if (colonne == 3 - ligne)
-                    quarto[2] = "diagonale 2";
-                else
-                    quarto[2] = "vide";
+                    if (Tester4Pieces(plateau[3][0], plateau[2][1], plateau[1][2], plateau[0][3],caracteristiquesPieces))
+                        quarto[2] = "diagonale 2";
+                    else
+                        quarto[2] = "vide";
 
         }
 
@@ -444,6 +445,10 @@ namespace Gwe
             for (int i = 0; i < 3; i++)
                 Console.WriteLine(QuartoPossible[i]);
             Console.ReadLine();*/
+            int[] TableauPiecesDisponibles = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+            string[][][] TableauPlateauGraphique = InitialiserTableauPlateauGraphique();
+            string[][] TableauPiecesGraphiques = CreerTableauPieceGraphique();
+
             int ligne = -1;
             int colonne = -1;
             string[] tableauPieceCaracteristique = { "pbrc", "gbrc", "pbrp", "gbrp", "pbcc", "gbcc", "pbcp", "gbcp", "pvrc", "gvrc", "pvrp", "gvrp", "pvcc", "gvcc", "pvcp", "gvcp" };
@@ -480,7 +485,14 @@ namespace Gwe
             Console.Write( " {0} {1} \n", retour[2][0], retour[2][1]);
 
             Console.WriteLine("Quarto:");
-            intelligent.PlacerQuarto(6, retour, Plateau, tableauPieceCaracteristique);
+            intelligent.PlacerQuarto(6, retour, Plateau, tableauPieceCaracteristique, out ligne, out colonne, TableauPlateauGraphique,TableauPiecesGraphiques,new int[] { 0,2,3,0,0,6,7,8,9,10,11,12,13,14,15,16});
+            Console.WriteLine("Plateau ensuite:");
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                    Console.Write(" " + Plateau[i][j]);
+                Console.WriteLine();
+            }
             Console.ReadLine();
         }
     }
