@@ -91,9 +91,11 @@ namespace Quarto
         }
         
         //Maintenant on regarde si il y a un quarto possible, sinon on place la pièce de manière aléatoire.
-
+        
         public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques, out int ligne, out int colonne, string[][][] PlateauGraphique, string[][] PieceGraphique, int[] PieceDispo)
         {
+            ligne = 0;
+            colonne = 0;
             int i = 0;
             bool sortie = false; //nous permettra de sortir de la boucle while si on a un Quarto
             int[] PieceATester = new int[3]; // contiendra les 3 pièces à tester avec celle donnée par le joueur
@@ -197,7 +199,7 @@ namespace Quarto
                 General.JouerPieceAleatoire(Piece, out ligne, out colonne, plateau, PlateauGraphique, PieceGraphique,caracteristiques, PieceDispo);
         }
 
-
+        
         //Maintenant on regarde si il y a des pieces qui pourraient potentiellement faire un quarto si bien placées, sinon on place la pièce de manière aléatoire.
         // Cette fonction renvoie un numero de piece qui empeche le joueur de gagner au tour suivant si c'est possible
         public static int ChoisirQuarto(int[][] PlaceVide, int[][] plateau, string[] caracteristiques, int[] PieceDispo)
@@ -273,7 +275,7 @@ namespace Quarto
                     for (int j = 0;j<4;j++)
                     {
                         if (j!=numvide)
-                            if (caracteristiques[combin[i * 4 ]][j]== caracteristiques[combin[i * 4+1]][j] && caracteristiques[combin[i * 4+1]][j] == caracteristiques[combin[i * 4+2]][j] && caracteristiques[combin[i * 4+2]][j] == caracteristiques[combin[i * 4+3]][j])
+                            if (caracteristiques[combin[i * 4 ]][j]== caracteristiques[combin[i * 4+1]][j] ||  && caracteristiques[combin[i * 4+1]][j] == caracteristiques[combin[i * 4+2]][j] && caracteristiques[combin[i * 4+2]][j] == caracteristiques[combin[i * 4+3]][j])
                             {
                                 bool present = false;
                                 foreach (char e in Element)

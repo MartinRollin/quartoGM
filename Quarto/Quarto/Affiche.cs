@@ -62,10 +62,17 @@ namespace Quarto
         public static void AfficherPlateau(string[][][] tab)
         {
             int j;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(" ");
+            for (int l = 0; l < 4; l++)
+                Console.Write("▄▄▄▄▄▄▄▄▄▄▄▄ ");
+            Console.WriteLine();
             for (int i = 0; i < 4; i++)
             {
                 for (int l = 0; l < 8; l++) //on parcours les lignes des pieces graphiques 1 par 1
                 {
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.Write("█"); // Choix de cette séparation
                     j = 0; //pour afficher correctement la ligne, on doit passer d'une colonne à l'autre.
                     while (j < 4)
                     {
@@ -88,6 +95,7 @@ namespace Quarto
                     Console.WriteLine();
                 }
                 Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write(" ");
                 for (int l = 0; l < 4; l++)
                     Console.Write("▄▄▄▄▄▄▄▄▄▄▄▄ ");
                 Console.WriteLine();

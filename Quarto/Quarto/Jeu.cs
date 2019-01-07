@@ -11,7 +11,7 @@ namespace Quarto
         static void Main(string[] args)
         {
 
-
+            Console.SetWindowSize(110, 84);
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n\t\t ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                 ");
