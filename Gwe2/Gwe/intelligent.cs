@@ -94,6 +94,8 @@ namespace Gwe
 
         public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques, out int ligne, out int colonne, string[][][] PlateauGraphique, string[][] PieceGraphique, int[] PieceDispo)
         {
+            ligne = 0;
+            colonne = 0;
             int i = 0;
             bool sortie = false; //nous permettra de sortir de la boucle while si on a un Quarto
             int[] PieceATester = new int[3]; // contiendra les 3 pièces à tester avec celle donnée par le joueur
