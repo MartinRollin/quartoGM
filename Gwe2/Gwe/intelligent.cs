@@ -85,7 +85,7 @@ namespace Gwe
             if (compteur == 3)
                 retour[2][1] = donnee;
             else
-                retour[2][0] = -1;
+                retour[2][1] = -1;
 
             return (retour);
         }
@@ -150,14 +150,14 @@ namespace Gwe
                         colonne = i;
                         aléatoire.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
                         sortie = true;
-                        Console.WriteLine("Quarto sur la ligne {0}", i+1);
+                        Console.WriteLine("Quarto sur la colonne {0}", i+1);
                     }
                 }
             }
 
             //Au tour des diagonales
             //diagonale 1
-            if ((PlaceVide[2][0] == -1) && (!sortie))
+            if ((PlaceVide[2][0] != -1) && (!sortie))
             {
                 int k = 0;
                 for (int j=0;j<4;j++)
@@ -176,7 +176,7 @@ namespace Gwe
             }
 
             //diagonale 2
-            if ((PlaceVide[2][1] == -1) && (!sortie))
+            if ((PlaceVide[2][1] != -1) && (!sortie))
             {
                 int k = 0;
                 for (int j = 0; j < 4; j++)
