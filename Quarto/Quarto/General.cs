@@ -181,21 +181,21 @@ namespace Quarto
         {
 
 
-            if (Tester4Pieces(plateau[ligne][0], plateau[ligne][1], plateau[ligne][2], plateau[ligne][3], caracteristiquesPieces) && !VerifierLigneVide(ligne,plateau))
+            if (Tester4Pieces(plateau[ligne][0], plateau[ligne][1], plateau[ligne][2], plateau[ligne][3], caracteristiquesPieces))
                 quarto[0] = "ligne " + (ligne+1);
             else
                 quarto[0] = "vide";
-            if (Tester4Pieces(plateau[0][colonne], plateau[1][colonne], plateau[2][colonne], plateau[3][colonne], caracteristiquesPieces) && !VerifierColonneVide(colonne,plateau))
+            if (Tester4Pieces(plateau[0][colonne], plateau[1][colonne], plateau[2][colonne], plateau[3][colonne], caracteristiquesPieces))
                 quarto[1] = "colonne " + (colonne+1);
             else
                 quarto[1] = "vide";
             if (colonne == ligne)
-                if (Tester4Pieces(plateau[0][0], plateau[1][1], plateau[2][2], plateau[3][3], caracteristiquesPieces) && VerifierDiagonale(1,plateau))
+                if (Tester4Pieces(plateau[0][0], plateau[1][1], plateau[2][2], plateau[3][3], caracteristiquesPieces))
                     quarto[2] = "diagonale 1";
                 else
                     quarto[2] = "vide";
             else
-                if ((colonne == 3 - ligne) && Tester4Pieces(plateau[0][3], plateau[1][2], plateau[2][1], plateau[3][0], caracteristiquesPieces) && VerifierDiagonale(2,plateau))
+                if ((colonne == 3 - ligne) && Tester4Pieces(plateau[0][3], plateau[1][2], plateau[2][1], plateau[3][0], caracteristiquesPieces))
                 quarto[2] = "diagonale 2";
             else
                 quarto[2] = "vide";

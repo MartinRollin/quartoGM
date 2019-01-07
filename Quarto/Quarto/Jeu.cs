@@ -10,7 +10,7 @@ namespace Quarto
     {
         static void Main(string[] args)
         {
-
+            
             Console.SetWindowSize(110, 84);
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -135,7 +135,7 @@ namespace Quarto
                             {
                                 do                              // on laisse la possibilité au joueur de donner plusieurs endroits ou il pense qu'il y a quarto
                                 {
-                                    Console.Write(" A quelle ligne/colonne/diagonale y a t-il quarto ?\n < ecrire par exemple : ligne 2, diagonale 1 > : ");
+                                    Console.Write(" A quelle ligne/colonne/diagonale y a t-il quarto ?\n < ecrire par exemple : ligne 2, colonne 1, diagonale 1 > : ");
                                     string endroit = Console.ReadLine();
                                     quarto = General.VerifierQuarto(endroit, QuartoPossible);
                                     if (quarto == true)
@@ -168,6 +168,7 @@ namespace Quarto
                                 Console.WriteLine();
                                 General.PlacerPiece(NumeroPiece, Ligne - 1, Colonne - 1, tableauPieceCaracteristique, tableauPieceGraphique, tableauPlateauGraphique, tableauPlateauCaracteristique, PieceDispo);
                                 General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, tableauPlateauCaracteristique, tableauPieceCaracteristique);
+                                Console.WriteLine(QuartoPossible[0] + QuartoPossible[1] + QuartoPossible[2]);
                                 Affiche.AfficherPlateau(tableauPlateauGraphique);
                                 Console.WriteLine();
                                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -229,7 +230,7 @@ namespace Quarto
                             }
                             tour++;
                         }
-
+                        
                         else if (joueur == 0)
                         {
                             Console.ForegroundColor = ConsoleColor.Gray;
@@ -264,6 +265,7 @@ namespace Quarto
                                 General.JouerPieceAleatoire(NumeroPiece, out Ligne, out Colonne, tableauPlateauCaracteristique, tableauPlateauGraphique, tableauPieceGraphique, tableauPieceCaracteristique, PieceDispo);
                                 Affiche.AfficherPlateau(tableauPlateauGraphique);
                                 General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, tableauPlateauCaracteristique, tableauPieceCaracteristique);
+                                Console.WriteLine(QuartoPossible[0] + QuartoPossible[1] + QuartoPossible[2]);
                                 Console.ReadLine();
                                 Console.ForegroundColor = ConsoleColor.Gray;
 
@@ -335,6 +337,7 @@ namespace Quarto
                                 General.JouerPieceAleatoire(NumeroPiece, out Ligne, out Colonne, tableauPlateauCaracteristique, tableauPlateauGraphique, tableauPieceGraphique, tableauPieceCaracteristique, PieceDispo);
                                 Affiche.AfficherPlateau(tableauPlateauGraphique);
                                 General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, tableauPlateauCaracteristique, tableauPieceCaracteristique);
+                                
                                 Console.ReadLine();
                                 Console.ForegroundColor = ConsoleColor.Gray;
 
@@ -411,8 +414,10 @@ namespace Quarto
                                 Console.WriteLine();
                                 General.PlacerPiece(NumeroPiece, Ligne - 1, Colonne - 1, tableauPieceCaracteristique, tableauPieceGraphique, tableauPlateauGraphique, tableauPlateauCaracteristique, PieceDispo);
                                 General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, tableauPlateauCaracteristique, tableauPieceCaracteristique);
+                                
                                 Affiche.AfficherPlateau(tableauPlateauGraphique);
                                 Console.WriteLine();
+                                
                                 Console.ForegroundColor = ConsoleColor.Gray;
 
                                 // c'est à ce moment la qu'on peut dire Quarto 
@@ -454,6 +459,7 @@ namespace Quarto
             }
             while (jouer == "O");
 
+            
         }
     }
 }
