@@ -461,7 +461,7 @@ namespace Gwe
             Plateau[1][0] = 4;
             //Plateau[2][0] = 5;
             //Plateau[1][3] = 7;
-            Plateau[3][0] = 8;
+            //Plateau[3][0] = 8;
             Plateau[1][2] = 7;
             //Plateau[2][1] = 10;
             //Plateau[3][0] = 11;

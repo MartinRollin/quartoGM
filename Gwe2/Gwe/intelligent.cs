@@ -190,13 +190,42 @@ namespace Gwe
                     ligne = PlaceVide[2][1];
                     colonne = 3 - ligne;
                     aléatoire.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
+                    sortie = true;
                     Console.WriteLine("Quarto sur la diagonale 2");
                 }
             }
 
             //on conclue en cas d'absence de quarto
             if (!sortie)
-                aléatoire.JouerPieceAleatoire(Piece, out ligne, out colonne, plateau, PlateauGraphique, PieceGraphique,caracteristiques, PieceDispo);
+            //aléatoire.JouerPieceAleatoire(Piece, out ligne, out colonne, plateau, PlateauGraphique, PieceGraphique,caracteristiques, PieceDispo);
+            {
+                //On reprend l'idée de la fonction JouerPieceAléatoire
+                    int nbCasesVides = 0;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            if (VerifierPlaceVide(i, j, TableauPlateauCaracteristique) == true)
+                                nbCasesVides++;
+                        }
+                    }
+
+                    // casedispo est un tabeau qui stocke des tableaux d'entiers de la forme [ligne,colonne] tels que ligne et colonne sont les indices de ligne et colonne des cases vides du plateau
+                    int[][] casedispo = new int[nbCasesVides][];
+                    int index = 0;
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            if (VerifierPlaceVide(i, j, TableauPlateauCaracteristique) == true)
+                            {
+                                casedispo[index] = new int[] { i + 1, j + 1 };
+                                index++;
+                            }
+                        }
+                    }
+                }
         }
     }
 }
