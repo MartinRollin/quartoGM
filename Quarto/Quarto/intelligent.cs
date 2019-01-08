@@ -199,9 +199,29 @@ namespace Quarto
                 General.JouerPieceAleatoire(Piece, out ligne, out colonne, plateau, PlateauGraphique, PieceGraphique,caracteristiques, PieceDispo);
         }
 
-        
+        /// <summary>
+        ///  renvoie true si le caractere car est dans la chaine de caractere str
+        /// </summary>
+        /// <param name="car"> un caractere</param>
+        /// <param name="str">une chaine de caractere</param>
+        /// <returns></returns>
+        public static bool CaractereDansChaine(char car, string str)
+        {
+            bool present = false;
+            int index = 0;
+            while (index < str.Length && present == false)
+            {
+                if (car == str[index])
+                    present = true;
+                index++;
+            }
+            return present;
+        }
+
+
         //Maintenant on regarde si il y a des pieces qui pourraient potentiellement faire un quarto si bien placées, sinon on place la pièce de manière aléatoire.
         // Cette fonction renvoie un numero de piece qui empeche le joueur de gagner au tour suivant si c'est possible
+
         public static int ChoisirQuarto(int[][] PlaceVide, int[][] plateau, string[] caracteristiques, int[] PieceDispo)
         {
             // on parcourt la liste des pieces disponibles, on verifie si chacunes de ces pieces pourrait faire un quarto en parcourant toutes les places disponibles
@@ -213,57 +233,76 @@ namespace Quarto
                 foreach (int e in QuartoPossible[i])
                     somme+=e;
             }
-            if (somme == -10) // cela veut dire que chaque colonne/ligne/diagonale possède strictement moins que 3 éléments et donc que peu importe la pièce choisie impossible qu'il y ait quarto au tour du joueur
+            if (somme == -10) // chaque colonne/ligne/diagonale possède strictement moins que 3 éléments et donc que peu importe la pièce choisie impossible qu'il y ait quarto au tour du joueur
                 return General.ChoisirPieceAleatoire(PieceDispo);
             else
             {
+                int NumPiece = -1;
                 bool Gagne = true;
                 int index = 0;
+                string Element = ElementCommun(plateau, caracteristiques, QuartoPossible);
                 while (Gagne == true && index < 16)
                 {
-                    if (PieceDispo[index] != 0) // Si la piece est disponible
+                    NumPiece = PieceDispo[index];
+                    if (NumPiece != 0) // Si la piece est disponible
                     {
-
+                        int i = 0;
+                        Gagne = false;
+                        while (i < 4 && Gagne == false)
+                        {
+                            if (!CaractereDansChaine(caracteristiques[NumPiece][i], Element))
+                                Gagne = true;
+                            i++;
+                        }
+                        if (i == 3) // C'est à dire que toutes les caracteristiques de la piece sont presentes dans un ou plusieurs alignement de 3 pieces deja posees sur le plateau
+                            Gagne = true;
                     }
                     index++;
                 }
-            }
-            
+                if (Gagne == true)
+                    return General.ChoisirPieceAleatoire(PieceDispo);
+                else
+                    return NumPiece;
+            }     
         }
 
         public static string ElementCommun (int[][] plateau, string[] caracteristiques,int[][] QuartoPossible)
         {
             string Element = "";
             int[] combin = new int[40];
-            
-            for (int ligne=0;ligne<4;ligne++)
+
+            // On met toutes les combinaisons du plateau susceptibles de faire des quarto dans une liste
+            for (int ligne = 0; ligne < 4; ligne++) // On remplit combin avec les pieces de chaque ligne 
             {
                 for(int colonne = 0;colonne<4;colonne++)
                 {
                     combin[4 * ligne + colonne] = plateau[ligne][colonne];
                 }               
             }
-            for (int colonne = 0; colonne < 4; colonne++)
+            for (int colonne = 0; colonne < 4; colonne++) // On ajoute a combin les pieces de chaque colonne (on se moque des redondances du plateau)
             {
                 for (int ligne = 0; ligne < 4; ligne++)
                 {
                     combin[15+4 * colonne + ligne] = plateau[ligne][colonne];
                 }
             }
+            // On ajoute a combin les pieces de chaque diagonale
+            // diagonale 1
             combin[32] = plateau[0][0];
             combin[33] = plateau[1][1];
             combin[34] = plateau[2][2];
             combin[35] = plateau[3][3];
+            // diagonale 2
             combin[36] = plateau[0][3];
             combin[37] = plateau[1][2];
             combin[38] = plateau[2][1];
             combin[39] = plateau[3][0];
 
-            for (int i = 0;i<10;i++)
+            for (int i = 0; i < 10; i++) // On parcourt un a un chaque alignement où il pourrait y avoir quarto dans le plateau
             {
                 int nbvide = 0;
                 int numvide = 0;
-                for (int j = 0;j < 4;j++)
+                for (int j = 0; j < 4; j++) // On verifie qu'il n'y a que 3 pieces placées dans l'alignement et on note l'emplacement de la pièce vide (numvide)
                 {
                     if (combin[i * 4 + j] == 0)
                     {
@@ -271,20 +310,35 @@ namespace Quarto
                         numvide = j;
                     }    
                 }
-                if (nbvide == 3)
-                    for (int j = 0;j<4;j++)
+                if (nbvide == 1)
+                {
+                    int index = 0;
+                    int[] tab = new int[3];
+                    for (int j = 0; j < 4; j++) // On stocke les indices des pieces dans le tableau tab pour effectuer le test qui suit
                     {
-                        if (j!=numvide)
-                            if (caracteristiques[combin[i * 4 ]][j]== caracteristiques[combin[i * 4+1]][j] ||  && caracteristiques[combin[i * 4+1]][j] == caracteristiques[combin[i * 4+2]][j] && caracteristiques[combin[i * 4+2]][j] == caracteristiques[combin[i * 4+3]][j])
-                            {
-                                bool present = false;
-                                foreach (char e in Element)
-                                    if (e==)
-                            }
+                        if (j != numvide)
+                        {
+                            tab[index] = j;
+                            index++;
+                        }
                     }
+                    for (int j = 0; j < 4; j++) // On verifie si les pieces de l'alignement possedent des caracteristiques en commun, on stocke alors ces caracteristiques dans Element en evitant les redondances
+                    {
+                        if (caracteristiques[combin[i * 4 + tab[0]]][j] == caracteristiques[combin[i * 4 + tab[1]]][j] && caracteristiques[combin[i * 4 + tab[1]]][j] == caracteristiques[combin[i * 4 + tab[2]]][j])
+                        {
+                            bool present = false;
+                            foreach (char e in Element) // On verifie que la caracteristique n'etait pas deja dans Element pour eviter les redondances
+                                if (e == caracteristiques[combin[i * 4 + tab[0]]][j])
+                                    present = true;
+                            if (present == false)
+                                Element = Element + caracteristiques[combin[i * 4 + tab[0]]][j];
+
+                        }
+                    }
+                }
             }
 
-            for (int numero = 0; numero < 4; numero++) // if(element[
+            return Element;
         }
     }
 }

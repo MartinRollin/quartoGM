@@ -10,7 +10,6 @@ namespace Quarto
     {
         static void Main(string[] args)
         {
-
             Console.SetWindowSize(110, 84);
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -135,7 +134,7 @@ namespace Quarto
                             {
                                 do                              // on laisse la possibilité au joueur de donner plusieurs endroits ou il pense qu'il y a quarto
                                 {
-                                    Console.Write(" A quelle ligne/colonne/diagonale y a t-il quarto ?\n < ecrire par exemple : ligne 2, diagonale 1 > : ");
+                                    Console.Write(" A quelle ligne/colonne/diagonale y a t-il quarto ?\n < ecrire par exemple : ligne 2, colonne 3, diagonale 1 > : ");
                                     string endroit = Console.ReadLine();
                                     quarto = General.VerifierQuarto(endroit, QuartoPossible);
                                     if (quarto == true)
