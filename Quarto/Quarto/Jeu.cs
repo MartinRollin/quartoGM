@@ -66,10 +66,15 @@ namespace Quarto
                     bool quarto = false;
                     int NumeroPiece;
                     int verifal;
+                    int seuil; // variable qui définit si l'ordinateur détecte le quarto à tous les coups (seuil = 0) ou avec 3 chances sur 5 (seuil = 2)
 
 
-                    Console.Write(" Choisissez le niveau de difficulté (facile/avancé) : ");
+                    Console.Write(" Choisissez le niveau de difficulté (facile/difficile) : ");
                     string niveau = Console.ReadLine();
+                    if (niveau == "difficile")
+                        seuil = 0;
+                    else
+                        seuil = 2;
 
                     Random rand = new Random();
                     int joueur = rand.Next(2);            // On determine quel joueur va commencer, 0 -> l'ordi est en train de jouer, 1 -> le joueur est en train de jouer
@@ -242,9 +247,9 @@ namespace Quarto
 
                             // On verifie le quarto de l'ordinateur
                             verifal = rand.Next(1, 6);
-                            // niveau de difficulté de l'ordi ici
+                            // niveau de difficulté de l'ordi ici (si niveau difficile, seuil = 0 si niveau facile seuil = 2)
 
-                            if (verifal > 3 && (QuartoPossible[0] != "vide" || QuartoPossible[1] != "vide" || QuartoPossible[2] != "vide"))  // ici on ne sait pas où est le quarto
+                            if (verifal > seuil && (QuartoPossible[0] != "vide" || QuartoPossible[1] != "vide" || QuartoPossible[2] != "vide"))  // ici on ne sait pas où est le quarto
                             {
                                 quarto = true;
                                 if (QuartoPossible[0] != "vide")
@@ -260,6 +265,11 @@ namespace Quarto
 
                             else
                             {
+                                /*
+                                if (niveau == "difficile")
+                                {
+                                    intelligent.PlacerQuarto(NumeroPiece, intelligent.VerifierUnePlace(tableauPlateauCaracteristique), tableauPlateauCaracteristique, tableauPieceCaracteristique, out Ligne, out Colonne, tableauPlateauGraphique, tableauPieceGraphique, PieceDispo,out quarto);
+                                }*/
                                 General.JouerPieceAleatoire(NumeroPiece, out Ligne, out Colonne, tableauPlateauCaracteristique, tableauPlateauGraphique, tableauPieceGraphique, tableauPieceCaracteristique, PieceDispo);
                                 Affiche.AfficherPlateau(tableauPlateauGraphique);
                                 General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, tableauPlateauCaracteristique, tableauPieceCaracteristique);
@@ -268,9 +278,9 @@ namespace Quarto
 
                                 // On verifie une deuxieme fois s'il y a quarto
                                 verifal = rand.Next(1, 6);
-                                // niveau de difficulté de l'ordi ici
+                                // niveau de difficulté de l'ordi ici (si niveau difficile, seuil = 0 si niveau facile seuil = 2)
 
-                                if (verifal > 3 && (QuartoPossible[0] != "vide" || QuartoPossible[1] != "vide" || QuartoPossible[2] != "vide"))  // ici on ne sait pas où est le quarto
+                                if (verifal > seuil && (QuartoPossible[0] != "vide" || QuartoPossible[1] != "vide" || QuartoPossible[2] != "vide"))  // ici on ne sait pas où est le quarto
                                 {
                                     quarto = true;
                                     if (QuartoPossible[0] != "vide")
@@ -283,7 +293,7 @@ namespace Quarto
                                             Console.WriteLine(" L'ordinateur gagne la partie ! Il y a un quarto à la " + QuartoPossible[2]);
                                     }
                                 }
-                                else
+                                if (quarto == false)
                                 {
                                     Console.WriteLine("\n Voici les pièces disponibles :\n");
                                     Affiche.AfficherPieceDisponible(tableauPieceGraphique, PieceDispo);
@@ -313,9 +323,9 @@ namespace Quarto
 
                             // On verifie le quarto de l'ordinateur
                             verifal = rand.Next(1, 6);
-                            // niveau de difficulté de l'ordi ici
+                            // niveau de difficulté de l'ordi ici (si niveau difficile, seuil = 0 si niveau facile seuil = 2)
 
-                            if (verifal > 3 && (QuartoPossible[0] != "vide" || QuartoPossible[1] != "vide" || QuartoPossible[2] != "vide"))  // ici on ne sait pas où est le quarto
+                            if (verifal > seuil && (QuartoPossible[0] != "vide" || QuartoPossible[1] != "vide" || QuartoPossible[2] != "vide"))  // ici on ne sait pas où est le quarto
                             {
                                 quarto = true;
                                 if (QuartoPossible[0] != "vide")
@@ -339,9 +349,9 @@ namespace Quarto
 
                                 // On verifie une deuxieme fois s'il y a quarto
                                 verifal = rand.Next(1, 6);
-                                // niveau de difficulté de l'ordi ici
+                                // niveau de difficulté de l'ordi ici (si niveau difficile, seuil = 0 si niveau facile seuil = 2)
 
-                                if (verifal > 3 && (QuartoPossible[0] != "vide" || QuartoPossible[1] != "vide" || QuartoPossible[2] != "vide"))  // ici on ne sait pas où est le quarto
+                                if (verifal > seuil && (QuartoPossible[0] != "vide" || QuartoPossible[1] != "vide" || QuartoPossible[2] != "vide"))  // ici on ne sait pas où est le quarto
                                 {
                                     quarto = true;
                                     if (QuartoPossible[0] != "vide")

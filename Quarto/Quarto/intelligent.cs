@@ -92,8 +92,9 @@ namespace Quarto
         
         //Maintenant on regarde si il y a un quarto possible, sinon on place la pièce de manière aléatoire.
         
-        public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques, out int ligne, out int colonne, string[][][] PlateauGraphique, string[][] PieceGraphique, int[] PieceDispo)
+        public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques, out int ligne, out int colonne, string[][][] PlateauGraphique, string[][] PieceGraphique, int[] PieceDispo,out bool quarto)
         {
+            quarto = false;
             ligne = 0;
             colonne = 0;
             int i = 0;
@@ -120,6 +121,7 @@ namespace Quarto
                         }
                     if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, caracteristiques))
                     {
+                        quarto = true;
                         ligne = i;
                         colonne = PlaceVide[0][i];
                         General.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
@@ -150,6 +152,7 @@ namespace Quarto
                         colonne = i;
                         General.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
                         sortie = true;
+                        quarto = true;
                         Console.WriteLine("Quarto sur la colonne {0}", i+1);
                     }
                 }
@@ -171,6 +174,7 @@ namespace Quarto
                     ligne = PlaceVide[2][0];
                     General.PlacerPiece(Piece, ligne, ligne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
                     sortie = true;
+                    quarto = true;
                     Console.WriteLine("Quarto sur la diagonale 1");
                 }
             }
@@ -189,6 +193,7 @@ namespace Quarto
                 {
                     ligne = PlaceVide[2][1];
                     colonne = 3 - ligne;
+                    quarto = true;
                     General.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
                     Console.WriteLine("Quarto sur la diagonale 2");
                 }
@@ -196,7 +201,11 @@ namespace Quarto
 
             //on conclue en cas d'absence de quarto
             if (!sortie)
-                General.JouerPieceAleatoire(Piece, out ligne, out colonne, plateau, PlateauGraphique, PieceGraphique,caracteristiques, PieceDispo);
+            {
+                General.JouerPieceAleatoire(Piece, out ligne, out colonne, plateau, PlateauGraphique, PieceGraphique, caracteristiques, PieceDispo);
+                quarto = false;
+            }
+                
         }
 
         /// <summary>
