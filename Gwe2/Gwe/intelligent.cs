@@ -92,8 +92,9 @@ namespace Gwe
 
         //Maintenant on regarde si il y a un quarto possible, sinon on place la pièce de manière aléatoire.
 
-        public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques, out int ligne, out int colonne, string[][][] PlateauGraphique, string[][] PieceGraphique, int[] PieceDispo)
+        public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques, out int ligne, out int colonne, string[][][] PlateauGraphique, string[][] PieceGraphique, int[] PieceDispo, out bool quarto)
         {
+            quarto = false;
             ligne = 1;
             colonne = 1;
             int i = 0;
@@ -124,6 +125,7 @@ namespace Gwe
                         colonne = PlaceVide[0][i];
                         aléatoire.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
                         sortie = true;
+                        quarto = true;
                         Console.WriteLine("Quarto sur la ligne {0}", i+1);
                     }
                 }
@@ -150,6 +152,7 @@ namespace Gwe
                         colonne = i;
                         aléatoire.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
                         sortie = true;
+                        quarto = true;
                         Console.WriteLine("Quarto sur la colonne {0}", i+1);
                     }
                 }
@@ -171,6 +174,7 @@ namespace Gwe
                     ligne = PlaceVide[2][0];
                     aléatoire.PlacerPiece(Piece, ligne, ligne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
                     sortie = true;
+                    quarto = true;
                     Console.WriteLine("Quarto sur la diagonale 1");
                 }
             }
@@ -191,6 +195,7 @@ namespace Gwe
                     colonne = 3 - ligne;
                     aléatoire.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
                     sortie = true;
+                    quarto = true;
                     Console.WriteLine("Quarto sur la diagonale 2");
                 }
             }
@@ -199,6 +204,7 @@ namespace Gwe
             if (!sortie)
             {
                 aléatoire.JouerPieceAleatoire(Piece, out ligne, out colonne, plateau, PlateauGraphique, PieceGraphique, caracteristiques, PieceDispo);
+                quarto = false;
             }         
         }
     }

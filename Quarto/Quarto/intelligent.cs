@@ -89,14 +89,14 @@ namespace Quarto
 
             return (retour);
         }
-        
+
         //Maintenant on regarde si il y a un quarto possible, sinon on place la pièce de manière aléatoire.
-        
-        public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques, out int ligne, out int colonne, string[][][] PlateauGraphique, string[][] PieceGraphique, int[] PieceDispo,out bool quarto)
+
+        public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques, out int ligne, out int colonne, string[][][] PlateauGraphique, string[][] PieceGraphique, int[] PieceDispo, out bool quarto)
         {
             quarto = false;
-            ligne = 0;
-            colonne = 0;
+            ligne = 1;
+            colonne = 1;
             int i = 0;
             bool sortie = false; //nous permettra de sortir de la boucle while si on a un Quarto
             int[] PieceATester = new int[3]; // contiendra les 3 pièces à tester avec celle donnée par le joueur
@@ -105,11 +105,11 @@ namespace Quarto
             while ((i < 4) && (!sortie))
             {
                 //on commence par chercher si il y a une ligne avec une place disponible pour tenter le quarto
-                if (PlaceVide[0][i] == -1) 
+                if (PlaceVide[0][i] == -1)
                     i++;
 
                 // si il y a, on cherche à tester si un quarto est possible avec la pièce qui nous a été confiée.
-                else 
+                else
                 {
                     //On commence par remplir le tableau des pièces à tester avec les pièces non nulles de la ligne.
                     int k = 0;
@@ -121,12 +121,12 @@ namespace Quarto
                         }
                     if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, caracteristiques))
                     {
-                        quarto = true;
                         ligne = i;
                         colonne = PlaceVide[0][i];
                         General.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
                         sortie = true;
-                        Console.WriteLine("Quarto sur la ligne {0}", i+1);
+                        quarto = true;
+                        Console.WriteLine("Quarto sur la ligne {0}", i + 1);
                     }
                 }
             }
@@ -141,7 +141,7 @@ namespace Quarto
                 {
                     int k = 0;
                     for (int j = 0; j < 4; j++)
-                        if ((plateau[j][i] != 0)&&(k<3))
+                        if ((plateau[j][i] != 0) && (k < 3))
                         {
                             PieceATester[k] = plateau[j][i];
                             k++;
@@ -153,23 +153,23 @@ namespace Quarto
                         General.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
                         sortie = true;
                         quarto = true;
-                        Console.WriteLine("Quarto sur la colonne {0}", i+1);
+                        Console.WriteLine("Quarto sur la colonne {0}", i + 1);
                     }
                 }
             }
 
             //Au tour des diagonales
             //diagonale 1
-            if ((PlaceVide[2][0] == -1) && (!sortie))
+            if ((PlaceVide[2][0] != -1) && (!sortie))
             {
                 int k = 0;
-                for (int j=0;j<4;j++)
-                    if ((plateau[j][j]!=0)&&(k<3))
+                for (int j = 0; j < 4; j++)
+                    if ((plateau[j][j] != 0) && (k < 3))
                     {
                         PieceATester[k] = plateau[j][j];
                         k++;
                     }
-                if (General.Tester4Pieces(PieceATester[0],PieceATester[1],PieceATester[2],Piece,caracteristiques))
+                if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, caracteristiques))
                 {
                     ligne = PlaceVide[2][0];
                     General.PlacerPiece(Piece, ligne, ligne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
@@ -180,21 +180,22 @@ namespace Quarto
             }
 
             //diagonale 2
-            if ((PlaceVide[2][1] == -1) && (!sortie))
+            if ((PlaceVide[2][1] != -1) && (!sortie))
             {
                 int k = 0;
                 for (int j = 0; j < 4; j++)
-                    if ((plateau[j][3-j] != 0) && (k < 3))
+                    if ((plateau[j][3 - j] != 0) && (k < 3))
                     {
-                        PieceATester[k] = plateau[j][3-j];
+                        PieceATester[k] = plateau[j][3 - j];
                         k++;
                     }
                 if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, caracteristiques))
                 {
                     ligne = PlaceVide[2][1];
                     colonne = 3 - ligne;
-                    quarto = true;
                     General.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
+                    sortie = true;
+                    quarto = true;
                     Console.WriteLine("Quarto sur la diagonale 2");
                 }
             }
@@ -205,7 +206,6 @@ namespace Quarto
                 General.JouerPieceAleatoire(Piece, out ligne, out colonne, plateau, PlateauGraphique, PieceGraphique, caracteristiques, PieceDispo);
                 quarto = false;
             }
-                
         }
 
         /// <summary>
