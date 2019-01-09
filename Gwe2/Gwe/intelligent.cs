@@ -94,8 +94,8 @@ namespace Gwe
 
         public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques, out int ligne, out int colonne, string[][][] PlateauGraphique, string[][] PieceGraphique, int[] PieceDispo)
         {
-            ligne = 0;
-            colonne = 0;
+            ligne = 1;
+            colonne = 1;
             int i = 0;
             bool sortie = false; //nous permettra de sortir de la boucle while si on a un Quarto
             int[] PieceATester = new int[3]; // contiendra les 3 pièces à tester avec celle donnée par le joueur
@@ -197,35 +197,9 @@ namespace Gwe
 
             //on conclue en cas d'absence de quarto
             if (!sortie)
-            //aléatoire.JouerPieceAleatoire(Piece, out ligne, out colonne, plateau, PlateauGraphique, PieceGraphique,caracteristiques, PieceDispo);
             {
-                //On reprend l'idée de la fonction JouerPieceAléatoire
-                    int nbCasesVides = 0;
-                    for (int i = 0; i < 4; i++)
-                    {
-                        for (int j = 0; j < 4; j++)
-                        {
-                            if (VerifierPlaceVide(i, j, TableauPlateauCaracteristique) == true)
-                                nbCasesVides++;
-                        }
-                    }
-
-                    // casedispo est un tabeau qui stocke des tableaux d'entiers de la forme [ligne,colonne] tels que ligne et colonne sont les indices de ligne et colonne des cases vides du plateau
-                    int[][] casedispo = new int[nbCasesVides][];
-                    int index = 0;
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        for (int j = 0; j < 4; j++)
-                        {
-                            if (VerifierPlaceVide(i, j, TableauPlateauCaracteristique) == true)
-                            {
-                                casedispo[index] = new int[] { i + 1, j + 1 };
-                                index++;
-                            }
-                        }
-                    }
-                }
+                aléatoire.JouerPieceAleatoire(Piece, out ligne, out colonne, plateau, PlateauGraphique, PieceGraphique, caracteristiques, PieceDispo);
+            }         
         }
     }
 }

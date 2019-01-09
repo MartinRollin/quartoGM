@@ -234,7 +234,7 @@ namespace Gwe
         //On verifie que la position où veut jouer le joueur est disponible
         public static bool VerifierPlaceVide(int ligne, int colonne, int[][] tab)
         {
-            if (tab[ligne-1][colonne-1] == 0)
+            if (tab[ligne][colonne] == 0)
                 return (true);
             else
                 return (false);
