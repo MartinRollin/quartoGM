@@ -10,8 +10,18 @@ namespace Quarto
     {
 
         // =========================================================================================
-        // On insère une piece dans le plateau (ce qui sous-entend mettre tout les tableaux du plateau et le tableau PieceDisponible à jour)
 
+        /// <summary>
+        /// Insère une piece dans le plateau et met tous les tableaux du plateau et le tableau PieceDisponible à jour
+        /// </summary>
+        /// <param name="Piece"></param>
+        /// <param name="Ligne"></param>
+        /// <param name="Colonne"></param>
+        /// <param name="TableauPieceCaracteristique"></param>
+        /// <param name="TableauPieceGraphique"></param>
+        /// <param name="TableauPlateauGraphique"></param>
+        /// <param name="TableauPlateauCaracteristique"></param>
+        /// <param name="TableauPiecesDisponible"></param>
         public static void PlacerPiece (int Piece, int Ligne, int Colonne,string[] TableauPieceCaracteristique, string[][] TableauPieceGraphique,string[][][] TableauPlateauGraphique,int[][] TableauPlateauCaracteristique,int[] TableauPiecesDisponible)
         {
             TableauPlateauGraphique[Ligne][Colonne] = TableauPieceGraphique[Piece];
@@ -21,8 +31,14 @@ namespace Quarto
 
    
         // =========================================================================================
-        //On verifie que la position où veut jouer le joueur est bien disponible
-
+ 
+        /// <summary>
+        /// Verifie que la position où veut jouer le joueur est bien disponible
+        /// </summary>
+        /// <param name="Ligne"></param>
+        /// <param name="Colonne"></param>
+        /// <param name="TableauPlateauCaracteristique"></param>
+        /// <returns></returns>
         public static bool VerifierPlaceVide(int Ligne, int Colonne, int[][] TableauPlateauCaracteristique)
         {
             if (TableauPlateauCaracteristique[Ligne][Colonne] == 0)
@@ -33,8 +49,13 @@ namespace Quarto
 
 
         // =========================================================================================
-        //on vérifie si la pièce est diponible
-
+ 
+        /// <summary>
+        /// Verifie si la pièce est disponible
+        /// </summary>
+        /// <param name="Piece"></param>
+        /// <param name="TableauPieceDisponible"></param>
+        /// <returns></returns>
         public static bool VerifierpieceDisponible(int Piece, int[] TableauPieceDisponible)
         {
             if (TableauPieceDisponible[Piece] == 0)
@@ -49,7 +70,12 @@ namespace Quarto
         // =========================================================================================
         // On cherche à verifier si 4 pièces sont alignées
 
-        // Commençons par les colonnes
+        /// <summary>
+        /// Verifie si une colonne comporte 4 pièces
+        /// </summary>
+        /// <param name="Colonne"></param>
+        /// <param name="TableauPlateauCaracteristique"></param>
+        /// <returns></returns>
         public static bool VerifierColonneVide(int Colonne, int[][] TableauPlateauCaracteristique) //on parcours la colonne en comptant le nombre de pièce, si il vaut 4, alors la colonne est pleine
         {
             int NbPiece = 0;
@@ -62,7 +88,12 @@ namespace Quarto
                 return (false);
         }
 
-        //Nous faisons de même pour les lignes
+        /// <summary>
+        /// Verifie si une ligne comporte 4 pièces
+        /// </summary>
+        /// <param name="Ligne"></param>
+        /// <param name="TableauPlateauCaracteristique"></param>
+        /// <returns></returns>
         public static bool VerifierLigneVide(int Ligne, int[][] TableauPlateauCaracteristique)
         {
             int NbPiece = 0;
@@ -76,7 +107,12 @@ namespace Quarto
         }
 
 
-        //pour les diagonales (on rentrera celle que l'on veut (1 ou 2))
+        /// <summary>
+        /// Verifie si une diagonale (1 ou 2) comporte 4 pièces
+        /// </summary>
+        /// <param name="Numero"></param>
+        /// <param name="TableauPlateauCaracteristique"></param>
+        /// <returns></returns>
         public static bool VerifierDiagonale(int Numero, int[][] TableauPlateauCaracteristique)
         {
             int NbPiece = 0;
@@ -104,14 +140,22 @@ namespace Quarto
 
 
         // =========================================================================================
-        //on teste si 4 pièces (représentées pas des entiers distincts compris entre 1 et 16) contiennent 1 caractère commun
 
+        /// <summary>
+        /// Teste si 4 pièces (représentés par des entiers distincts compris entre 1 et 16) contiennent 1 caractère commun
+        /// </summary>
+        /// <param name="Piece1"></param>
+        /// <param name="Piece2"></param>
+        /// <param name="Piece3"></param>
+        /// <param name="Piece4"></param>
+        /// <param name="TableauPieceCaracteristique"></param>
+        /// <returns></returns>
         public static bool Tester4Pieces(int Piece1, int Piece2, int Piece3, int Piece4, string[] TableauPieceCaracteristique)
         {
             bool sortie = false;
             int k = 0;
 
-            //les caractères sont représentés par une chaine de 4 caractères. Si les 4 pièces ont un des caractères commun (au même emplacement) on renvoie true
+            //les caracteristiques sont représentés par une chaine de 4 caractères. Si les 4 pièces ont un des caractères commun (au même emplacement) on renvoie true
             if (Piece1!=0 && Piece2!=0 && Piece3!=0 && Piece4!=0)
                 while ((!sortie) && (k < 4))
                    if ((TableauPieceCaracteristique[Piece1 - 1][k] == TableauPieceCaracteristique[Piece2 - 1][k]) && (TableauPieceCaracteristique[Piece1 - 1][k] == TableauPieceCaracteristique[Piece3 - 1][k]) && (TableauPieceCaracteristique[Piece1 - 1][k] == TableauPieceCaracteristique[Piece4 - 1][k]))
@@ -124,23 +168,37 @@ namespace Quarto
 
 
         // =========================================================================================
-        //On choisit aléatoirement une pièce et on met à jour notre tableau PiecDispo
 
-        public static int ChoisirPieceAleatoire(int[] TableauPieceDispo)
+        /// <summary>
+        /// Coisi aléatoirement une pièce et l'enleve du tableau PieceDisponible
+        /// </summary>
+        /// <param name="TableauPieceDisponible"></param>
+        /// <returns></returns>
+        public static int ChoisirPieceAleatoire(int[] TableauPieceDisponible)
         {
             Random rand = new Random();
             int Sortie = rand.Next(1,17);
 
-            while (TableauPieceDispo[Sortie-1] == 0)
+            while (TableauPieceDisponible[Sortie-1] == 0)
                 Sortie = rand.Next(1,17);
-            TableauPieceDispo[Sortie - 1] = 0;
+            TableauPieceDisponible[Sortie - 1] = 0;
             return (Sortie);
         }
 
 
         // =========================================================================================
-        // Fonction appelee lorsque l'ordinateur veut placer une piece
-        
+
+        /// <summary>
+        /// Joue une pièce aléatoirement (pour l'ordinateur)
+        /// </summary>
+        /// <param name="Piece"></param>
+        /// <param name="Ligne"></param>
+        /// <param name="Colonne"></param>
+        /// <param name="TableauPlateauCaracteristique"></param>
+        /// <param name="TableauPlateauGraphique"></param>
+        /// <param name="TableauPieceGraphique"></param>
+        /// <param name="tableauPieceCaracteristique"></param>
+        /// <param name="tableauPiecesDisponible"></param>
         public static void JouerPieceAleatoire (int Piece, out int Ligne, out int Colonne, int[][] TableauPlateauCaracteristique, string [][][] TableauPlateauGraphique, string [][] TableauPieceGraphique, string[] tableauPieceCaracteristique, int[]tableauPiecesDisponible)
         {
             // on compte le nombre de cases vides
@@ -181,11 +239,18 @@ namespace Quarto
 
 
         // =========================================================================================
-        //On met à jour le tableau contenant les quartos possibles du tour en partant du principe qu'en posant une nouvelle pièce il ne peut y avoir qu'au maximum 3 quarto, sur la ligne, sur la colonne ou sur la diagonale.
 
+        /// <summary>
+        /// Mise à jour de QuartoPossible
+        /// </summary>
+        /// <param name="Ligne"></param>
+        /// <param name="Colonne"></param>
+        /// <param name="QuartoPossible"></param>
+        /// <param name="TableauPlateauCaracteristique"></param>
+        /// <param name="TableauPieceCaracteristique"></param>
         public static void Scanner(int Ligne, int Colonne, string[] QuartoPossible, int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique)
         {
-
+            //Quarto possible est de taille 3 car on part du principe qu'en posant une nouvelle pièce il ne peut y avoir qu'au maximum 3 quarto, sur la ligne, sur la colonne ou sur la diagonale.
 
             if (Tester4Pieces(TableauPlateauCaracteristique[Ligne][0], TableauPlateauCaracteristique[Ligne][1], TableauPlateauCaracteristique[Ligne][2], TableauPlateauCaracteristique[Ligne][3], TableauPieceCaracteristique) && !VerifierLigneVide(Ligne, TableauPlateauCaracteristique))
                 QuartoPossible[0] = "ligne " + (Ligne + 1);
@@ -211,8 +276,13 @@ namespace Quarto
 
 
         //=========================================================================================
-        //On vérifie si le quarto annoncé par le joueur est possible
 
+        /// <summary>
+        /// Vérifie que le quarto annoncé par le joueur est valable
+        /// </summary>
+        /// <param name="EntreeJoueur"></param>
+        /// <param name="QuartoPossible"></param>
+        /// <returns></returns>
         public static bool VerifierQuarto(string EntreeJoueur, string[] QuartoPossible)
         {
             bool Sortie = false;

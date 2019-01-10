@@ -11,8 +11,12 @@ namespace Quarto
         //=========================================================================================
         // L'ordi repère les quartos qu'il pourrait faire avec la pièce qu'on lui a donné à jouer
 
-        // On commence par chercher les lignes/colonnes/diagonales où il ne reste qu'une place
-
+        // 
+        /// <summary>
+        /// Cherche les lignes/colonnes/diagonales où il ne reste qu'une place
+        /// </summary>
+        /// <param name="TableauPlateauCaracteristique"></param>
+        /// <returns></returns>
         public static int[][] VerifierUnePlace( int[][] TableauPlateauCaracteristique)
         {
             int[][] Retour = new int[3][];
@@ -89,9 +93,21 @@ namespace Quarto
 
             return (Retour);
         }
+        
 
-        //Maintenant on regarde si il y a un quarto possible, sinon on place la pièce de manière aléatoire.
-
+        /// <summary>
+        /// Place un quarto, si possible, sinon place la pièce aléatoirement
+        /// </summary>
+        /// <param name="Piece"></param>
+        /// <param name="PlaceVide"></param>
+        /// <param name="TableauPlateauCaracteristique"></param>
+        /// <param name="TableauPieceCaracteristique"></param>
+        /// <param name="Ligne"></param>
+        /// <param name="Colonne"></param>
+        /// <param name="TableauPlateauGraphique"></param>
+        /// <param name="TableauPieceGraphique"></param>
+        /// <param name="TableauPieceDisponible"></param>
+        /// <param name="Quarto"></param>
         public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique, out int Ligne, out int Colonne, string[][][] TableauPlateauGraphique, string[][] TableauPieceGraphique, int[] TableauPieceDisponible, out bool Quarto)
         {
             Quarto = false;
@@ -209,7 +225,7 @@ namespace Quarto
         }
 
         /// <summary>
-        ///  renvoie true si le caractere car est dans la chaine de caractere str
+        ///  renvoie true si le caractere Car est dans la chaine de caractere Str
         /// </summary>
         /// <param name="car"> un caractere</param>
         /// <param name="str">une chaine de caractere</param>
@@ -228,7 +244,6 @@ namespace Quarto
         }
 
 
-        //Maintenant on regarde si il y a des pieces qui pourraient potentiellement faire un quarto si bien placées, sinon on place la pièce de manière aléatoire.
         /// <summary>
         ///  Renvoie, si possible, le numero d'une piece empechant le joueur de gagner au tour suivant
         /// </summary> 
@@ -277,6 +292,14 @@ namespace Quarto
             }     
         }
 
+
+        /// <summary>
+        /// Renvoie les caractèristiques communes des différents quartos possibles
+        /// </summary>
+        /// <param name="TableauPlateauCaracteristique"></param>
+        /// <param name="TableauPieceCaracteristique"></param>
+        /// <param name="QuartoPossible"></param>
+        /// <returns></returns>
         public static string ElementCommun (int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique,int[][] QuartoPossible)
         {
             string Element = "";

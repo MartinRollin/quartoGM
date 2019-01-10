@@ -157,9 +157,11 @@ namespace Quarto
         }
 
         // =========================================================================================
-
-        // On affiche graphiquement une pièce seule.
-
+        /// <summary>
+        /// On affiche graphiquement une pièce seule.
+        /// </summary>
+        /// <param name="NumeroPiece"></param>
+        /// <param name="TableauPieceGraphique"></param>
         public static void AfficherPiece(int NumeroPiece, string[][] TableauPieceGraphique)
         {
             for (int i = 0; i < 8; i++)

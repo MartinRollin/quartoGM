@@ -10,7 +10,10 @@ namespace Quarto
     {
 
         // =========================================================================================
-        // fonction qui renvoie la chaine de caractères correspondant à une piece graphique 
+
+        /// <summary>
+        /// Renvoie la chaine de caractères correspondant à une piece graphique 
+        /// </summary>
         public static string[] GenererPiece(string StringPiece)
         {
             string[] TabPiece = new string[10];
@@ -24,7 +27,11 @@ namespace Quarto
 
 
         // =========================================================================================
-        //renvoie un tableau qui comprend le graphisme de chaque piece par ligne en chaine de caractere. la piece vide est la piece 17
+        //
+        /// <summary>
+        /// Renvoie un tableau qui comprend le graphisme de chaque piece par ligne en chaine de caractere. la piece vide est la piece 0 
+        /// </summary>
+        /// <returns></returns>
         public static string[][] CreerTableauPieceGraphique()
         {
             string[] Tab = new string[8];
@@ -72,7 +79,11 @@ namespace Quarto
 
 
         // =========================================================================================
-        // cette fonction initialise le plateau, c'est à dire créé et retourne le tableau ne contenant que des pieces vides
+
+        /// <summary>
+        /// Initialise le plateau, c'est à dire créé et retourne le tableau ne contenant que des pieces vides
+        /// </summary>
+        /// <returns></returns>
         public static string[][][] InitialiserTableauPlateauGraphique()
         {
             string[][][] TableauPlateauGraphique = new string[4][][];
