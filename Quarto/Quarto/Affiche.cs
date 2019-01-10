@@ -58,8 +58,8 @@ namespace Quarto
 
         // =========================================================================================
 
-        //On affiche le plateau mis à jour
-        public static void AfficherPlateau(string[][][] tab)
+        //On affiche le plateau
+        public static void AfficherPlateau(string[][][] TableauPlateauGraphique)
         {
             int j;
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -76,15 +76,15 @@ namespace Quarto
                     j = 0; //pour afficher correctement la ligne, on doit passer d'une colonne à l'autre.
                     while (j < 4)
                     {
-                        if (tab[i][j][l][0] == 'b') // la couleur est indiqué par le premier caractère de chaque string (b=blanc, v=vert)
+                        if (TableauPlateauGraphique[i][j][l][0] == 'b') // la couleur est indiqué par le premier caractère de chaque string (b=blanc, v=vert), caratère qui ne sera pas affiché
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.Write(tab[i][j][l].Substring(1));
+                            Console.Write(TableauPlateauGraphique[i][j][l].Substring(1));
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
-                            Console.Write(tab[i][j][l].Substring(1));
+                            Console.Write(TableauPlateauGraphique[i][j][l].Substring(1));
                         }
                         Console.ForegroundColor = ConsoleColor.Gray;
                         Console.Write("█"); // Choix de cette séparation
@@ -107,14 +107,13 @@ namespace Quarto
 
         // =========================================================================================
 
-        //Afficher graphiquement les pièces disponibles ainsi que le numéro à afficher si on veut la prendre une
+        //Afficher graphiquement les pièces disponibles ainsi que le numéro à saisir pour les sélectionner
         // on n'affiche que les pièces disponibles, dans les cellules contenant un entier naturel non nul
-        public static void AfficherPieceDisponible(string[][] graph, int[] dispo)
+        public static void AfficherPieceDisponible(string[][] TableauPieceGraphique, int[] TableauPieceDisponible)
         {
             int j;
 
             //on affiche par 4 lignes de 4 pièces (en mettant du vide si la pièce n'est plus disponible)
-            // ligne 1:
             for (int k = 0; k < 4; k++)
             {
                 for (int i = 1; i < 8; i++) // on affiche ligne par ligne les pièces
@@ -122,15 +121,15 @@ namespace Quarto
                     j = 4 * k;
                     while (j < 4 * (k + 1))
                     {
-                        if (graph[dispo[j]][i][0] == 'b') // la pièce dispo va contenir l'entier correspondant à la pièce à présenter (peut valoir 17, ce qui oriente vers la pièce vide dans notre graph en place 16)
+                        if (TableauPieceGraphique[TableauPieceDisponible[j]][i][0] == 'b') // TableauPieceDispo va contenir l'entier correspondant à la pièce à présenter (peut valoir 0, ce qui oriente vers la pièce vide dans notre TableauPieceGraphique en place 0)
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.Write(graph[dispo[j]][i].Substring(1));
+                            Console.Write(TableauPieceGraphique[TableauPieceDisponible[j]][i].Substring(1));
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
-                            Console.Write(graph[dispo[j]][i].Substring(1));
+                            Console.Write(TableauPieceGraphique[TableauPieceDisponible[j]][i].Substring(1));
                         }
                         Console.Write("  ");
                         j++;
@@ -138,7 +137,7 @@ namespace Quarto
                     Console.WriteLine();
                 }
                 Console.ForegroundColor = ConsoleColor.White;
-                for (int i = 4 * k; i < 4 * (k + 1); i++) //on veut placer le numéro associé à la pièce 
+                for (int i = 4 * k; i < 4 * (k + 1); i++) //on place le numéro associé à la pièce 
                     if (i < 9)
                         Console.Write("      {0}       ", i + 1);
                     else
@@ -148,19 +147,23 @@ namespace Quarto
 
         }
 
-        public static void AfficherPiece(int NumeroPiece, string[][] tableauPieceGraphique)
+        // =========================================================================================
+
+        // On affiche graphiquement une pièce seule.
+
+        public static void AfficherPiece(int NumeroPiece, string[][] TableauPieceGraphique)
         {
             for (int i = 0; i < 8; i++)
             {
-                if (tableauPieceGraphique[NumeroPiece][i][0] == 'b') // la pièce dispo va contenir l'entier correspondant à la pièce à présenter (peut valoir 17, ce qui oriente vers la pièce vide dans notre graph en place 16)
+                if (TableauPieceGraphique[NumeroPiece][i][0] == 'b') 
                 {
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine(tableauPieceGraphique[NumeroPiece][i].Substring(1));
+                    Console.WriteLine(TableauPieceGraphique[NumeroPiece][i].Substring(1));
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine(tableauPieceGraphique[NumeroPiece][i].Substring(1));
+                    Console.WriteLine(TableauPieceGraphique[NumeroPiece][i].Substring(1));
                 }
             }
         }

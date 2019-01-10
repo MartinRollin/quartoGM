@@ -8,95 +8,95 @@ namespace Quarto
 {
     class intelligent
     {
+        //=========================================================================================
+        // L'ordi repère les quartos qu'il pourrait faire avec la pièce qu'on lui a donné à jouer
 
-    // L'ordi repère les quartos qu'il pourrait faire avec la pièce qu'on lui a donné à jouer
+        // On commence par chercher les lignes/colonnes/diagonales où il ne reste qu'une place
 
-     // On commence par chercher les lignes/colonnes/diagonales où il ne reste qu'une place
-        
-        public static int[][] VerifierUnePlace( int[][] Plateau)
+        public static int[][] VerifierUnePlace( int[][] TableauPlateauCaracteristique)
         {
-            int[][] retour = new int[3][];
-            int compteur;
-            int donnee;
+            int[][] Retour = new int[3][];
+            int Compteur;
+            int Donnee;
             //on commence par regarder les lignes du tableau
-            retour[0] = new int[4];
+            Retour[0] = new int[4];
             for (int i = 0; i < 4; i++)
             {
-                donnee = 0;
-                compteur = 0;
+                Donnee = 0;
+                Compteur = 0;
                 for (int j = 0; j < 4; j++)
-                    if (Plateau[i][j] != 0)
-                        compteur++;
+                    if (TableauPlateauCaracteristique[i][j] != 0)
+                        Compteur++;
                     else
-                        donnee = j;
+                        Donnee = j;
 
-                if (compteur == 3)
-                    retour[0][i] = donnee;
+                if (Compteur == 3)
+                    Retour[0][i] = Donnee;
                 else
-                    retour[0][i] = -1;
+                    Retour[0][i] = -1;
             }
 
             //les colonnes maintenant
-            retour[1] = new int[4];
+            Retour[1] = new int[4];
             for (int i = 0; i < 4; i++)
             {
-                donnee = 0;
-                compteur = 0;
+                Donnee = 0;
+                Compteur = 0;
                 for (int j = 0; j < 4; j++)
-                    if (Plateau[j][i] != 0)
-                        compteur++;
+                    if (TableauPlateauCaracteristique[j][i] != 0)
+                        Compteur++;
                     else
-                        donnee = j;
+                        Donnee = j;
 
-                if (compteur == 3)
-                    retour[1][i] = donnee;
+                if (Compteur == 3)
+                    Retour[1][i] = Donnee;
                 else
-                    retour[1][i] = -1;
+                    Retour[1][i] = -1;
             }
 
             //au tour des diagonales
-            retour[2] = new int[2]; // il n'existe que deux diagonales.
+            Retour[2] = new int[2]; // il n'existe que deux diagonales.
 
             //penchons nous sur la diagonale 1
-            donnee = 0;
-            compteur = 0;
+            Donnee = 0;
+            Compteur = 0;
             for (int i=0; i<4; i++)
             {
-                if (Plateau[i][i] != 0)
-                    compteur++;
+                if (TableauPlateauCaracteristique[i][i] != 0)
+                    Compteur++;
                 else
-                    donnee = i;
+                    Donnee = i;
             }
-            if (compteur == 3)
-                retour[2][0] = donnee;
+            if (Compteur == 3)
+                Retour[2][0] = Donnee;
             else
-                retour[2][0] = -1;
+                Retour[2][0] = -1;
 
             //la diagonale 2 maintenant
-            donnee = 0;
-            compteur = 0;
+            Donnee = 0;
+            Compteur = 0;
             for (int i = 0; i < 4; i++)
             {
-                if (Plateau[i][3-i] != 0)
-                    compteur++;
+                if (TableauPlateauCaracteristique[i][3-i] != 0)
+                    Compteur++;
                 else
-                    donnee = i;
+                    Donnee = i;
             }
-            if (compteur == 3)
-                retour[2][1] = donnee;
+            if (Compteur == 3)
+                Retour[2][1] = Donnee;
             else
-                retour[2][0] = -1;
+                Retour[2][0] = -1;
 
-            return (retour);
+            return (Retour);
         }
 
         //Maintenant on regarde si il y a un quarto possible, sinon on place la pièce de manière aléatoire.
 
-        public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] plateau, string[] caracteristiques, out int ligne, out int colonne, string[][][] PlateauGraphique, string[][] PieceGraphique, int[] PieceDispo, out bool quarto)
+        public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique, out int Ligne, out int Colonne, string[][][] TableauPlateauGraphique, string[][] TableauPieceGraphique, int[] TableauPieceDisponible, out bool Quarto)
         {
-            quarto = false;
-            ligne = 1;
-            colonne = 1;
+            Quarto = false;
+            Ligne = 1;
+            Colonne = 1;
             int i = 0;
             bool sortie = false; //nous permettra de sortir de la boucle while si on a un Quarto
             int[] PieceATester = new int[3]; // contiendra les 3 pièces à tester avec celle donnée par le joueur
@@ -114,18 +114,18 @@ namespace Quarto
                     //On commence par remplir le tableau des pièces à tester avec les pièces non nulles de la ligne.
                     int k = 0;
                     for (int j = 0; j < 4; j++)
-                        if ((plateau[i][j] != 0) && (k < 3))
+                        if ((TableauPlateauCaracteristique[i][j] != 0) && (k < 3))
                         {
-                            PieceATester[k] = plateau[i][j];
+                            PieceATester[k] = TableauPlateauCaracteristique[i][j];
                             k++;
                         }
-                    if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, caracteristiques))
+                    if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                     {
-                        ligne = i;
-                        colonne = PlaceVide[0][i];
-                        General.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
+                        Ligne = i;
+                        Colonne = PlaceVide[0][i];
+                        General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                         sortie = true;
-                        quarto = true;
+                        Quarto = true;
                         Console.WriteLine("Quarto sur la ligne {0}", i + 1);
                     }
                 }
@@ -141,18 +141,18 @@ namespace Quarto
                 {
                     int k = 0;
                     for (int j = 0; j < 4; j++)
-                        if ((plateau[j][i] != 0) && (k < 3))
+                        if ((TableauPlateauCaracteristique[j][i] != 0) && (k < 3))
                         {
-                            PieceATester[k] = plateau[j][i];
+                            PieceATester[k] = TableauPlateauCaracteristique[j][i];
                             k++;
                         }
-                    if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, caracteristiques))
+                    if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                     {
-                        ligne = PlaceVide[1][i];
-                        colonne = i;
-                        General.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
+                        Ligne = PlaceVide[1][i];
+                        Colonne = i;
+                        General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                         sortie = true;
-                        quarto = true;
+                        Quarto = true;
                         Console.WriteLine("Quarto sur la colonne {0}", i + 1);
                     }
                 }
@@ -164,17 +164,17 @@ namespace Quarto
             {
                 int k = 0;
                 for (int j = 0; j < 4; j++)
-                    if ((plateau[j][j] != 0) && (k < 3))
+                    if ((TableauPlateauCaracteristique[j][j] != 0) && (k < 3))
                     {
-                        PieceATester[k] = plateau[j][j];
+                        PieceATester[k] = TableauPlateauCaracteristique[j][j];
                         k++;
                     }
-                if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, caracteristiques))
+                if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                 {
-                    ligne = PlaceVide[2][0];
-                    General.PlacerPiece(Piece, ligne, ligne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
+                    Ligne = PlaceVide[2][0];
+                    General.PlacerPiece(Piece, Ligne, Ligne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                     sortie = true;
-                    quarto = true;
+                    Quarto = true;
                     Console.WriteLine("Quarto sur la diagonale 1");
                 }
             }
@@ -184,18 +184,18 @@ namespace Quarto
             {
                 int k = 0;
                 for (int j = 0; j < 4; j++)
-                    if ((plateau[j][3 - j] != 0) && (k < 3))
+                    if ((TableauPlateauCaracteristique[j][3 - j] != 0) && (k < 3))
                     {
-                        PieceATester[k] = plateau[j][3 - j];
+                        PieceATester[k] = TableauPlateauCaracteristique[j][3 - j];
                         k++;
                     }
-                if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, caracteristiques))
+                if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                 {
-                    ligne = PlaceVide[2][1];
-                    colonne = 3 - ligne;
-                    General.PlacerPiece(Piece, ligne, colonne, caracteristiques, PieceGraphique, PlateauGraphique, plateau, PieceDispo);
+                    Ligne = PlaceVide[2][1];
+                    Colonne = 3 - Ligne;
+                    General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                     sortie = true;
-                    quarto = true;
+                    Quarto = true;
                     Console.WriteLine("Quarto sur la diagonale 2");
                 }
             }
@@ -203,8 +203,8 @@ namespace Quarto
             //on conclue en cas d'absence de quarto
             if (!sortie)
             {
-                General.JouerPieceAleatoire(Piece, out ligne, out colonne, plateau, PlateauGraphique, PieceGraphique, caracteristiques, PieceDispo);
-                quarto = false;
+                General.JouerPieceAleatoire(Piece, out Ligne, out Colonne, TableauPlateauCaracteristique, TableauPlateauGraphique, TableauPieceGraphique, TableauPieceCaracteristique, TableauPieceDisponible);
+                Quarto = false;
             }
         }
 
@@ -214,17 +214,17 @@ namespace Quarto
         /// <param name="car"> un caractere</param>
         /// <param name="str">une chaine de caractere</param>
         /// <returns></returns>
-        public static bool CaractereDansChaine(char car, string str)
+        public static bool CaractereDansChaine(char Car, string Str)
         {
-            bool present = false;
-            int index = 0;
-            while (index < str.Length && present == false)
+            bool Present = false;
+            int Index = 0;
+            while (Index < Str.Length && Present == false)
             {
-                if (car == str[index])
-                    present = true;
-                index++;
+                if (Car == Str[Index])
+                    Present = true;
+                Index++;
             }
-            return present;
+            return Present;
         }
 
 
