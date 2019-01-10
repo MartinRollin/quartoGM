@@ -98,11 +98,11 @@ namespace Quarto
             Ligne = 1;
             Colonne = 1;
             int i = 0;
-            bool sortie = false; //nous permettra de sortir de la boucle while si on a un Quarto
-            int[] PieceATester = new int[3]; // contiendra les 3 pièces à tester avec celle donnée par le joueur
+            bool Sortie = false; //nous permettra de sortir de la boucle while si on a un Quarto
+            int[] PieceATester = new int[3]; // contiendra les 3 pièces à tester en plus de la Piece donnée par le joueur qui est argument de la fonction
 
             //On commence par les lignes
-            while ((i < 4) && (!sortie))
+            while ((i < 4) && (!Sortie))
             {
                 //on commence par chercher si il y a une ligne avec une place disponible pour tenter le quarto
                 if (PlaceVide[0][i] == -1)
@@ -124,7 +124,7 @@ namespace Quarto
                         Ligne = i;
                         Colonne = PlaceVide[0][i];
                         General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
-                        sortie = true;
+                        Sortie = true;
                         Quarto = true;
                         Console.WriteLine("Quarto sur la ligne {0}", i + 1);
                     }
@@ -133,7 +133,7 @@ namespace Quarto
 
             //On enchaîne sur les colonnes
             i = 0;
-            while ((i < 4) && (!sortie))
+            while ((i < 4) && (!Sortie))
             {
                 if (PlaceVide[1][i] == -1)
                     i++;
@@ -151,7 +151,7 @@ namespace Quarto
                         Ligne = PlaceVide[1][i];
                         Colonne = i;
                         General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
-                        sortie = true;
+                        Sortie = true;
                         Quarto = true;
                         Console.WriteLine("Quarto sur la colonne {0}", i + 1);
                     }
@@ -160,7 +160,7 @@ namespace Quarto
 
             //Au tour des diagonales
             //diagonale 1
-            if ((PlaceVide[2][0] != -1) && (!sortie))
+            if ((PlaceVide[2][0] != -1) && (!Sortie))
             {
                 int k = 0;
                 for (int j = 0; j < 4; j++)
@@ -173,14 +173,14 @@ namespace Quarto
                 {
                     Ligne = PlaceVide[2][0];
                     General.PlacerPiece(Piece, Ligne, Ligne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
-                    sortie = true;
+                    Sortie = true;
                     Quarto = true;
                     Console.WriteLine("Quarto sur la diagonale 1");
                 }
             }
 
             //diagonale 2
-            if ((PlaceVide[2][1] != -1) && (!sortie))
+            if ((PlaceVide[2][1] != -1) && (!Sortie))
             {
                 int k = 0;
                 for (int j = 0; j < 4; j++)
@@ -194,14 +194,14 @@ namespace Quarto
                     Ligne = PlaceVide[2][1];
                     Colonne = 3 - Ligne;
                     General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
-                    sortie = true;
+                    Sortie = true;
                     Quarto = true;
                     Console.WriteLine("Quarto sur la diagonale 2");
                 }
             }
 
             //on conclue en cas d'absence de quarto
-            if (!sortie)
+            if (!Sortie)
             {
                 General.JouerPieceAleatoire(Piece, out Ligne, out Colonne, TableauPlateauCaracteristique, TableauPlateauGraphique, TableauPieceGraphique, TableauPieceCaracteristique, TableauPieceDisponible);
                 Quarto = false;
@@ -229,44 +229,46 @@ namespace Quarto
 
 
         //Maintenant on regarde si il y a des pieces qui pourraient potentiellement faire un quarto si bien placées, sinon on place la pièce de manière aléatoire.
-        // Cette fonction renvoie un numero de piece qui empeche le joueur de gagner au tour suivant si c'est possible
+        /// <summary>
+        ///  Renvoie, si possible, le numero d'une piece empechant le joueur de gagner au tour suivant
+        /// </summary> 
 
-        public static int ChoisirQuarto(int[][] PlaceVide, int[][] plateau, string[] caracteristiques, int[] PieceDispo)
+        public static int ChoisirQuarto(int[][] PlaceVide, int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique, int[] PieceDispo)
         {
             // on parcourt la liste des pieces disponibles, on verifie si chacunes de ces pieces pourrait faire un quarto en parcourant toutes les places disponibles
             
-            int[][] QuartoPossible = VerifierUnePlace(plateau);
-            int somme = 0;
+            int[][] QuartoPossible = VerifierUnePlace(TableauPlateauCaracteristique);
+            int Somme = 0;
             for (int i = 0;i<3;i++)
             {
                 foreach (int e in QuartoPossible[i])
-                    somme+=e;
+                    Somme += e;
             }
-            if (somme == -10) // chaque colonne/ligne/diagonale possède strictement moins que 3 éléments et donc que peu importe la pièce choisie impossible qu'il y ait quarto au tour du joueur
+            if (Somme == -10) // chaque colonne/ligne/diagonale possède strictement moins de 3 éléments et donc que peu importe la pièce choisie impossible qu'il y ait quarto au tour du joueur
                 return General.ChoisirPieceAleatoire(PieceDispo);
             else
             {
                 int NumPiece = -1;
                 bool Gagne = true;
-                int index = 0;
-                string Element = ElementCommun(plateau, caracteristiques, QuartoPossible);
-                while (Gagne == true && index < 16)
+                int Index = 0;
+                string Element = ElementCommun(TableauPlateauCaracteristique, TableauPieceCaracteristique, QuartoPossible);
+                while (Gagne == true && Index < 16)
                 {
-                    NumPiece = PieceDispo[index];
+                    NumPiece = PieceDispo[Index];
                     if (NumPiece != 0) // Si la piece est disponible
                     {
                         int i = 0;
                         Gagne = false;
                         while (i < 4 && Gagne == false)
                         {
-                            if (!CaractereDansChaine(caracteristiques[NumPiece][i], Element))
+                            if (!CaractereDansChaine(TableauPieceCaracteristique[NumPiece][i], Element))
                                 Gagne = true;
                             i++;
                         }
                         if (i == 3) // C'est à dire que toutes les caracteristiques de la piece sont presentes dans un ou plusieurs alignement de 3 pieces deja posees sur le plateau
                             Gagne = true;
                     }
-                    index++;
+                    Index++;
                 }
                 if (Gagne == true)
                     return General.ChoisirPieceAleatoire(PieceDispo);
@@ -275,72 +277,72 @@ namespace Quarto
             }     
         }
 
-        public static string ElementCommun (int[][] plateau, string[] caracteristiques,int[][] QuartoPossible)
+        public static string ElementCommun (int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique,int[][] QuartoPossible)
         {
             string Element = "";
-            int[] combin = new int[40];
+            int[] Combin = new int[40];
 
             // On met toutes les combinaisons du plateau susceptibles de faire des quarto dans une liste
-            for (int ligne = 0; ligne < 4; ligne++) // On remplit combin avec les pieces de chaque ligne 
+            for (int Ligne = 0; Ligne < 4; Ligne++) // On remplit combin avec les pieces de chaque ligne 
             {
-                for(int colonne = 0;colonne<4;colonne++)
+                for(int Colonne = 0;Colonne<4;Colonne++)
                 {
-                    combin[4 * ligne + colonne] = plateau[ligne][colonne];
+                    Combin[4 * Ligne + Colonne] = TableauPlateauCaracteristique[Ligne][Colonne];
                 }               
             }
-            for (int colonne = 0; colonne < 4; colonne++) // On ajoute a combin les pieces de chaque colonne (on se moque des redondances du plateau)
+            for (int Colonne = 0; Colonne < 4; Colonne++) // On ajoute a Combin les pieces de chaque colonne (on se moque des redondances du plateau)
             {
-                for (int ligne = 0; ligne < 4; ligne++)
+                for (int Ligne = 0; Ligne < 4; Ligne++)
                 {
-                    combin[15+4 * colonne + ligne] = plateau[ligne][colonne];
+                    Combin[15+4 * Colonne + Ligne] = TableauPlateauCaracteristique[Ligne][Colonne];
                 }
             }
-            // On ajoute a combin les pieces de chaque diagonale
+            // On ajoute a Combin les pieces de chaque diagonale
             // diagonale 1
-            combin[32] = plateau[0][0];
-            combin[33] = plateau[1][1];
-            combin[34] = plateau[2][2];
-            combin[35] = plateau[3][3];
+            Combin[32] = TableauPlateauCaracteristique[0][0];
+            Combin[33] = TableauPlateauCaracteristique[1][1];
+            Combin[34] = TableauPlateauCaracteristique[2][2];
+            Combin[35] = TableauPlateauCaracteristique[3][3];
             // diagonale 2
-            combin[36] = plateau[0][3];
-            combin[37] = plateau[1][2];
-            combin[38] = plateau[2][1];
-            combin[39] = plateau[3][0];
+            Combin[36] = TableauPlateauCaracteristique[0][3];
+            Combin[37] = TableauPlateauCaracteristique[1][2];
+            Combin[38] = TableauPlateauCaracteristique[2][1];
+            Combin[39] = TableauPlateauCaracteristique[3][0];
 
             for (int i = 0; i < 10; i++) // On parcourt un a un chaque alignement où il pourrait y avoir quarto dans le plateau
             {
-                int nbvide = 0;
-                int numvide = 0;
+                int NbVide = 0;
+                int NumVide = 0;
                 for (int j = 0; j < 4; j++) // On verifie qu'il n'y a que 3 pieces placées dans l'alignement et on note l'emplacement de la pièce vide (numvide)
                 {
-                    if (combin[i * 4 + j] == 0)
+                    if (Combin[i * 4 + j] == 0)
                     {
-                        nbvide++;
-                        numvide = j;
+                        NbVide++;
+                        NumVide = j;
                     }    
                 }
-                if (nbvide == 1)
+                if (NbVide == 1)
                 {
-                    int index = 0;
-                    int[] tab = new int[3];
+                    int Index = 0;
+                    int[] Tab = new int[3];
                     for (int j = 0; j < 4; j++) // On stocke les indices des pieces dans le tableau tab pour effectuer le test qui suit
                     {
-                        if (j != numvide)
+                        if (j != NumVide)
                         {
-                            tab[index] = j;
-                            index++;
+                            Tab[Index] = j;
+                            Index++;
                         }
                     }
                     for (int j = 0; j < 4; j++) // On verifie si les pieces de l'alignement possedent des caracteristiques en commun, on stocke alors ces caracteristiques dans Element en evitant les redondances
                     {
-                        if (caracteristiques[combin[i * 4 + tab[0]]][j] == caracteristiques[combin[i * 4 + tab[1]]][j] && caracteristiques[combin[i * 4 + tab[1]]][j] == caracteristiques[combin[i * 4 + tab[2]]][j])
+                        if (TableauPieceCaracteristique[Combin[i * 4 + Tab[0]]][j] == TableauPieceCaracteristique[Combin[i * 4 + Tab[1]]][j] && TableauPieceCaracteristique[Combin[i * 4 + Tab[1]]][j] == TableauPieceCaracteristique[Combin[i * 4 + Tab[2]]][j])
                         {
-                            bool present = false;
+                            bool Present = false;
                             foreach (char e in Element) // On verifie que la caracteristique n'etait pas deja dans Element pour eviter les redondances
-                                if (e == caracteristiques[combin[i * 4 + tab[0]]][j])
-                                    present = true;
-                            if (present == false)
-                                Element = Element + caracteristiques[combin[i * 4 + tab[0]]][j];
+                                if (e == TableauPieceCaracteristique[Combin[i * 4 + Tab[0]]][j])
+                                    Present = true;
+                            if (Present == false)
+                                Element = Element + TableauPieceCaracteristique[Combin[i * 4 + Tab[0]]][j];
 
                         }
                     }

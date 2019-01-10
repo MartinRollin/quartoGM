@@ -8,6 +8,9 @@ namespace Quarto
 {
     class Affiche
     {
+        /// <summary>
+        /// Affichage des règles
+        /// </summary>
         public static void AfficherRegles() // regles du quarto adaptées a notre algorithme
         {
             Console.WriteLine("\n  ▄▄▄▄█████████████████████████████████████████████████████████████████████████████████████████▄▄▄▄");
@@ -57,8 +60,10 @@ namespace Quarto
 
 
         // =========================================================================================
-
-        //On affiche le plateau
+        /// <summary>
+        /// Affichage du plateau
+        /// </summary>
+        /// <param name="TableauPlateauGraphique"></param>
         public static void AfficherPlateau(string[][][] TableauPlateauGraphique)
         {
             int j;
@@ -106,8 +111,12 @@ namespace Quarto
         }
 
         // =========================================================================================
+        /// <summary>
+        /// Afficher graphiquement les pièces disponibles ainsi que le numéro à saisir pour les sélectionner
+        /// </summary>
+        /// <param name="TableauPieceGraphique"></param>
+        /// <param name="TableauPieceDisponible"></param>
 
-        //Afficher graphiquement les pièces disponibles ainsi que le numéro à saisir pour les sélectionner
         // on n'affiche que les pièces disponibles, dans les cellules contenant un entier naturel non nul
         public static void AfficherPieceDisponible(string[][] TableauPieceGraphique, int[] TableauPieceDisponible)
         {
