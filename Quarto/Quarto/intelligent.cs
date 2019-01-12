@@ -142,7 +142,7 @@ namespace Quarto
                         General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                         Sortie = true;
                         Quarto = true;
-                        Console.WriteLine("Quarto sur la ligne {0}", i + 1);
+                        Console.WriteLine("L'ordinateur gagne la partie ! Il y a un quarto à la ligne {0}", i + 1);
                     }
                 }
             }
@@ -169,7 +169,7 @@ namespace Quarto
                         General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                         Sortie = true;
                         Quarto = true;
-                        Console.WriteLine("Quarto sur la colonne {0}", i + 1);
+                        Console.WriteLine("L'ordinateur gagne la partie ! Il y a un quarto à la colonne {0}", i + 1);
                     }
                 }
             }
@@ -191,7 +191,7 @@ namespace Quarto
                     General.PlacerPiece(Piece, Ligne, Ligne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                     Sortie = true;
                     Quarto = true;
-                    Console.WriteLine("Quarto sur la diagonale 1");
+                    Console.WriteLine("L'ordinateur gagne la partie ! Il y a un quarto à la diagonale 1");
                 }
             }
 
@@ -212,7 +212,7 @@ namespace Quarto
                     General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                     Sortie = true;
                     Quarto = true;
-                    Console.WriteLine("Quarto sur la diagonale 2");
+                    Console.WriteLine("L'ordinateur gagne la partie ! Il y a un quarto à la diagonale 2");
                 }
             }
 
