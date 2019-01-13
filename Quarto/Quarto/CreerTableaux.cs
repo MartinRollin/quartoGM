@@ -12,7 +12,7 @@ namespace Quarto
         // =========================================================================================
 
         /// <summary>
-        /// Renvoie la chaine de caractères correspondant à une piece graphique 
+        /// Renvoie la chaine de caractères correspondant à une pièce graphique, utilisée dans CreerTableauPieceGraphique uniquement
         /// </summary>
         public static string[] GenererPiece(string StringPiece)
         {
@@ -29,7 +29,7 @@ namespace Quarto
         // =========================================================================================
         //
         /// <summary>
-        /// Renvoie un tableau qui comprend le graphisme de chaque piece par ligne en chaine de caractere. la piece vide est la piece 0 
+        /// Renvoie un tableau qui comprend le graphisme de chaque pièce par ligne en chaîne de caractère. la piece vide est la pièce 0 
         /// </summary>
         /// <returns></returns>
         public static string[][] CreerTableauPieceGraphique()
@@ -37,7 +37,7 @@ namespace Quarto
             string[] Tab = new string[8];
             string[][] TableauPieceGraphique = new string[17][];
 
-            // On remplit la première piece comme une piece vide
+            // On remplit la première pièce comme une pièce vide
             TableauPieceGraphique[0] = new string[8];
             for (int i = 0; i < 8; i++)
             {
@@ -45,7 +45,7 @@ namespace Quarto
             }
 
 
-            // les chaines de caracteres suivantes correspondent chacunes à une piece. Le premier caractere de chaque ligne de chaque piece (ici "b") code la couleur de la piece (ici bleu)
+            // les chaines de caractères suivantes correspondent chacunes à une pièce. Le premier caractère de chaque ligne de chaque piece (ici "b") code la couleur de la pièce (ici bleu)
             Tab[0] = "b            b            b   ▄▀▀▀▀▄   b  █      █  b  █▀▄▄▄▄▀█  b  █      █  b   ▀▄▄▄▄▀   b            ";
             Tab[1] = "b            b   ▄▀▀▀▀▄   b  █      █  b  █▀▄▄▄▄▀█  b  █      █  b  █      █  b   ▀▄▄▄▄▀   b            ";
             Tab[2] = "b            b            b   ▄████▄   b  ████████  b  █▀████▀█  b  █      █  b   ▀▄▄▄▄▀   b            ";
@@ -55,13 +55,13 @@ namespace Quarto
             Tab[6] = "b            b            b    ▄██▄    b  ▄██████▄  b  █▀███▀ █  b  █  █  ▄▀  b   ▀▄█▄▀    b            ";
             Tab[7] = "b            b    ▄██▄    b  ▄██████▄  b  █▀███▀ █  b  █  █   █  b  █  █  ▄▀  b   ▀▄█▄▀    b            ";
 
-            //generation des 8 pieces blanches *on découpe chaque piece en 8 lignes de 9 caracteres*
+            //génération des 8 pièces bleues *on découpe chaque pièce en 8 lignes de 9 caractères*
             for (int i = 0; i < 8; i++)
             {
                 TableauPieceGraphique[i + 1] = GenererPiece(Tab[i]);
             }
 
-            // generation des 8 pieces noires, on prend les pieces precedentes et on remplace le b par un v a chaque debut de ligne. v qui code la couleur verte
+            // génération des 8 pièces vertes, on prend les pièces précédentes et on remplace le b par un v a chaque début de ligne. v qui code la couleur verte
             for (int i = 0; i < 8; i++)
             {
                 TableauPieceGraphique[9 + i] = new string[8];
@@ -81,20 +81,19 @@ namespace Quarto
         // =========================================================================================
 
         /// <summary>
-        /// Initialise le plateau, c'est à dire créé et retourne le tableau ne contenant que des pieces vides
+        /// Initialise le plateau, c'est à dire créé et retourne le tableau ne contenant que des pièces vides
         /// </summary>
-        /// <returns></returns>
-        public static string[][][] InitialiserTableauPlateauGraphique()
+        /// <returns>retourne le tableau ne contenant que des pièces vides</returns>
+        public static string[][][] InitialiserTableauPlateauGraphique(string[][] TableauPieceGraphique)
         {
             string[][][] TableauPlateauGraphique = new string[4][][];
-            string[][] PieceVide = CreerTableauPieceGraphique();        // la piece stockée à la 1ère position de pieceVide (donc en 0) est la pièce vide
             for (int i = 0; i < 4; i++)
             {
                 TableauPlateauGraphique[i] = new string[4][];
                 for (int j = 0; j < 4; j++)
                 {
                     TableauPlateauGraphique[i][j] = new string[8];
-                    TableauPlateauGraphique[i][j] = PieceVide[0];
+                    TableauPlateauGraphique[i][j] = TableauPieceGraphique[0]; // la pièce stockée à la 1ère position de TableauPieceGraphique (donc en 0) est la pièce vide
                 }
             }
             return TableauPlateauGraphique;

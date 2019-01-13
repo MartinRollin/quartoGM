@@ -52,17 +52,16 @@ namespace Quarto
                     // initialisation tableau qui contiendra les quarto pouvant être énoncés
                     string[] QuartoPossible = { "vide", "vide", "vide" };
 
-
                     // initialisation des plateaux et des tableaux stockant les pièces disponibles
                     string[][] TableauPieceGraphique = CreerTableaux.CreerTableauPieceGraphique();
-                    string[][][] TableauPlateauGraphique = CreerTableaux.InitialiserTableauPlateauGraphique();
+                    string[][][] TableauPlateauGraphique = CreerTableaux.InitialiserTableauPlateauGraphique(TableauPieceGraphique);
                     int[] PieceDispo = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
                     int[][] TableauPlateauCaracteristique = new int[4][];
                     for (int i = 0; i < 4; i++)
                     {
                         TableauPlateauCaracteristique[i] = new int[] { 0, 0, 0, 0 };
                     }
-
+                    
                     int Colonne = 0;
                     int Ligne = 0;
                     string Reponse = "O";

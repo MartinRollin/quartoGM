@@ -12,7 +12,7 @@ namespace Quarto
         // =========================================================================================
 
         /// <summary>
-        /// Insère une piece dans le plateau et met tous les tableaux du plateau et le tableau PieceDisponible à jour
+        /// Insère une pièce dans le plateau et met tous les tableaux du plateau et le tableau PieceDisponible à jour
         /// </summary>
         /// <param name="Piece"></param>
         /// <param name="Ligne"></param>
@@ -33,7 +33,7 @@ namespace Quarto
         // =========================================================================================
  
         /// <summary>
-        /// Verifie que la position où veut jouer le joueur est bien disponible
+        /// Vérifie que la position où veut jouer le joueur est bien disponible
         /// </summary>
         /// <param name="Ligne"></param>
         /// <param name="Colonne"></param>
@@ -51,7 +51,7 @@ namespace Quarto
         // =========================================================================================
  
         /// <summary>
-        /// Verifie si la pièce est disponible
+        /// Vérifie si la pièce est disponible
         /// </summary>
         /// <param name="Piece"></param>
         /// <param name="TableauPieceDisponible"></param>
@@ -68,15 +68,15 @@ namespace Quarto
 
 
         // =========================================================================================
-        // On cherche à verifier si 4 pièces sont alignées
+        // On cherche à vérifier si 4 pièces sont alignées
 
         /// <summary>
-        /// Verifie si une colonne comporte 4 pièces
+        /// Vérifie si une colonne comporte 4 pièces
         /// </summary>
         /// <param name="Colonne"></param>
         /// <param name="TableauPlateauCaracteristique"></param>
         /// <returns></returns>
-        public static bool VerifierColonneVide(int Colonne, int[][] TableauPlateauCaracteristique) //on parcours la colonne en comptant le nombre de pièce, si il vaut 4, alors la colonne est pleine
+        public static bool VerifierColonneVide(int Colonne, int[][] TableauPlateauCaracteristique) //on parcourt la colonne en comptant le nombre de pièces, si il vaut 4, alors la colonne est pleine
         {
             int NbPiece = 0;
             for (int i = 0; i < 4; i++)
@@ -89,11 +89,11 @@ namespace Quarto
         }
 
         /// <summary>
-        /// Verifie si une ligne comporte 4 pièces
+        /// Vérifie si une ligne comporte 4 pièces
         /// </summary>
         /// <param name="Ligne"></param>
         /// <param name="TableauPlateauCaracteristique"></param>
-        /// <returns></returns>
+        /// <returns>Renvoie true si une ligne comporte 4 pièces</returns>
         public static bool VerifierLigneVide(int Ligne, int[][] TableauPlateauCaracteristique)
         {
             int NbPiece = 0;
@@ -106,13 +106,13 @@ namespace Quarto
                 return (false);
         }
 
-
+        
         /// <summary>
-        /// Verifie si une diagonale (1 ou 2) comporte 4 pièces
+        /// Vérifie si une diagonale (1 ou 2) comporte 4 pièces
         /// </summary>
         /// <param name="Numero"></param>
         /// <param name="TableauPlateauCaracteristique"></param>
-        /// <returns></returns>
+        /// <returns>renvoie true si une diagonale (1 ou 2) comporte 4 pièces</returns>
         public static bool VerifierDiagonale(int Numero, int[][] TableauPlateauCaracteristique)
         {
             int NbPiece = 0;
@@ -142,20 +142,20 @@ namespace Quarto
         // =========================================================================================
 
         /// <summary>
-        /// Teste si 4 pièces (représentés par des entiers distincts compris entre 1 et 16) contiennent 1 caractère commun
+        /// Teste si 4 pièces (représentées par des entiers distincts compris entre 1 et 16) contiennent 1 caractère commun
         /// </summary>
-        /// <param name="Piece1"></param>
-        /// <param name="Piece2"></param>
-        /// <param name="Piece3"></param>
-        /// <param name="Piece4"></param>
+        /// <param name="Piece1">numéro de la première pièce</param>
+        /// <param name="Piece2">numéro de la deuxième pièce</param>
+        /// <param name="Piece3">numéro de la troisième pièce</param>
+        /// <param name="Piece4">numéro de la quatrième pièce</param>
         /// <param name="TableauPieceCaracteristique"></param>
-        /// <returns></returns>
+        /// <returns> true si les quatres pièces ont au moins un caractère en commun</returns>
         public static bool Tester4Pieces(int Piece1, int Piece2, int Piece3, int Piece4, string[] TableauPieceCaracteristique)
         {
             bool sortie = false;
             int k = 0;
 
-            //les caracteristiques sont représentés par une chaine de 4 caractères. Si les 4 pièces ont un des caractères commun (au même emplacement) on renvoie true
+            //les caractéristiques sont représentées par une chaîne de 4 caractères. Si les 4 pièces ont un des caractères commun (au même emplacement) on renvoie true
             if (Piece1!=0 && Piece2!=0 && Piece3!=0 && Piece4!=0)
                 while ((!sortie) && (k < 4))
                    if ((TableauPieceCaracteristique[Piece1 - 1][k] == TableauPieceCaracteristique[Piece2 - 1][k]) && (TableauPieceCaracteristique[Piece1 - 1][k] == TableauPieceCaracteristique[Piece3 - 1][k]) && (TableauPieceCaracteristique[Piece1 - 1][k] == TableauPieceCaracteristique[Piece4 - 1][k]))

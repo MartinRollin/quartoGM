@@ -74,14 +74,14 @@ namespace Quarto
             Console.WriteLine();
             for (int i = 0; i < 4; i++)
             {
-                for (int l = 0; l < 8; l++) //on parcours les lignes des pieces graphiques 1 par 1
+                for (int l = 0; l < 8; l++) //on parcourt les lignes des pièces graphiques 1 par 1
                 {
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write("█"); // Choix de cette séparation
                     j = 0; //pour afficher correctement la ligne, on doit passer d'une colonne à l'autre.
                     while (j < 4)
                     {
-                        if (TableauPlateauGraphique[i][j][l][0] == 'b') // la couleur est indiqué par le premier caractère de chaque string (b=blanc, v=vert), caratère qui ne sera pas affiché
+                        if (TableauPlateauGraphique[i][j][l][0] == 'b') // la couleur est indiqué par le premier caractère de chaque string (b=bleu, v=vert), caratère qui ne sera pas affiché
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.Write(TableauPlateauGraphique[i][j][l].Substring(1));
