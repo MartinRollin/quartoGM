@@ -619,39 +619,7 @@ namespace Quarto
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
-            while (Jouer == "O");
-            
-             /*                                                                                                                                                                                                                                      // initialisation de TableauPieceCaracteristique " taille: (p)etit/(g)rand + couleur : (v)ert/(b)leu + forme : (c)arre/(r)ond + remplissage : (C)reu/(P)lein "
-            string[] TableauPieceCaracteristique = { "pbrC", "gbrC", "pbrP", "gbrP", "pbcC", "gbcC", "pbcP", "gbcP", "pvrC", "gvrC", "pvrP", "gvrP", "pvcC", "gvcC", "pvcP", "gvcP" };
-            int[][] TableauPlateauCaracteristique = new int[4][];
-            
-            TableauPlateauCaracteristique[0] = new int[] { 0, 0, 0, 0 };
-            TableauPlateauCaracteristique[1] = new int[] { 0, 0, 0, 0};
-            TableauPlateauCaracteristique[2] = new int[] { 0,0,0,0};
-            TableauPlateauCaracteristique[3] = new int[] { 0,0,0,0};
-            do
-            {
-                Console.Write("quelle piece : ");
-                int piece = int.Parse(Console.ReadLine());
-                Console.Write("quelle ligne : ");
-                int ligne = int.Parse(Console.ReadLine());
-                Console.Write("quelle colonne : ");
-                int colonne = int.Parse(Console.ReadLine());
-                TableauPlateauCaracteristique[ligne][colonne] = piece;
-                Console.WriteLine("Le plateau : ");
-                for (int i = 0; i < 4; i++)
-                {
-                    Console.WriteLine();
-                    for (int j = 0; j < 4; j++)
-                    {
-                        Console.Write(TableauPlateauCaracteristique[i][j] + " ");
-                    }
-                }
-                intelligent.ElementCommun(TableauPlateauCaracteristique, TableauPieceCaracteristique);
-                Console.WriteLine();
-            }
-            while (0 != 1);
-            */
+            while (Jouer == "O");            
         }
     }
 }
