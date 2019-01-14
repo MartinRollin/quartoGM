@@ -96,7 +96,7 @@ namespace Quarto
         
 
         /// <summary>
-        /// Place un quarto, si possible, sinon place la pièce aléatoirement
+        /// Place un quarto, si possible, sinon place la pièce aléatoirement. Ensuite affiche le plateau
         /// </summary>
         /// <param name="Piece"></param>
         /// <param name="PlaceVide"></param>
@@ -137,13 +137,15 @@ namespace Quarto
                         }
                     if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                     {
-                        Ligne = i;
-                        Colonne = PlaceVide[0][i];
-                        General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
+                        Ligne = i+1;
+                        Colonne = PlaceVide[0][i]+1;
+                        General.PlacerPiece(Piece, Ligne-1, Colonne-1, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                         Sortie = true;
                         Quarto = true;
+                        Affiche.AfficherPlateau(TableauPlateauGraphique);
                         Console.WriteLine("L'ordinateur gagne la partie ! Il y a un quarto à la ligne {0}", i + 1);
                     }
+                    i++;
                 }
             }
 
@@ -164,13 +166,15 @@ namespace Quarto
                         }
                     if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                     {
-                        Ligne = PlaceVide[1][i];
-                        Colonne = i;
-                        General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
+                        Ligne = PlaceVide[1][i]+1;
+                        Colonne = i+1;
+                        General.PlacerPiece(Piece, Ligne-1, Colonne-1, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                         Sortie = true;
                         Quarto = true;
+                        Affiche.AfficherPlateau(TableauPlateauGraphique);
                         Console.WriteLine("L'ordinateur gagne la partie ! Il y a un quarto à la colonne {0}", i + 1);
                     }
+                    i++;
                 }
             }
 
@@ -187,10 +191,12 @@ namespace Quarto
                     }
                 if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                 {
-                    Ligne = PlaceVide[2][0];
-                    General.PlacerPiece(Piece, Ligne, Ligne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
+                    Ligne = PlaceVide[2][0]+1;
+                    Colonne = Ligne;
+                    General.PlacerPiece(Piece, Ligne-1, Ligne-1, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                     Sortie = true;
                     Quarto = true;
+                    Affiche.AfficherPlateau(TableauPlateauGraphique);
                     Console.WriteLine("L'ordinateur gagne la partie ! Il y a un quarto à la diagonale 1");
                 }
             }
@@ -207,11 +213,12 @@ namespace Quarto
                     }
                 if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                 {
-                    Ligne = PlaceVide[2][1];
+                    Ligne = PlaceVide[2][1]+1;
                     Colonne = 3 - Ligne;
-                    General.PlacerPiece(Piece, Ligne, Colonne, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
+                    General.PlacerPiece(Piece, Ligne-1, Colonne-1, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, TableauPieceDisponible);
                     Sortie = true;
                     Quarto = true;
+                    Affiche.AfficherPlateau(TableauPlateauGraphique);
                     Console.WriteLine("L'ordinateur gagne la partie ! Il y a un quarto à la diagonale 2");
                 }
             }
@@ -221,6 +228,7 @@ namespace Quarto
             {
                 General.JouerPieceAleatoire(Piece, out Ligne, out Colonne, TableauPlateauCaracteristique, TableauPlateauGraphique, TableauPieceGraphique, TableauPieceCaracteristique, TableauPieceDisponible);
                 Quarto = false;
+                Affiche.AfficherPlateau(TableauPlateauGraphique);
             }
         }
 
@@ -248,9 +256,9 @@ namespace Quarto
         ///  Renvoie, si possible, le numero d'une piece empechant le joueur de gagner au tour suivant
         /// </summary> 
 
-        public static int ChoisirQuarto(int[][] PlaceVide, int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique, int[] PieceDispo)
+        public static int ChoisirQuarto( int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique, int[] PieceDispo)
         {
-            // on parcourt la liste des pieces disponibles, on verifie si chacunes de ces pieces pourrait faire un quarto en parcourant toutes les places disponibles
+            // on parcourt la liste des pièces disponibles, on vérifie si chacune de ces pièces pourraient faire un quarto en parcourant toutes les places disponibles
             
             int[][] QuartoPossible = VerifierUnePlace(TableauPlateauCaracteristique);
             int Somme = 0;
@@ -266,7 +274,8 @@ namespace Quarto
                 int NumPiece = -1;
                 bool Gagne = true;
                 int Index = 0;
-                string Element = ElementCommun(TableauPlateauCaracteristique, TableauPieceCaracteristique, QuartoPossible);
+                string Element = ElementCommun(TableauPlateauCaracteristique, TableauPieceCaracteristique);
+                
                 while (Gagne == true && Index < 16)
                 {
                     NumPiece = PieceDispo[Index];
@@ -276,19 +285,20 @@ namespace Quarto
                         Gagne = false;
                         while (i < 4 && Gagne == false)
                         {
-                            if (!CaractereDansChaine(TableauPieceCaracteristique[NumPiece][i], Element))
+                            if (CaractereDansChaine(TableauPieceCaracteristique[NumPiece-1][i], Element))
                                 Gagne = true;
                             i++;
                         }
-                        if (i == 3) // C'est à dire que toutes les caracteristiques de la piece sont presentes dans un ou plusieurs alignement de 3 pieces deja posees sur le plateau
-                            Gagne = true;
                     }
                     Index++;
                 }
                 if (Gagne == true)
                     return General.ChoisirPieceAleatoire(PieceDispo);
                 else
+                {
+                    PieceDispo[NumPiece-1] = 0;
                     return NumPiece;
+                }
             }     
         }
 
@@ -300,7 +310,7 @@ namespace Quarto
         /// <param name="TableauPieceCaracteristique"></param>
         /// <param name="QuartoPossible"></param>
         /// <returns></returns>
-        public static string ElementCommun (int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique,int[][] QuartoPossible)
+        public static string ElementCommun (int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique)
         {
             string Element = "";
             int[] Combin = new int[40];
@@ -311,15 +321,10 @@ namespace Quarto
                 for(int Colonne = 0;Colonne<4;Colonne++)
                 {
                     Combin[4 * Ligne + Colonne] = TableauPlateauCaracteristique[Ligne][Colonne];
+                    Combin[16 + 4 * Ligne + Colonne] = TableauPlateauCaracteristique[Colonne][Ligne]; // On ajoute a Combin les pieces de chaque colonne (on se moque des redondances du plateau)
                 }               
             }
-            for (int Colonne = 0; Colonne < 4; Colonne++) // On ajoute a Combin les pieces de chaque colonne (on se moque des redondances du plateau)
-            {
-                for (int Ligne = 0; Ligne < 4; Ligne++)
-                {
-                    Combin[15+4 * Colonne + Ligne] = TableauPlateauCaracteristique[Ligne][Colonne];
-                }
-            }
+            
             // On ajoute a Combin les pieces de chaque diagonale
             // diagonale 1
             Combin[32] = TableauPlateauCaracteristique[0][0];
@@ -327,10 +332,10 @@ namespace Quarto
             Combin[34] = TableauPlateauCaracteristique[2][2];
             Combin[35] = TableauPlateauCaracteristique[3][3];
             // diagonale 2
-            Combin[36] = TableauPlateauCaracteristique[0][3];
-            Combin[37] = TableauPlateauCaracteristique[1][2];
-            Combin[38] = TableauPlateauCaracteristique[2][1];
-            Combin[39] = TableauPlateauCaracteristique[3][0];
+            Combin[36] = TableauPlateauCaracteristique[3][0];
+            Combin[37] = TableauPlateauCaracteristique[2][1];
+            Combin[38] = TableauPlateauCaracteristique[1][2];
+            Combin[39] = TableauPlateauCaracteristique[0][3];
 
             for (int i = 0; i < 10; i++) // On parcourt un a un chaque alignement où il pourrait y avoir quarto dans le plateau
             {
@@ -344,7 +349,7 @@ namespace Quarto
                         NumVide = j;
                     }    
                 }
-                if (NbVide == 1)
+                if (NbVide == 1) // Il y a exactement une pièce vide dans cet alignement
                 {
                     int Index = 0;
                     int[] Tab = new int[3];
@@ -358,20 +363,18 @@ namespace Quarto
                     }
                     for (int j = 0; j < 4; j++) // On verifie si les pieces de l'alignement possedent des caracteristiques en commun, on stocke alors ces caracteristiques dans Element en evitant les redondances
                     {
-                        if (TableauPieceCaracteristique[Combin[i * 4 + Tab[0]]][j] == TableauPieceCaracteristique[Combin[i * 4 + Tab[1]]][j] && TableauPieceCaracteristique[Combin[i * 4 + Tab[1]]][j] == TableauPieceCaracteristique[Combin[i * 4 + Tab[2]]][j])
+                        if (TableauPieceCaracteristique[Combin[i * 4 + Tab[0]]-1][j] == TableauPieceCaracteristique[Combin[i * 4 + Tab[1]]-1][j] && TableauPieceCaracteristique[Combin[i * 4 + Tab[1]]-1][j] == TableauPieceCaracteristique[Combin[i * 4 + Tab[2]]-1][j])
                         {
                             bool Present = false;
                             foreach (char e in Element) // On verifie que la caracteristique n'etait pas deja dans Element pour eviter les redondances
-                                if (e == TableauPieceCaracteristique[Combin[i * 4 + Tab[0]]][j])
+                                if (e == TableauPieceCaracteristique[Combin[i * 4 + Tab[0]]-1][j])
                                     Present = true;
                             if (Present == false)
-                                Element = Element + TableauPieceCaracteristique[Combin[i * 4 + Tab[0]]][j];
-
+                                Element = Element + TableauPieceCaracteristique[Combin[i * 4 + Tab[0]]-1][j];                                
                         }
                     }
                 }
             }
-
             return Element;
         }
     }

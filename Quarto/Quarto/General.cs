@@ -170,7 +170,7 @@ namespace Quarto
         // =========================================================================================
 
         /// <summary>
-        /// Coisi aléatoirement une pièce et l'enleve du tableau PieceDisponible
+        /// Choisit aléatoirement une pièce et l'enlève du tableau PieceDisponible
         /// </summary>
         /// <param name="TableauPieceDisponible"></param>
         /// <returns></returns>

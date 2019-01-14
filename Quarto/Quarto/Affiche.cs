@@ -13,6 +13,7 @@ namespace Quarto
         /// </summary>
         public static void AfficherRegles() // regles du quarto adaptées a notre algorithme
         {
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n  ▄▄▄▄█████████████████████████████████████████████████████████████████████████████████████████▄▄▄▄");
             Console.WriteLine("█████████████████████████████████████████████████████████████████████████████████████████████████████");
             Console.WriteLine("\n\tPRESENTATION ET PREPARATION\n");

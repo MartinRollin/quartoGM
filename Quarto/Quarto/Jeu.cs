@@ -10,7 +10,15 @@ namespace Quarto
     {
         static void Main(string[] args)
         {
-            Console.SetWindowSize(110, 84);
+            
+            // On redimensionne la fenêtre à une taille suffisante pour obtenir un bon affichage
+            int MaxHauteur = Console.LargestWindowHeight;
+            int MaxLargeur = Console.LargestWindowWidth;
+            if (MaxLargeur > 110)
+                MaxLargeur = 110;
+            if (MaxHauteur > 84)
+                MaxHauteur = 84;
+            Console.SetWindowSize(MaxLargeur, MaxHauteur);
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n\t\t ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                 ");
@@ -22,7 +30,7 @@ namespace Quarto
             Console.WriteLine("\t\t█                                                                █                ");
             Console.WriteLine("\t\t ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                 \n");
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             string Jouer;
 
@@ -98,7 +106,7 @@ namespace Quarto
                     Console.WriteLine("\t\t█                                                                █                ");
                     Console.WriteLine("\t\t ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                 \n");
                     Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.ForegroundColor = ConsoleColor.White;
 
                     Random Rand = new Random();
                     int Joueur = Rand.Next(2); // On determine quel joueur va commencer, 0 -> l'ordi est en train de jouer, 1 -> le joueur est en train de jouer
@@ -123,10 +131,10 @@ namespace Quarto
                     else  // le joueur commence à jouer
                     {
                         Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-                        Console.WriteLine("\t\t                 ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
-                        Console.WriteLine("\t\t                █   █     █   █   █   █ ");
-                        Console.WriteLine("\t\t                █▀▀▀█     █   █   █   █ ");
-                        Console.WriteLine("\t\t                ▀   ▀     ▀    ▀▀▀   ▀▀▀");
+                        Console.WriteLine("\t\t              ▄▄▄     ▄   ▄  ▄▄▄  ▄   ▄  ▄▄▄");
+                        Console.WriteLine("\t\t             █   █    █   █ █   █ █   █ ▀▄▄ ");
+                        Console.WriteLine("\t\t             █▀▀▀█     █ █  █   █ █   █    █ ");
+                        Console.WriteLine("\t\t             ▀   ▀      ▀    ▀▀▀   ▀▀▀  ▀▀▀");
                         Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                         Console.WriteLine();
                         Console.ReadLine();
@@ -156,14 +164,13 @@ namespace Quarto
                             Console.WriteLine("\t\t█                                                                █                ");
                             Console.WriteLine("\t\t ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                 \n");
                             Console.BackgroundColor = ConsoleColor.Black;
-                            Console.ForegroundColor = ConsoleColor.Gray;
 
-                            Console.ForegroundColor = ConsoleColor.Gray;
+                            Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-                            Console.WriteLine("\t\t                 ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
-                            Console.WriteLine("\t\t                █   █     █   █   █   █ ");
-                            Console.WriteLine("\t\t                █▀▀▀█     █   █   █   █ ");
-                            Console.WriteLine("\t\t                ▀   ▀     ▀    ▀▀▀   ▀▀▀");
+                            Console.WriteLine("\t\t              ▄▄▄     ▄   ▄  ▄▄▄  ▄   ▄  ▄▄▄");
+                            Console.WriteLine("\t\t             █   █    █   █ █   █ █   █ ▀▄▄ ");
+                            Console.WriteLine("\t\t             █▀▀▀█     █ █  █   █ █   █    █ ");
+                            Console.WriteLine("\t\t             ▀   ▀      ▀    ▀▀▀   ▀▀▀  ▀▀▀");
                             Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.WriteLine();
                             Console.ReadLine();
@@ -205,12 +212,24 @@ namespace Quarto
                                     PlaceVide = false;
                                     Affiche.AfficherPlateau(TableauPlateauGraphique);
                                     Console.WriteLine();
-                                    Console.ForegroundColor = ConsoleColor.Gray;
-                                    Console.Write(" A quelle ligne voulez-vous placer la piece? : ");
-                                    Ligne = int.Parse(Console.ReadLine());
-                                    Console.WriteLine();
-                                    Console.Write(" A quelle Colonne voulez-vous placer la piece? : ");
-                                    Colonne = int.Parse(Console.ReadLine());
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    do
+                                    {
+                                        Console.Write(" A quelle ligne voulez-vous placer la piece? <donnez le numéro de ligne> : ");
+                                        Ligne = int.Parse(Console.ReadLine());
+                                        if (Ligne > 4)
+                                            Console.WriteLine(" Donnez un numéro compris entre 1 et 4");
+                                        Console.WriteLine();
+                                    }
+                                    while (Ligne > 4);
+                                    do
+                                    {
+                                        Console.Write(" A quelle colonne voulez-vous placer la piece? <donnez le numéro de colonne> : ");
+                                        Colonne = int.Parse(Console.ReadLine());
+                                        if (Colonne > 4)
+                                            Console.WriteLine(" Donnez un numéro compris entre 1 et 4");
+                                    }
+                                    while (Colonne > 4);
                                     PlaceVide = General.VerifierPlaceVide(Ligne - 1, Colonne - 1, TableauPlateauCaracteristique);
                                     if (!PlaceVide)
                                         Console.WriteLine("\n La place n'est pas disponible.\n");
@@ -223,7 +242,7 @@ namespace Quarto
                                 General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
                                 Affiche.AfficherPlateau(TableauPlateauGraphique);
                                 Console.WriteLine();
-                                Console.ForegroundColor = ConsoleColor.Gray;
+                                Console.ForegroundColor = ConsoleColor.White;
 
                                 // c'est à ce moment la qu'on peut dire Quarto 
                                 Reponse = Console.ReadLine();
@@ -257,9 +276,9 @@ namespace Quarto
 
                                         Console.WriteLine(" Voici les pièces disponibles :\n");
                                         Affiche.AfficherPieceDisponible(TableauPieceGraphique, PieceDispo);
-                                        Console.ForegroundColor = ConsoleColor.Gray;
+                                        Console.ForegroundColor = ConsoleColor.White;
                                         Console.Write("\n Quelle pièce donner à l'ordinateur ? :");
-                                        NumeroPiece = int.Parse(Console.ReadLine());                            // faiblesse du code si on ne rentre pas un chiffre
+                                        NumeroPiece = int.Parse(Console.ReadLine());
                                         int VerifDispo = 0;
                                         while (VerifDispo < PieceDispo.Length && Disponible == false)
                                         {
@@ -297,7 +316,7 @@ namespace Quarto
                             Console.WriteLine("\t\t█                                                                █                ");
                             Console.WriteLine("\t\t ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                 \n");
                             Console.BackgroundColor = ConsoleColor.Black;
-                            Console.ForegroundColor = ConsoleColor.Gray;
+                            Console.ForegroundColor = ConsoleColor.White;
                             
                             Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
                             Console.WriteLine("\t\t   ▄   ▄   ▄▄▄  ▄▄▄▄  ▄▄▄▄  ▄▄▄     ▄▄▄  ▄▄▄   ▄   ▄ ▄▄▄▄");
@@ -340,7 +359,7 @@ namespace Quarto
                                
                                 General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
                                 Console.ReadLine();
-                                Console.ForegroundColor = ConsoleColor.Gray;
+                                Console.ForegroundColor = ConsoleColor.White;
 
                                 // On verifie une deuxieme fois s'il y a quarto
                                 Verifal = Rand.Next(1, 6);
@@ -366,7 +385,7 @@ namespace Quarto
                                     Console.ReadLine();
                                     if (Niveau == "difficile")
                                     {
-                                        intelligent.ChoisirQuarto(intelligent.VerifierUnePlace(TableauPlateauCaracteristique), TableauPlateauCaracteristique, TableauPieceCaracteristique, PieceDispo);
+                                        NumeroPiece = intelligent.ChoisirQuarto( TableauPlateauCaracteristique, TableauPieceCaracteristique, PieceDispo);
                                     }
                                     else
                                         NumeroPiece = General.ChoisirPieceAleatoire(PieceDispo);                                   
@@ -396,7 +415,7 @@ namespace Quarto
                             Console.WriteLine("\t\t ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                 \n");
                             Console.BackgroundColor = ConsoleColor.Black;
                             
-                            Console.ForegroundColor = ConsoleColor.Gray;
+                            Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
                             Console.WriteLine("\t\t   ▄   ▄   ▄▄▄  ▄▄▄▄  ▄▄▄▄  ▄▄▄     ▄▄▄  ▄▄▄   ▄   ▄ ▄▄▄▄");
                             Console.WriteLine("\t\t   █   ▀  █   █ █   █ █   █  █       █  █   █  █   █ █▄  ");
@@ -437,7 +456,7 @@ namespace Quarto
 
                                 General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
                                 Console.ReadLine();
-                                Console.ForegroundColor = ConsoleColor.Gray;
+                                Console.ForegroundColor = ConsoleColor.White;
 
                                 // On verifie une deuxieme fois s'il y a quarto
                                 Verifal = Rand.Next(1, 6);
@@ -474,12 +493,12 @@ namespace Quarto
                             Console.WriteLine("\t\t ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                 \n");
                             Console.BackgroundColor = ConsoleColor.Black;
                             
-                            Console.ForegroundColor = ConsoleColor.Gray;
+                            Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-                            Console.WriteLine("\t\t                 ▄▄▄    ▄▄▄▄▄  ▄▄▄   ▄▄▄");
-                            Console.WriteLine("\t\t                █   █     █   █   █   █ ");
-                            Console.WriteLine("\t\t                █▀▀▀█     █   █   █   █ ");
-                            Console.WriteLine("\t\t                ▀   ▀     ▀    ▀▀▀   ▀▀▀");
+                            Console.WriteLine("\t\t              ▄▄▄     ▄   ▄  ▄▄▄  ▄   ▄  ▄▄▄");
+                            Console.WriteLine("\t\t             █   █    █   █ █   █ █   █ ▀▄▄ ");
+                            Console.WriteLine("\t\t             █▀▀▀█     █ █  █   █ █   █    █ ");
+                            Console.WriteLine("\t\t             ▀   ▀      ▀    ▀▀▀   ▀▀▀  ▀▀▀");
                             Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.WriteLine();
 
@@ -512,18 +531,31 @@ namespace Quarto
                             {
                                 Console.WriteLine(" L'ordinateur a choisi cette pièce :");
                                 Affiche.AfficherPiece(NumeroPiece, TableauPieceGraphique);
+                                // On demande au joueur de placer dans le plateau la piece chosie par l'ordi
                                 bool PlaceVide;
                                 do
                                 {
                                     PlaceVide = false;
                                     Affiche.AfficherPlateau(TableauPlateauGraphique);
                                     Console.WriteLine();
-                                    Console.ForegroundColor = ConsoleColor.Gray;
-                                    Console.Write(" A quelle ligne voulez-vous placer la piece? : ");
-                                    Ligne = int.Parse(Console.ReadLine());
-                                    Console.WriteLine();
-                                    Console.Write(" A quelle Colonne voulez-vous placer la piece? : ");
-                                    Colonne = int.Parse(Console.ReadLine());
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    do
+                                    {
+                                        Console.Write(" A quelle ligne voulez-vous placer la piece? <donnez le numéro de ligne> : ");
+                                        Ligne = int.Parse(Console.ReadLine());
+                                        if (Ligne > 4)
+                                            Console.WriteLine(" Donnez un numéro compris entre 1 et 4");
+                                        Console.WriteLine();
+                                    }
+                                    while (Ligne > 4);
+                                    do
+                                    {
+                                        Console.Write(" A quelle colonne voulez-vous placer la piece? <donnez le numéro de colonne> : ");
+                                        Colonne = int.Parse(Console.ReadLine());
+                                        if (Colonne > 4)
+                                            Console.WriteLine(" Donnez un numéro compris entre 1 et 4");
+                                    }
+                                    while (Colonne > 4);
                                     PlaceVide = General.VerifierPlaceVide(Ligne - 1, Colonne - 1, TableauPlateauCaracteristique);
                                     if (!PlaceVide)
                                         Console.WriteLine("\n La place n'est pas disponible.\n");
@@ -534,7 +566,7 @@ namespace Quarto
                                 General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
                                 Affiche.AfficherPlateau(TableauPlateauGraphique);
                                 Console.WriteLine();
-                                Console.ForegroundColor = ConsoleColor.Gray;
+                                Console.ForegroundColor = ConsoleColor.White;
 
                                 // c'est à ce moment la qu'on peut dire Quarto 
                                 Reponse = Console.ReadLine();
@@ -584,11 +616,42 @@ namespace Quarto
                     Console.WriteLine("\t\t ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                 \n");
                     Console.BackgroundColor = ConsoleColor.Black;
 
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
             }
             while (Jouer == "O");
-
+            
+             /*                                                                                                                                                                                                                                      // initialisation de TableauPieceCaracteristique " taille: (p)etit/(g)rand + couleur : (v)ert/(b)leu + forme : (c)arre/(r)ond + remplissage : (C)reu/(P)lein "
+            string[] TableauPieceCaracteristique = { "pbrC", "gbrC", "pbrP", "gbrP", "pbcC", "gbcC", "pbcP", "gbcP", "pvrC", "gvrC", "pvrP", "gvrP", "pvcC", "gvcC", "pvcP", "gvcP" };
+            int[][] TableauPlateauCaracteristique = new int[4][];
+            
+            TableauPlateauCaracteristique[0] = new int[] { 0, 0, 0, 0 };
+            TableauPlateauCaracteristique[1] = new int[] { 0, 0, 0, 0};
+            TableauPlateauCaracteristique[2] = new int[] { 0,0,0,0};
+            TableauPlateauCaracteristique[3] = new int[] { 0,0,0,0};
+            do
+            {
+                Console.Write("quelle piece : ");
+                int piece = int.Parse(Console.ReadLine());
+                Console.Write("quelle ligne : ");
+                int ligne = int.Parse(Console.ReadLine());
+                Console.Write("quelle colonne : ");
+                int colonne = int.Parse(Console.ReadLine());
+                TableauPlateauCaracteristique[ligne][colonne] = piece;
+                Console.WriteLine("Le plateau : ");
+                for (int i = 0; i < 4; i++)
+                {
+                    Console.WriteLine();
+                    for (int j = 0; j < 4; j++)
+                    {
+                        Console.Write(TableauPlateauCaracteristique[i][j] + " ");
+                    }
+                }
+                intelligent.ElementCommun(TableauPlateauCaracteristique, TableauPieceCaracteristique);
+                Console.WriteLine();
+            }
+            while (0 != 1);
+            */
         }
     }
 }
