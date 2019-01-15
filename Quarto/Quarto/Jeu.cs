@@ -186,7 +186,7 @@ namespace Quarto
                                 {
                                     Console.Write(" A quelle ligne/colonne/diagonale y a t-il quarto ?\n < ecrire par exemple : ligne 2, colonne 3, diagonale 1 > : ");
                                     string Endroit = Console.ReadLine();
-                                    Quarto = General.VerifierQuarto(Endroit, QuartoPossible);
+                                    Quarto = Test.VerifierQuarto(Endroit, QuartoPossible);
                                     if (Quarto == true)
                                     {
                                         Console.WriteLine("\n Bravo vous avez gagné !");
@@ -230,7 +230,7 @@ namespace Quarto
                                             Console.WriteLine(" Donnez un numéro compris entre 1 et 4");
                                     }
                                     while (Colonne > 4);
-                                    PlaceVide = General.VerifierPlaceVide(Ligne - 1, Colonne - 1, TableauPlateauCaracteristique);
+                                    PlaceVide = Test.VerifierPlaceVide(Ligne - 1, Colonne - 1, TableauPlateauCaracteristique);
                                     if (!PlaceVide)
                                         Console.WriteLine("\n La place n'est pas disponible.\n");
                                 }
@@ -239,7 +239,7 @@ namespace Quarto
                                 
                                 Console.Clear();
                                 General.PlacerPiece(NumeroPiece, Ligne - 1, Colonne - 1, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, PieceDispo);
-                                General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
+                                Test.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
                                 Affiche.AfficherPlateau(TableauPlateauGraphique);
                                 Console.WriteLine();
                                 Console.ForegroundColor = ConsoleColor.White;
@@ -253,7 +253,7 @@ namespace Quarto
                                     {
                                         Console.Write(" A quelle ligne/colonne/diagonale y a t-il quarto ? < ecrire par exemple : ligne 2, diagonale 1 > : ");
                                         string endroit = Console.ReadLine();
-                                        Quarto = General.VerifierQuarto(endroit, QuartoPossible);
+                                        Quarto = Test.VerifierQuarto(endroit, QuartoPossible);
                                         if (Quarto == true)
                                         {
                                             Console.WriteLine("\n Bravo vous avez gagné !");
@@ -357,7 +357,7 @@ namespace Quarto
                                     Affiche.AfficherPlateau(TableauPlateauGraphique);
                                 }
                                
-                                General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
+                                Test.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
                                 Console.ReadLine();
                                 Console.ForegroundColor = ConsoleColor.White;
 
@@ -454,7 +454,7 @@ namespace Quarto
                                     Affiche.AfficherPlateau(TableauPlateauGraphique);
                                 }
 
-                                General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
+                                Test.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
                                 Console.ReadLine();
                                 Console.ForegroundColor = ConsoleColor.White;
 
@@ -511,7 +511,7 @@ namespace Quarto
                                 {
                                     Console.Write(" A quelle ligne/colonne/diagonale y a t-il quarto ? < ecrire par exemple : ligne 2, diagonale 1 > : ");
                                     string endroit = Console.ReadLine();
-                                    Quarto = General.VerifierQuarto(endroit, QuartoPossible);
+                                    Quarto = Test.VerifierQuarto(endroit, QuartoPossible);
                                     if (Quarto == true)
                                     {
                                         Console.WriteLine("\n Bravo vous avez gagné !");
@@ -556,14 +556,14 @@ namespace Quarto
                                             Console.WriteLine(" Donnez un numéro compris entre 1 et 4");
                                     }
                                     while (Colonne > 4);
-                                    PlaceVide = General.VerifierPlaceVide(Ligne - 1, Colonne - 1, TableauPlateauCaracteristique);
+                                    PlaceVide = Test.VerifierPlaceVide(Ligne - 1, Colonne - 1, TableauPlateauCaracteristique);
                                     if (!PlaceVide)
                                         Console.WriteLine("\n La place n'est pas disponible.\n");
                                 }
                                 while (!PlaceVide);
 
                                 General.PlacerPiece(NumeroPiece, Ligne - 1, Colonne - 1, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, PieceDispo);
-                                General.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
+                                Test.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
                                 Affiche.AfficherPlateau(TableauPlateauGraphique);
                                 Console.WriteLine();
                                 Console.ForegroundColor = ConsoleColor.White;
@@ -577,7 +577,7 @@ namespace Quarto
                                     {
                                         Console.Write(" A quelle ligne/colonne/diagonale y a t-il quarto ? < ecrire par exemple : ligne 2, diagonale 1 > : ");
                                         string endroit = Console.ReadLine();
-                                        Quarto = General.VerifierQuarto(endroit, QuartoPossible);
+                                        Quarto = Test.VerifierQuarto(endroit, QuartoPossible);
                                         if (Quarto == true)
                                         {
                                             Console.WriteLine("\n Bravo vous avez gagné !");

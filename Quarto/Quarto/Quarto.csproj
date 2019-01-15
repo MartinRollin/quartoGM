@@ -49,6 +49,7 @@
     <Compile Include="intelligent.cs" />
     <Compile Include="Jeu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

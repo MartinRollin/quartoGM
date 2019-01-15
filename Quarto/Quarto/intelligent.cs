@@ -8,10 +8,8 @@ namespace Quarto
 {
     class intelligent
     {
-        //=========================================================================================
         // L'ordi repère les quartos qu'il pourrait faire avec la pièce qu'on lui a donné à jouer
-
-        // 
+ 
         /// <summary>
         /// Cherche les lignes/colonnes/diagonales où il ne reste qu'une place
         /// </summary>
@@ -135,7 +133,7 @@ namespace Quarto
                             PieceATester[k] = TableauPlateauCaracteristique[i][j];
                             k++;
                         }
-                    if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
+                    if (Test.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                     {
                         Ligne = i+1;
                         Colonne = PlaceVide[0][i]+1;
@@ -164,7 +162,7 @@ namespace Quarto
                             PieceATester[k] = TableauPlateauCaracteristique[j][i];
                             k++;
                         }
-                    if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
+                    if (Test.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                     {
                         Ligne = PlaceVide[1][i]+1;
                         Colonne = i+1;
@@ -189,7 +187,7 @@ namespace Quarto
                         PieceATester[k] = TableauPlateauCaracteristique[j][j];
                         k++;
                     }
-                if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
+                if (Test.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                 {
                     Ligne = PlaceVide[2][0]+1;
                     Colonne = Ligne;
@@ -211,7 +209,7 @@ namespace Quarto
                         PieceATester[k] = TableauPlateauCaracteristique[j][3 - j];
                         k++;
                     }
-                if (General.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
+                if (Test.Tester4Pieces(PieceATester[0], PieceATester[1], PieceATester[2], Piece, TableauPieceCaracteristique))
                 {
                     Ligne = PlaceVide[2][1]+1;
                     Colonne = 3 - Ligne;
@@ -231,6 +229,7 @@ namespace Quarto
                 Affiche.AfficherPlateau(TableauPlateauGraphique);
             }
         }
+
 
         /// <summary>
         ///  renvoie true si le caractere Car est dans la chaine de caractere Str

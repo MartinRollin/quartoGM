@@ -8,9 +8,6 @@ namespace Quarto
 {
     class CreerTableaux
     {
-
-        // =========================================================================================
-
         /// <summary>
         /// Renvoie la chaine de caractères correspondant à une pièce graphique, utilisée dans CreerTableauPieceGraphique uniquement
         /// </summary>
@@ -26,8 +23,6 @@ namespace Quarto
         }
 
 
-        // =========================================================================================
-        //
         /// <summary>
         /// Renvoie un tableau qui comprend le graphisme de chaque pièce par ligne en chaîne de caractère. la piece vide est la pièce 0 
         /// </summary>
@@ -77,8 +72,6 @@ namespace Quarto
             return TableauPieceGraphique;
         }
 
-
-        // =========================================================================================
 
         /// <summary>
         /// Initialise le plateau, c'est à dire créé et retourne le tableau ne contenant que des pièces vides
