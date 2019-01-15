@@ -34,10 +34,10 @@ namespace Quarto
             Console.ReadLine();
             string Jouer;
 
-            //On donne au joueur la possibilité de voir les règles au début
+            
             do
             {
-                Console.Write(" Voulez vous un rappel des regles du jeu? (O/N) : ");
+                Console.Write(" Voulez vous un rappel des regles du jeu? (O/N) : "); //On donne au joueur la possibilité de voir les règles au début
                 string Regles = Console.ReadLine();
                 if (Regles == "O")
                     Affiche.AfficherRegles();
@@ -70,16 +70,16 @@ namespace Quarto
                         TableauPlateauCaracteristique[i] = new int[] { 0, 0, 0, 0 };
                     }
                     
-                    int Colonne = 0;
-                    int Ligne = 0;
-                    string Reponse = "O";
-                    int Tour = 1;
-                    bool Quarto = false;
-                    int NumeroPiece;
-                    int Verifal;
-                    int Seuil; // variable qui définit si l'ordinateur détecte le quarto à tous les coups (seuil = 0) ou avec 3 chances sur 5 (seuil = 2)
+                    int Colonne = 0; //colonne de la dernière pièce jouée
+                    int Ligne = 0; // ligne de la dernière pièce jouée
+                    string Reponse = "O"; //
+                    int Tour = 1; // donne le numéro du tour en cours
+                    bool Quarto = false; // vaut false tant qu'aucun des joueurs n'a déclaré quarto et que le quarto est valide
+                    int NumeroPiece; // Numéro de la dernière pièce placée sur le plateau
+                    int Verifal; // nombre généré aléatoirement qui sert dans le niveau facile pour déterminer si l'ordinateur détecte un quarto possible
+                    int Seuil; // variable qui définit si l'ordinateur détecte le quarto à tous les coups (Seuil = 0) ou avec 3 chances sur 5 (Seuil = 2)
 
-                    string Niveau;
+                    string Niveau; // stocke le choix de niveau du joueur
                     do
                     {
                         Console.Write(" Choisissez le niveau de difficulté (facile/difficile) : ");
@@ -146,11 +146,10 @@ namespace Quarto
                         Joueur = 0;  // le prochain à jouer sera l'ordinateur
                     }
 
-                    while (Tour < 16 && !Quarto)        // On effectue tous les tours sauf le dernier (comme le dernier joueur ne peut pas donner de piece a l'autre)
+                    while (Tour < 16 && !Quarto) // On effectue tous les tours sauf le dernier (comme le dernier joueur ne peut pas donner de piece a l'autre)
                     {
 
-                        // Deroulement du tour du joueur humain
-                        if (Joueur == 1)
+                        if (Joueur == 1) // Deroulement du tour du joueur humain
                         {
                             Console.Clear();
                             Console.BackgroundColor = ConsoleColor.DarkBlue;
@@ -164,7 +163,6 @@ namespace Quarto
                             Console.WriteLine("\t\t█                                                                █                ");
                             Console.WriteLine("\t\t ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                 \n");
                             Console.BackgroundColor = ConsoleColor.Black;
-
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("\n\t\t▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
                             Console.WriteLine("\t\t              ▄▄▄     ▄   ▄  ▄▄▄  ▄   ▄  ▄▄▄");
@@ -176,6 +174,8 @@ namespace Quarto
                             Console.ReadLine();
                             Console.WriteLine(" L'ordinateur a choisi cette pièce :");
                             Affiche.AfficherPiece(NumeroPiece, TableauPieceGraphique);
+                            Console.ReadLine();
+                            Affiche.AfficherPlateau(TableauPlateauGraphique);
 
                             // c'est à ce moment la qu'on peut dire Quarto
                             Console.ForegroundColor = ConsoleColor.White;
@@ -183,7 +183,7 @@ namespace Quarto
                             Reponse = Reponse.ToLower();
                             if (Reponse == "quarto")
                             {
-                                do                              // on laisse la possibilité au joueur de donner plusieurs endroits où il pense qu'il y a quarto
+                                do // on laisse la possibilité au joueur de donner plusieurs endroits où il pense qu'il y a quarto
                                 {
                                     Console.Write(" A quelle ligne/colonne/diagonale y a t-il quarto ?\n < ecrire par exemple : ligne 2, colonne 3, diagonale 1 > : ");
                                     string Endroit = Console.ReadLine();
@@ -194,7 +194,7 @@ namespace Quarto
                                     }
                                     else
                                     {
-                                        Console.Write(" Il n'y a pas de quarto sur la {0}\n (il est peut être présent depuis plusieurs tours et est donc invalide).\n Voulez-vous retenter ? (O/N) : ", Endroit);
+                                        Console.Write(" Il n'y a pas de quarto sur la {0}\n (il est peut être présent depuis plusieurs tours et est donc invalide).\n\t Voulez-vous retenter ? (O/N) : ", Endroit);
                                         Reponse = Console.ReadLine();
 
                                     }
@@ -203,15 +203,12 @@ namespace Quarto
 
                             }
 
-                            if (Quarto == false)
-                            {
-
-                                // On demande au joueur de placer dans le plateau la piece chosie par l'ordi
-                                bool PlaceVide;
+                            if (Quarto == false) // On demande au joueur de placer dans le plateau la piece chosie par l'ordi
+                            {                             
+                                bool PlaceVide; // bool qui vaut false si la place choisie est déjà prise
                                 do
                                 {
                                     PlaceVide = false;
-                                    Affiche.AfficherPlateau(TableauPlateauGraphique);
                                     Console.WriteLine();
                                     Console.ForegroundColor = ConsoleColor.White;
                                     do
@@ -236,8 +233,7 @@ namespace Quarto
                                         Console.WriteLine("\n La place n'est pas disponible.\n");
                                 }
                                 while (!PlaceVide);
-                                
-                                
+    
                                 Console.Clear();
                                 General.PlacerPiece(NumeroPiece, Ligne - 1, Colonne - 1, TableauPieceCaracteristique, TableauPieceGraphique, TableauPlateauGraphique, TableauPlateauCaracteristique, PieceDispo);
                                 Test.Scanner(Ligne - 1, Colonne - 1, QuartoPossible, TableauPlateauCaracteristique, TableauPieceCaracteristique);
@@ -250,7 +246,7 @@ namespace Quarto
                                 Reponse = Reponse.ToLower();
                                 if (Reponse == "quarto")
                                 {
-                                    do                              // on laisse la possibilité au joueur de donner plusieurs endroits ou il pense qu'il y a quarto
+                                    do // on laisse la possibilité au joueur de donner plusieurs endroits ou il pense qu'il y a quarto
                                     {
                                         Console.Write(" A quelle ligne/colonne/diagonale y a t-il quarto ? < ecrire par exemple : ligne 2, diagonale 1 > : ");
                                         string endroit = Console.ReadLine();
@@ -261,7 +257,7 @@ namespace Quarto
                                         }
                                         else
                                         {
-                                            Console.Write(" Il n'y a pas de quarto sur la {0} (il est peut être présent depuis plusieurs tours et est donc invalide).\n Voulez-vous retenter ? (O/N) : ", endroit);
+                                            Console.Write(" Il n'y a pas de quarto sur la {0} (il est peut être présent depuis plusieurs tours et est donc invalide).\n\t Voulez-vous retenter ? (O/N) : ", endroit);
                                             Reponse = Console.ReadLine();
 
                                         }
@@ -272,7 +268,7 @@ namespace Quarto
                                 if (Quarto == false)
                                 {
                                     bool Disponible = false;
-                                    do                         // On fait en sorte que le joueur choisisse une pièce qui soit disponible
+                                    do // On fait en sorte que le joueur choisisse une pièce qui soit disponible
                                     {
 
                                         Console.WriteLine(" Voici les pièces disponibles :\n");
@@ -326,7 +322,8 @@ namespace Quarto
                             Console.WriteLine("\t\t   ▀▀▀     ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀    ▀▀    ▀▀▀    ▀▀▀  ▀▀▀▀");
                             Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.ReadLine();
-
+                            Affiche.AfficherPlateau(TableauPlateauGraphique);
+                            Console.ReadLine();
                             // On verifie le quarto de l'ordinateur
                             Verifal = Rand.Next(1, 6);
                             // niveau de difficulté de l'ordi ici (si niveau difficile, seuil = 0 si niveau facile seuil = 2)
@@ -334,6 +331,9 @@ namespace Quarto
                             if (Verifal > Seuil && (QuartoPossible[0] != "vide" || QuartoPossible[1] != "vide" || QuartoPossible[2] != "vide"))  // ici on ne sait pas où est le quarto
                             {
                                 Quarto = true;
+                                Affiche.AfficherPlateau(TableauPlateauGraphique);
+                                Console.WriteLine();
+
                                 if (QuartoPossible[0] != "vide")
                                     Console.WriteLine(" L'ordinateur gagne la partie ! Il y a un quarto à la " + QuartoPossible[0]);
                                 else
@@ -424,7 +424,8 @@ namespace Quarto
                             Console.WriteLine("\t\t   ▀▀▀     ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀    ▀▀    ▀▀▀    ▀▀▀  ▀▀▀▀");
                             Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.ReadLine();
-
+                            Affiche.AfficherPlateau(TableauPlateauGraphique);
+                            Console.ReadLine();
                             // On verifie le quarto de l'ordinateur
                             Verifal = Rand.Next(1, 6);
                             // niveau de difficulté de l'ordi ici (si niveau difficile, seuil = 0 si niveau facile seuil = 2)
@@ -432,6 +433,9 @@ namespace Quarto
                             if (Verifal > Seuil && (QuartoPossible[0] != "vide" || QuartoPossible[1] != "vide" || QuartoPossible[2] != "vide"))  // ici on ne sait pas où est le quarto
                             {
                                 Quarto = true;
+                                Affiche.AfficherPlateau(TableauPlateauGraphique);
+                                Console.WriteLine();
+
                                 if (QuartoPossible[0] != "vide")
                                     Console.WriteLine(" L'ordinateur gagne la partie ! Il y a un quarto à la " + QuartoPossible[0]);
                                 else
@@ -502,13 +506,14 @@ namespace Quarto
                             Console.WriteLine("\t\t             ▀   ▀      ▀    ▀▀▀   ▀▀▀  ▀▀▀");
                             Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.WriteLine();
-
-                            // c'est à ce moment là qu'on peut dire Quarto
+                            Console.ReadLine();
+                            Affiche.AfficherPlateau(TableauPlateauGraphique);
+                            // c'est à ce moment la qu'on peut dire quarto
                             Reponse = Console.ReadLine();
                             Reponse = Reponse.ToLower();
-                            if (Reponse == "quarto") // si le joueur pense qu'il y a quarto
+                            if (Reponse == "quarto")
                             {
-                                do // on laisse la possibilité au joueur de donner plusieurs endroits où il pense qu'il y a quarto
+                                do // on laisse la possibilité au joueur de donner plusieurs endroits ou il pense qu'il y a quarto
                                 {
                                     Console.Write(" A quelle ligne/colonne/diagonale y a t-il quarto ? < ecrire par exemple : ligne 2, diagonale 1 > : ");
                                     string endroit = Console.ReadLine();
@@ -519,7 +524,7 @@ namespace Quarto
                                     }
                                     else
                                     {
-                                        Console.Write(" Il n'y a pas de quarto sur la {0} (il est peut être présent depuis plusieurs tours et est donc invalide).\n Voulez-vous retenter ? (O/N) : ", endroit);
+                                        Console.Write(" Il n'y a pas de quarto sur la {0} (il est peut être présent depuis plusieurs tours et est donc invalide).\n\t Voulez-vous retenter ? (O/N) : ", endroit);
                                         Reponse = Console.ReadLine();
 
                                     }
@@ -527,17 +532,13 @@ namespace Quarto
                                 while (Quarto == false && Reponse == "O");
 
                             }
-                            
-                            if (Quarto == false) // Si le joueur n'a pas gagné
+
+                            if (Quarto == false) // On demande au joueur de placer dans le plateau la piece chosie par l'ordi
                             {
-                                Console.WriteLine(" L'ordinateur a choisi cette pièce :");
-                                Affiche.AfficherPiece(NumeroPiece, TableauPieceGraphique);
-                                // On demande au joueur de placer dans le plateau la piece chosie par l'ordi
-                                bool PlaceVide;
+                                bool PlaceVide; // bool qui vaut false si la place choisie est déjà prise
                                 do
                                 {
                                     PlaceVide = false;
-                                    Affiche.AfficherPlateau(TableauPlateauGraphique);
                                     Console.WriteLine();
                                     Console.ForegroundColor = ConsoleColor.White;
                                     do
@@ -569,7 +570,9 @@ namespace Quarto
                                 Console.WriteLine();
                                 Console.ForegroundColor = ConsoleColor.White;
 
-                                // c'est à ce moment la qu'on peut dire Quarto 
+                                Console.ForegroundColor = ConsoleColor.White;
+
+                                // c'est à ce moment la qu'on peut dire quarto
                                 Reponse = Console.ReadLine();
                                 Reponse = Reponse.ToLower();
                                 if (Reponse == "quarto")
@@ -585,7 +588,7 @@ namespace Quarto
                                         }
                                         else
                                         {
-                                            Console.Write(" Il n'y a pas de quarto sur la {0} (il est peut être présent depuis plusieurs tours et est donc invalide).\n Voulez-vous retenter ? (O/N) : ", endroit);
+                                            Console.Write(" Il n'y a pas de quarto sur la {0} (il est peut être présent depuis plusieurs tours et est donc invalide).\n\t Voulez-vous retenter ? (O/N) : ", endroit);
                                             Reponse = Console.ReadLine();
 
                                         }
