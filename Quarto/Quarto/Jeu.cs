@@ -177,7 +177,8 @@ namespace Quarto
                             Console.WriteLine(" L'ordinateur a choisi cette pièce :");
                             Affiche.AfficherPiece(NumeroPiece, TableauPieceGraphique);
 
-                            // c'est à ce moment la qu'on peut dire Quarto 
+                            // c'est à ce moment la qu'on peut dire Quarto
+                            Console.ForegroundColor = ConsoleColor.White;
                             Reponse = Console.ReadLine();
                             Reponse = Reponse.ToLower();
                             if (Reponse == "quarto")
@@ -244,7 +245,7 @@ namespace Quarto
                                 Console.WriteLine();
                                 Console.ForegroundColor = ConsoleColor.White;
 
-                                // c'est à ce moment la qu'on peut dire Quarto 
+                                // c'est à ce moment la qu'on peut dire quarto
                                 Reponse = Console.ReadLine();
                                 Reponse = Reponse.ToLower();
                                 if (Reponse == "quarto")
@@ -502,7 +503,7 @@ namespace Quarto
                             Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.WriteLine();
 
-                            // c'est à ce moment là qu'on peut dire Quarto 
+                            // c'est à ce moment là qu'on peut dire Quarto
                             Reponse = Console.ReadLine();
                             Reponse = Reponse.ToLower();
                             if (Reponse == "quarto") // si le joueur pense qu'il y a quarto
