@@ -106,8 +106,9 @@ namespace Quarto
         /// <param name="TableauPieceGraphique"></param>
         /// <param name="TableauPieceDisponible"></param>
         /// <param name="Quarto"></param>
-        public static void PlacerQuarto(int Piece, int[][] PlaceVide, int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique, out int Ligne, out int Colonne, string[][][] TableauPlateauGraphique, string[][] TableauPieceGraphique, int[] TableauPieceDisponible, out bool Quarto)
+        public static void PlacerQuarto(int Piece, int[][] TableauPlateauCaracteristique, string[] TableauPieceCaracteristique, out int Ligne, out int Colonne, string[][][] TableauPlateauGraphique, string[][] TableauPieceGraphique, int[] TableauPieceDisponible, out bool Quarto)
         {
+            int[][] PlaceVide = VerifierUnePlace(TableauPlateauCaracteristique);
             Quarto = false;
             Ligne = 1;
             Colonne = 1;

@@ -348,7 +348,7 @@ namespace Quarto
                                 
                                 if (Niveau == "difficile")
                                 {
-                                    intelligent.PlacerQuarto(NumeroPiece, intelligent.VerifierUnePlace(TableauPlateauCaracteristique), TableauPlateauCaracteristique, TableauPieceCaracteristique, out Ligne, out Colonne, TableauPlateauGraphique, TableauPieceGraphique, PieceDispo,out Quarto);
+                                    intelligent.PlacerQuarto(NumeroPiece, TableauPlateauCaracteristique, TableauPieceCaracteristique, out Ligne, out Colonne, TableauPlateauGraphique, TableauPieceGraphique, PieceDispo,out Quarto);
                                 }
                                 else
                                 {
@@ -447,7 +447,7 @@ namespace Quarto
                             {
                                 if (Niveau == "difficile")
                                 {
-                                    intelligent.PlacerQuarto(NumeroPiece, intelligent.VerifierUnePlace(TableauPlateauCaracteristique), TableauPlateauCaracteristique, TableauPieceCaracteristique, out Ligne, out Colonne, TableauPlateauGraphique, TableauPieceGraphique, PieceDispo, out Quarto);
+                                    intelligent.PlacerQuarto(NumeroPiece, TableauPlateauCaracteristique, TableauPieceCaracteristique, out Ligne, out Colonne, TableauPlateauGraphique, TableauPieceGraphique, PieceDispo, out Quarto);
                                 }
                                 else
                                 {
