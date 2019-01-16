@@ -87,7 +87,7 @@ namespace Quarto
             if (Compteur == 3)
                 Retour[2][1] = Donnee;
             else
-                Retour[2][0] = -1;
+                Retour[2][1] = -1;
 
             return (Retour);
         }

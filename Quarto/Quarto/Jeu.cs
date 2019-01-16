@@ -322,8 +322,6 @@ namespace Quarto
                             Console.WriteLine("\t\t   ▀▀▀     ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀    ▀▀    ▀▀▀    ▀▀▀  ▀▀▀▀");
                             Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.ReadLine();
-                            Affiche.AfficherPlateau(TableauPlateauGraphique);
-                            Console.ReadLine();
                             // On verifie le quarto de l'ordinateur
                             Verifal = Rand.Next(1, 6);
                             // niveau de difficulté de l'ordi ici (si niveau difficile, seuil = 0 si niveau facile seuil = 2)
@@ -424,8 +422,6 @@ namespace Quarto
                             Console.WriteLine("\t\t   ▀▀▀     ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀    ▀▀    ▀▀▀    ▀▀▀  ▀▀▀▀");
                             Console.WriteLine("\t\t▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
                             Console.ReadLine();
-                            Affiche.AfficherPlateau(TableauPlateauGraphique);
-                            Console.ReadLine();
                             // On verifie le quarto de l'ordinateur
                             Verifal = Rand.Next(1, 6);
                             // niveau de difficulté de l'ordi ici (si niveau difficile, seuil = 0 si niveau facile seuil = 2)
@@ -520,6 +516,7 @@ namespace Quarto
                                     Quarto = Test.VerifierQuarto(endroit, QuartoPossible);
                                     if (Quarto == true)
                                     {
+                                        Console.WriteLine();
                                         Console.WriteLine("\n Bravo vous avez gagné !");
                                     }
                                     else
@@ -584,6 +581,7 @@ namespace Quarto
                                         Quarto = Test.VerifierQuarto(endroit, QuartoPossible);
                                         if (Quarto == true)
                                         {
+                                            Console.WriteLine();
                                             Console.WriteLine("\n Bravo vous avez gagné !");
                                         }
                                         else
