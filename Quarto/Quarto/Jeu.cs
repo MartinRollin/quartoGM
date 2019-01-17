@@ -72,7 +72,7 @@ namespace Quarto
                     
                     int Colonne = 0; //colonne de la dernière pièce jouée
                     int Ligne = 0; // ligne de la dernière pièce jouée
-                    string Reponse = "O"; //
+                    string Reponse = "O"; // variable qui sert à stocker la réponse du joueur "quarto"
                     int Tour = 1; // donne le numéro du tour en cours
                     bool Quarto = false; // vaut false tant qu'aucun des joueurs n'a déclaré quarto et que le quarto est valide
                     int NumeroPiece; // Numéro de la dernière pièce placée sur le plateau
