@@ -1,6 +1,0 @@
-H:\1A\programmation\projets\quartoGM\Quarto\Gwe\bin\Debug\Gwe.exe.config
-H:\1A\programmation\projets\quartoGM\Quarto\Gwe\bin\Debug\Gwe.exe
-H:\1A\programmation\projets\quartoGM\Quarto\Gwe\bin\Debug\Gwe.pdb
-H:\1A\programmation\projets\quartoGM\Quarto\Gwe\obj\Debug\Gwe.csprojResolveAssemblyReference.cache
-H:\1A\programmation\projets\quartoGM\Quarto\Gwe\obj\Debug\Gwe.exe
-H:\1A\programmation\projets\quartoGM\Quarto\Gwe\obj\Debug\Gwe.pdb
